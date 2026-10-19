@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en" class="auth-checking">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +13,6 @@
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--page);color:var(--navy);font-family:Arial,sans-serif;padding-bottom:92px}
-html.auth-checking body{visibility:hidden}
 header{padding:20px 17px;background:#fff;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px}
 .brand{font-weight:800;color:var(--gold);font-size:17px;letter-spacing:.4px}
 header small{display:block;color:var(--muted);font-size:11px;margin-top:5px}
@@ -58,6 +57,7 @@ nav button.active{color:var(--navy);background:#eaf0f8}
 </style>
 </head>
 <body>
+
 <header>
   <div>
     <div class="brand">REAL WEALTH EDGE</div>
@@ -115,6 +115,7 @@ nav button.active{color:var(--navy);background:#eaf0f8}
 <section id="wallet" class="page">
   <p class="muted">WALLET SERVICES</p>
   <h1>My Wallet</h1>
+
   <div class="card">
     <span class="muted">Available balance</span>
     <strong id="walletBalance" style="display:block;font-size:27px;margin-top:9px">$0.00</strong>
@@ -249,7 +250,7 @@ const plans = [
   {name:"Gold Plan",rate:"8% daily",period:"14 days",min:70000,max:null}
 ];
 
-let activity = [];
+let activity=[];
 
 function money(n){
   return "$"+Number(n).toLocaleString("en-US",{
@@ -277,11 +278,12 @@ function walletMode(mode){
 
 function updateAddress(){
   const asset=document.getElementById("depositAsset").value;
-  document.getElementById("walletAddress").textContent=receivingAddresses[asset];
+  document.getElementById("walletAddress").textContent=receivingAddresses[asset]||"Address unavailable";
 }
 
 function showStatus(id,message){
   const el=document.getElementById(id);
+  if(!el)return;
   el.textContent=message;
   el.style.display="block";
 }
@@ -306,14 +308,17 @@ function copyAddress(){
 function addActivity(message){
   activity.unshift(new Date().toLocaleString()+" — "+message);
   activity=activity.slice(0,20);
-  try{sessionStorage.setItem("rwePreviewActivity",JSON.stringify(activity));}catch(e){}
+  try{
+    sessionStorage.setItem("rwePreviewActivity",JSON.stringify(activity));
+  }catch(e){}
   renderActivity();
 }
 
 function renderActivity(){
   ["activityList","homeActivity"].forEach(id=>{
     const el=document.getElementById(id);
-    el.innerHTML="";
+    if(!el)return;
+    el.replaceChildren();
     if(!activity.length){
       el.className="empty";
       el.textContent="No activity recorded in this browser yet.";
@@ -375,7 +380,7 @@ function choosePlan(index){
 
 function renderPlans(){
   const list=document.getElementById("planList");
-  list.innerHTML="";
+  list.replaceChildren();
   plans.forEach((p,i)=>{
     const card=document.createElement("div");
     card.className="card";
@@ -418,8 +423,20 @@ function copyReferralLink(){
   );
 }
 
-function goToLogin(){
-  window.location.href="login.html";
+async function goToLogin(){
+  if(window.rweSupabase){
+    try{
+      const {error}=await window.rweSupabase.auth.signOut();
+      if(error){
+        alert("Sign-out failed. Please try again.");
+        return;
+      }
+    }catch(e){
+      alert("Sign-out failed. Please try again.");
+      return;
+    }
+  }
+  window.location.replace("login.html");
 }
 
 try{
@@ -440,15 +457,14 @@ prepareReferralLink();
 import { createClient } from
   "https://esm.sh/@supabase/supabase-js@2";
 
-const SUPABASE_URL =
-  "https://ilbqpcqlqnwtukrzsqjq.supabase.co";
+const SUPABASE_URL="https://ilbqpcqlqnwtukrzsqjq.supabase.co";
 
-/* Use the existing public anon key for this project.
-   Never put a service-role or secret key in website code. */
-const SUPABASE_KEY =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmUiLCJyZWYiOiJpbGJxcGNxbHFud3R1a3J6c3FqcSIsInJvbGUiOiJhbm9uIiwiaWF0IjoxNzkyNDAwMTk1LCJleHAiOjIxMDc5NzYxOTV9.86g5_hBhM00fJurSIlZgMxHZYrtW3sAGknIZHJQmqWY";
+/* Public anon key for the existing project.
+   Never use a service-role or secret key in browser code. */
+const SUPABASE_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmUiLCJyZWYiOiJpbGJxcGNxbHFud3R1a3J6c3FqcSIsInJvbGUiOiJhbm9uIiwiaWF0IjoxNzkyNDAwMTk1LCJleHAiOjIxMDc5NzYxOTV9.86g5_hBhM00fJurSIlZgMxHZYrtW3sAGknIZHJQmqWY";
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+const supabase=createClient(SUPABASE_URL,SUPABASE_KEY);
+window.rweSupabase=supabase;
 
 function setProfileMessage(message){
   const el=document.getElementById("profileStatus");
@@ -456,14 +472,4 @@ function setProfileMessage(message){
 }
 
 async function loadMemberProfile(user){
-  const nameElement=document.getElementById("memberName");
-  const emailElement=document.getElementById("memberEmail");
-  const welcomeElement=document.getElementById("welcomeHeading");
-
-  const email=user.email || "Email unavailable";
-  const metadataName=
-    user.user_metadata?.full_name ||
-    user.user_metadata?.name ||
-    "";
-
-  let displayName=metadataN
+  const nameElement=document.getElementById("memberN
