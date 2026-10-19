@@ -2,884 +2,363 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#102744">
-  <title>Member Dashboard | REAL WEALTH EDGE</title>
-
-  <style>
-    :root {
-      --navy: #102744;
-      --navy-light: #183b62;
-      --gold: #d8b56d;
-      --gold-light: #f5e8c8;
-      --white: #ffffff;
-      --background: #f3f6fa;
-      --text: #24364b;
-      --muted: #738195;
-      --border: #e2e8f0;
-      --green: #18794e;
-      --red: #b42318;
-      --shadow: 0 8px 28px rgba(16, 39, 68, 0.07);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--background);
-      color: var(--text);
-      line-height: 1.6;
-      padding-bottom: 95px;
-    }
-
-    button, input, select, textarea {
-      font: inherit;
-    }
-
-    button {
-      cursor: pointer;
-    }
-
-    button:focus-visible,
-    input:focus-visible,
-    select:focus-visible,
-    textarea:focus-visible {
-      outline: 3px solid #d8b56d;
-      outline-offset: 2px;
-    }
-
-    .topbar {
-      background: var(--navy);
-      color: var(--white);
-      padding: 17px 20px;
-      border-bottom: 3px solid var(--gold);
-    }
-
-    .topbar-inner {
-      max-width: 1050px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-    }
-
-    .brand-mark {
-      background: var(--gold);
-      color: var(--navy);
-      width: 42px;
-      height: 42px;
-      border-radius: 10px;
-      display: grid;
-      place-items: center;
-      font-size: 22px;
-      font-weight: bold;
-    }
-
-    .brand-name {
-      font-size: 16px;
-      font-weight: 800;
-      letter-spacing: 0.7px;
-    }
-
-    .brand-subtitle {
-      color: #d7e0eb;
-      font-size: 10px;
-      letter-spacing: 1.7px;
-    }
-
-    .member-label {
-      font-size: 12px;
-      color: #e0e8f2;
-      text-align: right;
-    }
-
-    .page {
-      max-width: 1050px;
-      margin: auto;
-      padding: 24px 16px;
-    }
-
-    .welcome {
-      background: linear-gradient(120deg, var(--navy), var(--navy-light));
-      color: var(--white);
-      border-radius: 18px;
-      padding: 25px 22px;
-      margin-bottom: 20px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .welcome::after {
-      content: "";
-      position: absolute;
-      width: 170px;
-      height: 170px;
-      right: -55px;
-      top: -70px;
-      border: 25px solid rgba(216, 181, 109, 0.12);
-      border-radius: 50%;
-    }
-
-    .eyebrow {
-      color: var(--gold);
-      font-size: 11px;
-      font-weight: bold;
-      letter-spacing: 1.8px;
-      text-transform: uppercase;
-    }
-
-    .welcome h1 {
-      font-size: clamp(23px, 5vw, 32px);
-      line-height: 1.25;
-      margin: 8px 0;
-    }
-
-    .welcome p {
-      color: #d9e4ef;
-      font-size: 14px;
-      max-width: 560px;
-    }
-
-    .section {
-      display: none;
-      animation: appear 0.2s ease;
-    }
-
-    .section.active {
-      display: block;
-    }
-
-    @keyframes appear {
-      from { opacity: 0.6; }
-      to { opacity: 1; }
-    }
-
-    .section-heading {
-      margin: 27px 0 14px;
-    }
-
-    .section-heading h2 {
-      color: var(--navy);
-      font-size: 21px;
-    }
-
-    .section-heading p {
-      color: var(--muted);
-      font-size: 13px;
-      margin-top: 3px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 15px;
-      padding: 19px;
-      box-shadow: var(--shadow);
-      min-width: 0;
-    }
-
-    .balance-card {
-      grid-column: 1 / -1;
-      background: var(--white);
-      border-top: 4px solid var(--gold);
-    }
-
-    .card-label {
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .balance-amount {
-      color: var(--navy);
-      font-size: clamp(30px, 7vw, 39px);
-      font-weight: 800;
-      letter-spacing: -1px;
-      margin: 5px 0;
-      overflow-wrap: anywhere;
-    }
-
-    .small-note {
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .stat-value {
-      font-size: 24px;
-      font-weight: 800;
-      color: var(--navy);
-      margin-top: 8px;
-      overflow-wrap: anywhere;
-    }
-
-    .stat-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      background: #edf2f8;
-      color: var(--navy);
-      font-size: 21px;
-      margin-bottom: 12px;
-    }
-
-    .actions {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 15px;
-    }
-
-    .action-btn {
-      border: 1px solid var(--border);
-      border-radius: 13px;
-      background: white;
-      padding: 15px 7px;
-      color: var(--navy);
-      font-size: 12px;
-      font-weight: 700;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 7px;
-    }
-
-    .action-btn span {
-      font-size: 23px;
-    }
-
-    .action-btn:hover {
-      border-color: var(--gold);
-      background: #fffdf8;
-    }
-
-    .primary-btn, .secondary-btn, .gold-btn {
-      border: none;
-      border-radius: 10px;
-      padding: 12px 16px;
-      font-weight: 700;
-      font-size: 13px;
-      display: inline-block;
-      text-align: center;
-    }
-
-    .primary-btn {
-      background: var(--navy);
-      color: white;
-    }
-
-    .primary-btn:hover {
-      background: var(--navy-light);
-    }
-
-    .gold-btn {
-      background: var(--gold);
-      color: var(--navy);
-    }
-
-    .secondary-btn {
-      background: #edf2f8;
-      color: var(--navy);
-      border: 1px solid var(--border);
-    }
-
-    .full-btn {
-      width: 100%;
-      margin-top: 12px;
-    }
-
-    .announcement {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-    }
-
-    .announcement-icon {
-      flex: 0 0 40px;
-      height: 40px;
-      display: grid;
-      place-items: center;
-      background: var(--gold-light);
-      border-radius: 11px;
-      font-size: 20px;
-    }
-
-    .announcement h3 {
-      color: var(--navy);
-      font-size: 15px;
-      margin-bottom: 3px;
-    }
-
-    .announcement p {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .plan-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .plan-card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
-
-    .plan-top {
-      background: var(--navy);
-      color: white;
-      padding: 18px;
-      border-bottom: 3px solid var(--gold);
-    }
-
-    .plan-top h3 {
-      font-size: 19px;
-    }
-
-    .plan-rate {
-      color: var(--gold);
-      font-size: 25px;
-      font-weight: 800;
-      margin-top: 5px;
-    }
-
-    .plan-top small {
-      color: #e0e8f2;
-      font-size: 12px;
-    }
-
-    .plan-details {
-      padding: 18px;
-    }
-
-    .plan-line {
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
-      border-bottom: 1px solid #edf0f4;
-      padding: 9px 0;
-      font-size: 12px;
-    }
-
-    .plan-line span:first-child {
-      color: var(--muted);
-    }
-
-    .plan-line strong {
-      color: var(--navy);
-      text-align: right;
-      overflow-wrap: anywhere;
-    }
-
-    .plan-details button {
-      width: 100%;
-      margin-top: 15px;
-    }
-
-    .form-card {
-      background: white;
-      padding: 20px;
-      border-radius: 15px;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      margin-top: 15px;
-    }
-
-    .form-card h3 {
-      color: var(--navy);
-      font-size: 18px;
-      margin-bottom: 6px;
-    }
-
-    .form-card > p {
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
-
-    .field {
-      margin: 14px 0;
-    }
-
-    .field label {
-      display: block;
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 6px;
-    }
-
-    .field input, .field select, .field textarea {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #cfd8e3;
-      border-radius: 9px;
-      background: white;
-      color: var(--text);
-      font-size: 14px;
-    }
-
-    .field input:focus, .field select:focus,
-    .field textarea:focus {
-      border-color: var(--navy-light);
-    }
-
-    .wallet-box {
-      background: #f4f7fb;
-      border: 1px dashed #b7c5d6;
-      border-radius: 11px;
-      padding: 14px;
-      margin: 14px 0;
-    }
-
-    .wallet-box strong {
-      display: block;
-      font-size: 12px;
-      color: var(--navy);
-      margin-bottom: 5px;
-    }
-
-    .wallet-address {
-      font-size: 13px;
-      overflow-wrap: anywhere;
-      color: #263c55;
-      user-select: text;
-    }
-
-    .status-message {
-      display: none;
-      padding: 13px;
-      margin-top: 14px;
-      border-radius: 10px;
-      font-size: 13px;
-    }
-
-    .status-message.show {
-      display: block;
-    }
-
-    .status-message.info {
-      background: #edf4ff;
-      color: #244e83;
-      border: 1px solid #d3e4ff;
-    }
-
-    .status-message.success {
-      background: #eaf7ef;
-      color: var(--green);
-      border: 1px solid #c6e9d2;
-    }
-
-    .status-message.error {
-      background: #fff0ef;
-      color: var(--red);
-      border: 1px solid #ffd3cf;
-    }
-
-    .notice {
-      background: #fffaf0;
-      border: 1px solid #efdfb9;
-      border-radius: 12px;
-      padding: 14px;
-      margin-top: 15px;
-      color: #6b5626;
-      font-size: 12px;
-    }
-
-    .empty-state {
-      padding: 30px 15px;
-      text-align: center;
-      color: var(--muted);
-    }
-
-    .empty-state .empty-icon {
-      font-size: 32px;
-      margin-bottom: 7px;
-    }
-
-    .empty-state h3 {
-      color: var(--navy);
-      font-size: 16px;
-      margin-bottom: 5px;
-    }
-
-    .activity-row {
-      padding: 14px 0;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .activity-row:last-child {
-      border-bottom: none;
-    }
-
-    .activity-row strong {
-      color: var(--navy);
-      font-size: 13px;
-    }
-
-    .activity-row p {
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .tag {
-      display: inline-block;
-      background: #edf2f8;
-      color: var(--navy);
-      border-radius: 30px;
-      padding: 4px 9px;
-      font-size: 10px;
-      font-weight: bold;
-    }
-
-    .account-row {
-      padding: 14px 0;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      font-size: 13px;
-    }
-
-    .account-row:last-child {
-      border-bottom: none;
-    }
-
-    .account-row span {
-      color: var(--muted);
-    }
-
-    .account-row strong {
-      text-align: right;
-      overflow-wrap: anywhere;
-    }
-
-    .bottom-nav {
-      position: fixed;
-      z-index: 20;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: white;
-      border-top: 1px solid var(--border);
-      box-shadow: 0 -5px 20px rgba(16, 39, 68, 0.07);
-      padding: 8px 4px calc(8px + env(safe-area-inset-bottom));
-    }
-
-    .nav-inner {
-      max-width: 650px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-    }
-
-    .nav-btn {
-      border: none;
-      background: transparent;
-      color: #8290a2;
-      padding: 5px 1px;
-      min-width: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 3px;
-      font-size: 10px;
-      font-weight: 700;
-    }
-
-    .nav-icon {
-      font-size: 21px;
-      line-height: 1.3;
-    }
-
-    .nav-btn.active {
-      color: var(--navy);
-    }
-
-    .nav-btn.active .nav-icon {
-      color: #b38b3c;
-    }
-
-    .footer {
-      text-align: center;
-      font-size: 11px;
-      color: var(--muted);
-      padding: 25px 8px 12px;
-    }
-
-    @media (max-width: 600px) {
-      .page {
-        padding: 17px 12px;
-      }
-
-      .topbar {
-        padding: 14px 13px;
-      }
-
-      .brand-name {
-        font-size: 13px;
-      }
-
-      .brand-subtitle {
-        font-size: 9px;
-        letter-spacing: 1px;
-      }
-
-      .brand-mark {
-        width: 37px;
-        height: 37px;
-      }
-
-      .member-label {
-        font-size: 10px;
-      }
-
-      .grid, .plan-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .actions {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 6px;
-      }
-
-      .action-btn {
-        padding: 12px 3px;
-        font-size: 10px;
-      }
-
-      .action-btn span {
-        font-size: 21px;
-      }
-
-      .card {
-        padding: 16px;
-      }
-
-      .balance-card {
-        grid-column: auto;
-      }
-
-      .welcome {
-        padding: 22px 17px;
-      }
-
-      .form-card {
-        padding: 16px;
-      }
-    }
-
-    @media (min-width: 601px) {
-      .balance-card-inner {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 20px;
-      }
-
-      .balance-card .actions {
-        min-width: 300px;
-        margin-top: 0;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REAL WEALTH EDGE | Dashboard</title>
+<style>
+:root{--navy:#081426;--panel:#10223a;--gold:#e5b957;--white:#f5f7fb;--muted:#9eafc5;--line:#263c57;--green:#54d6a0}
+*{box-sizing:border-box}
+body{margin:0;background:var(--navy);color:var(--white);font-family:Arial,sans-serif;padding-bottom:92px}
+header{padding:20px 17px;background:#0b1a2e;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px}
+.brand{font-weight:800;color:var(--gold);font-size:17px;letter-spacing:.4px}
+header small{display:block;color:var(--muted);font-size:11px;margin-top:5px}
+main{max-width:760px;margin:auto;padding:18px 14px}
+section.page{display:none}
+section.page.active{display:block}
+h1{font-size:25px;margin:8px 0}
+h2{font-size:18px;margin:0 0 14px}
+p{line-height:1.55}
+.muted{color:var(--muted);font-size:13px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:17px;margin:13px 0}
+.balance{background:linear-gradient(135deg,#173451,#10223a);border-color:#806b3e}
+.balance strong{font-size:30px;display:block;margin:12px 0}
+.gold{color:var(--gold)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{background:#0b1a2e;border:1px solid var(--line);padding:14px;border-radius:12px}
+.stat strong{display:block;font-size:18px;margin-top:8px}
+button,input,select{font:inherit}
+button{cursor:pointer;border:0;border-radius:9px;padding:12px 14px;font-weight:700}
+.primary{background:var(--gold);color:#111d2c}
+.secondary{background:#1a304a;color:var(--white);border:1px solid var(--line)}
+.danger{background:#48252c;color:#ffd9dc;border:1px solid #78414a}
+.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}
+.actions button{flex:1}
+label{display:block;font-size:13px;color:#c7d2e2;margin:13px 0 7px}
+input,select{width:100%;padding:13px;background:#081426;border:1px solid #334963;border-radius:9px;color:white}
+input::placeholder{color:#7f91a8}
+.plan-title{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.tag{color:var(--gold);font-size:12px;border:1px solid #806b3e;border-radius:20px;padding:5px 8px}
+.plan-rate{font-size:24px;font-weight:800;color:var(--gold);margin:12px 0}
+.address{overflow-wrap:anywhere;background:#081426;padding:12px;border-radius:8px;font-size:12px;line-height:1.6;border:1px solid var(--line)}
+.notice{font-size:12px;color:var(--muted);line-height:1.6}
+.status{display:none;padding:12px;border-radius:9px;background:#173c35;color:#b6f7df;font-size:13px;margin-top:12px;line-height:1.5}
+.empty{text-align:center;padding:25px 10px;color:var(--muted);line-height:1.6}
+nav{position:fixed;bottom:0;left:0;right:0;z-index:10;display:grid;grid-template-columns:repeat(5,1fr);background:#09182b;border-top:1px solid var(--line);padding:8px 2px max(8px,env(safe-area-inset-bottom))}
+nav button{background:transparent;color:var(--muted);font-size:11px;padding:8px 1px;border-radius:8px}
+nav button span{display:block;font-size:19px;margin-bottom:5px}
+nav button.active{color:var(--gold);background:#172b42}
+hr{border:0;border-top:1px solid var(--line);margin:15px 0}
+.hidden{display:none!important}
+@media(min-width:600px){main{padding:24px}.stats{grid-template-columns:repeat(2,1fr)}}
+</style>
 </head>
-
 <body>
-  <header class="topbar">
-    <div class="topbar-inner">
-      <div class="brand">
-        <div class="brand-mark">R</div>
-        <div>
-          <div class="brand-name">REAL WEALTH EDGE</div>
-          <div class="brand-subtitle">MEMBER PORTAL</div>
-        </div>
-      </div>
-      <div class="member-label">
-        <div>MEMBER AREA</div>
-        <div>Account overview</div>
-      </div>
+<header>
+  <div>
+    <div class="brand">REAL WEALTH EDGE</div>
+    <small>MEMBER DASHBOARD</small>
+  </div>
+  <button class="secondary" onclick="goTo('account')">My Account</button>
+</header>
+
+<main>
+<section id="home" class="page active">
+  <p class="muted">MEMBER OVERVIEW</p>
+  <h1>Welcome back</h1>
+  <p class="muted">Manage your account, explore plans and review your wallet.</p>
+  <div class="card balance">
+    <span class="muted">Available balance</span>
+    <strong id="homeBalance">$0.00</strong>
+    <span class="muted">Preview balance · No live funds connected</span>
+    <div class="actions">
+      <button class="primary" onclick="goTo('wallet');walletMode('deposit')">Deposit</button>
+      <button class="secondary" onclick="goTo('wallet');walletMode('withdraw')">Withdraw</button>
     </div>
-  </header>
+  </div>
+  <div class="stats">
+    <div class="stat"><span class="muted">Total deposited</span><strong id="totalDeposited">$0.00</strong></div>
+    <div class="stat"><span class="muted">Active investments</span><strong id="activeInvestments">$0.00</strong></div>
+    <div class="stat"><span class="muted">Pending requests</span><strong id="pendingRequests">0</strong></div>
+    <div class="stat"><span class="muted">Account status</span><strong style="font-size:15px">Preview</strong></div>
+  </div>
+  <div class="card">
+    <h2>Explore investment plans</h2>
+    <p class="muted">Review the available plan details.</p>
+    <button class="primary" style="width:100%" onclick="goTo('invest')">View Plans</button>
+  </div>
+  <div class="card">
+    <h2>Recent activity</h2>
+    <div id="homeActivity" class="empty">No activity recorded in this browser yet.</div>
+  </div>
+</section>
 
-  <main class="page">
-    <section id="home" class="section active">
-      <div class="welcome">
-        <div class="eyebrow">Member dashboard</div>
-        <h1>Your financial overview</h1>
-        <p>Manage your account, explore investment plans and review your activity in one place.</p>
-      </div>
+<section id="invest" class="page">
+  <p class="muted">INVESTMENT OPTIONS</p>
+  <h1>Investment Plans</h1>
+  <p class="muted">These are the plan terms entered for this website preview. They are not verified offers or guaranteed returns.</p>
+  <div id="planList"></div>
+  <div class="card">
+    <h2>Before you continue</h2>
+    <p class="notice">Selecting a plan here is for demonstration only. No money will be invested, and no return will be calculated or credited. A secure backend is required before real investing can be enabled.</p>
+  </div>
+</section>
 
-      <div class="grid">
-        <div class="card balance-card">
-          <div class="balance-card-inner">
-            <div>
-              <div class="card-label">Available Balance (USD)</div>
-              <div class="balance-amount" id="availableBalance">$0.00</div>
-              <div class="small-note">Funds available in your account</div>
-            </div>
-            <div class="actions">
-              <button class="action-btn" onclick="showPage('wallet'); setWalletMode('deposit')">
-                <span>＋</span>Deposit
-              </button>
-              <button class="action-btn" onclick="showPage('invest')">
-                <span>◈</span>Invest
-              </button>
-              <button class="action-btn" onclick="showPage('wallet'); setWalletMode('withdraw')">
-                <span>↗</span>Withdraw
-              </button>
-              <button class="action-btn" onclick="showPage('activity')">
-                <span>↻</span>Activity
-              </button>
-            </div>
-          </div>
-        </div>
+<section id="wallet" class="page">
+  <p class="muted">WALLET SERVICES</p>
+  <h1>My Wallet</h1>
+  <div class="card">
+    <span class="muted">Available balance</span>
+    <strong id="walletBalance" style="display:block;font-size:27px;margin-top:9px">$0.00</strong>
+    <p class="notice">This is a preview balance, not a record of verified funds.</p>
+  </div>
+  <div class="actions">
+    <button id="depositTab" class="primary" onclick="walletMode('deposit')">Deposit</button>
+    <button id="withdrawTab" class="secondary" onclick="walletMode('withdraw')">Withdraw</button>
+  </div>
 
-        <div class="card">
-          <div class="stat-icon">＋</div>
-          <div class="card-label">Total Deposited</div>
-          <div class="stat-value">$0.00</div>
-          <div class="small-note">Verified deposits only</div>
-        </div>
+  <div id="depositPanel" class="card">
+    <h2>Deposit cryptocurrency</h2>
+    <p class="muted">Choose an asset and network to view the configured receiving address.</p>
+    <label for="depositAsset">Cryptocurrency and network</label>
+    <select id="depositAsset" onchange="updateAddress()">
+      <option value="bnb">BNB — BNB Smart Chain (BEP20)</option>
+      <option value="eth">ETH — Ethereum Mainnet</option>
+      <option value="usdt_erc">USDT — Ethereum (ERC20)</option>
+      <option value="usdt_trc">USDT — TRON (TRC20)</option>
+      <option value="btc">BTC — Bitcoin Mainnet</option>
+    </select>
+    <label>Receiving wallet address</label>
+    <div id="walletAddress" class="address"></div>
+    <button class="secondary" style="width:100%;margin-top:10px" onclick="copyAddress()">Copy wallet address</button>
+    <label for="depositAmount">Intended deposit amount (USD)</label>
+    <input id="depositAmount" type="number" min="1" step="any" placeholder="Enter amount">
+    <label for="txid">Transaction ID (TXID), if available</label>
+    <input id="txid" type="text" placeholder="Enter transaction ID">
+    <button class="primary" style="width:100%;margin-top:15px" onclick="submitDeposit()">Submit deposit details</button>
+    <div id="depositStatus" class="status"></div>
+    <p class="notice">Submitting details does not verify a transaction or add funds to your balance. Verify the wallet address and network independently before sending any cryptocurrency.</p>
+  </div>
 
-        <div class="card">
-          <div class="stat-icon">◈</div>
-          <div class="card-label">Active Investments</div>
-          <div class="stat-value">$0.00</div>
-          <div class="small-note">Investment amount currently active</div>
-        </div>
+  <div id="withdrawPanel" class="card hidden">
+    <h2>Request a withdrawal</h2>
+    <label for="withdrawAsset">Cryptocurrency and network</label>
+    <select id="withdrawAsset">
+      <option>USDT — Ethereum (ERC20)</option>
+      <option>USDT — TRON (TRC20)</option>
+      <option>BTC — Bitcoin Mainnet</option>
+      <option>ETH — Ethereum Mainnet</option>
+      <option>BNB — BNB Smart Chain (BEP20)</option>
+    </select>
+    <label for="withdrawAmount">Withdrawal amount (USD)</label>
+    <input id="withdrawAmount" type="number" min="1" step="any" placeholder="Enter amount">
+    <label for="withdrawAddress">Your receiving wallet address</label>
+    <input id="withdrawAddress" type="text" placeholder="Paste your wallet address">
+    <button class="primary" style="width:100%;margin-top:15px" onclick="submitWithdrawal()">Submit withdrawal details</button>
+    <div id="withdrawStatus" class="status"></div>
+    <p class="notice">This preview cannot send cryptocurrency or approve withdrawals. No money will be deducted or paid.</p>
+  </div>
+</section>
 
-        <div class="card">
-          <div class="stat-icon">◷</div>
-          <div class="card-label">Pending Requests</div>
-          <div class="stat-value">0</div>
-          <div class="small-note">Requests awaiting review</div>
-        </div>
-      </div>
+<section id="activity" class="page">
+  <p class="muted">ACCOUNT RECORDS</p>
+  <h1>Activity</h1>
+  <div class="card">
+    <h2>Recent activity</h2>
+    <div id="activityList" class="empty">No activity recorded in this browser yet.</div>
+  </div>
+  <p class="notice">These entries are saved only in this browser. They are not confirmed financial transactions or server records.</p>
+</section>
 
-      <div class="section-heading">
-        <h2>Recent Activity</h2>
-        <p>Your latest account transactions will appear here.</p>
-      </div>
+<section id="account" class="page">
+  <p class="muted">MEMBER SETTINGS</p>
+  <h1>My Account</h1>
+  <div class="card">
+    <h2>Account overview</h2>
+    <p class="muted">Platform: REAL WEALTH EDGE</p>
+    <p class="muted">Status: Website preview</p>
+    <p class="notice">Account information and secure session details must be connected to the authentication service before launch.</p>
+    <hr>
+    <button class="secondary" style="width:100%" onclick="goTo('home')">Return to dashboard</button>
+    <button class="danger" style="width:100%;margin-top:10px" onclick="goToLogin()">Return to login page</button>
+  </div>
+</section>
+</main>
 
-      <div class="card">
-        <div class="empty-state">
-          <div class="empty-icon">▤</div>
-          <h3>No transactions yet</h3>
-          <p>Your verified deposits, investments and withdrawals will be shown here once account history is connected.</p>
-        </div>
-      </div>
+<nav aria-label="Dashboard navigation">
+  <button class="active" data-page="home" onclick="goTo('home')"><span>⌂</span>Home</button>
+  <button data-page="invest" onclick="goTo('invest')"><span>▤</span>Invest</button>
+  <button data-page="wallet" onclick="goTo('wallet')"><span>◈</span>Wallet</button>
+  <button data-page="activity" onclick="goTo('activity')"><span>↻</span>Activity</button>
+  <button data-page="account" onclick="goTo('account')"><span>☻</span>Account</button>
+</nav>
 
-      <div class="section-heading">
-        <h2>Platform Announcements</h2>
-      </div>
+<script>
+const receivingAddresses = {
+  bnb: "0xbc623c234c4806d7423496783605bd758afb8ea8",
+  eth: "0xbc623c234c4806d7423496783605bd758afb8ea8",
+  usdt_erc: "0xbc623c234c4806d7423496783605bd758afb8ea8",
+  usdt_trc: "TMUxNnQRpyej4WKFMizkCtRRESZBBY3VeU",
+  btc: "1CbzWHkakA7bwikUZ4YCwmhYZN4LX5PpUm"
+};
 
-      <div class="card announcement">
-        <div class="announcement-icon">✦</div>
-        <div>
-          <h3>Welcome to REAL WEALTH EDGE</h3>
-          <p>Explore the member dashboard and available plan information. Account balances and transaction history will become live when the secure account system is connected.</p>
-        </div>
-      </div>
-    </section>
+const plans = [
+  {name:"Trial Plan",rate:"2.5% daily",period:"4 days",min:20,max:99},
+  {name:"Bronze Plan",rate:"4% daily",period:"4 days",min:100,max:29999},
+  {name:"Silver Plan",rate:"6% daily",period:"7 days",min:30000,max:69999},
+  {name:"Gold Plan",rate:"8% daily",period:"14 days",min:70000,max:null}
+];
 
-    <section id="invest" class="section">
-      <div class="section-heading">
-        <h2>Investment Plans</h2>
-        <p>Review the plan terms and choose a plan to continue.</p>
-      </div>
+let activity = [];
+let selectedPlan = "";
 
-      <div class="plan-grid">
-        <article class="plan-card">
-          <div class="plan-top">
-            <h3>Trial Plan</h3>
-            <div class="plan-rate">2.5% daily</div>
-            <small>Duration: 4 days</small>
-          </div>
-          <div class="plan-details">
-            <div class="plan-line"><span>Minimum</span><strong>$20</strong></div>
-            <div class="plan-line"><span>Maximum</span><strong>$99</strong></div>
-            <div class="plan-line"><span>Plan duration</span><strong>4 days</strong></div>
-            <button class="primary-btn" onclick="choosePlan('Trial Plan',20,99,2.5,4)">Select Plan</button>
-          </div>
-        </article>
+function money(n) {
+  return "$" + Number(n).toLocaleString("en-US", {
+    minimumFractionDigits:2, maximumFractionDigits:2
+  });
+}
 
-        <article class="plan-card">
-          <div class="plan-top">
-            <h3>Bronze Plan</h3>
-            <div class="plan-rate">4% daily</div>
-            <small>Duration: 4 days</small>
-          </div>
-          <div class="plan-details">
-            <div class="plan-line"><span>Minimum</span><strong>$100</strong></div>
-            <div class="plan-line"><span>Maximum</span><strong>$29,999</strong></div>
-            <div class="plan-line"><span>Plan duration</span><strong>4 days</strong></div>
-            <button class="primary-btn" onclick="choosePlan('Bronze Plan',100,29999,4,4)">Select Plan</button>
-          </div>
-        </article>
+function goTo(page) {
+  document.querySelectorAll("section.page").forEach(s => s.classList.remove("active"));
+  const target = document.getElementById(page);
+  if (target) target.classList.add("active");
+  document.querySelectorAll("nav button").forEach(b => {
+    b.classList.toggle("active", b.dataset.page === page);
+  });
+  window.scrollTo({top:0,behavior:"smooth"});
+}
 
-        <article class="plan-card">
-          <div class="plan-top">
-            <h3>Silver Plan</h3>
-            <div class="plan-rate">6% daily</div>
-            <small>Duration: 7 days</small>
-          </div>
-          <div class="plan-details">
-            <div class="plan-line"><span>Minimum</span><strong>$30,000</strong></div>
-            <div class="plan-line"><span>Maximum</span><strong>$69,999</strong></div>
-            <div class="plan-line"><span>Plan duration</span><strong>7 days</strong></div>
-            <button class="primary-btn" onclick="choosePlan('Silver Plan',30000,69999,6,7)">Select Plan</button>
-          </div>
-        </article>
+function walletMode(mode) {
+  goTo("wallet");
+  document.getElementById("depositPanel").classList.toggle("hidden", mode !== "deposit");
+  document.getElementById("withdrawPanel").classList.toggle("hidden", mode !== "withdraw");
+  document.getElementById("depositTab").className = mode === "deposit" ? "primary" : "secondary";
+  document.getElementById("withdrawTab").className = mode === "withdraw" ? "primary" : "secondary";
+}
 
-        <article class="plan-card">
-          <div class="plan-top">
-            <h3>Gold Plan</h3>
-            <div class="plan-rate">8% daily</div>
-            <small>Duration: 14 days</small>
-          </div>
-          <div class="plan-details">
-            <div class="plan-line"><span>Minimum</span><strong>$70,000</strong></div>
-            <div class="plan-line"><span>Maximum</span><strong>Unlimited</strong></div>
-            <div class="plan-line"><span>Plan duration</span><strong>14 days</strong></div>
-            <button class="primary-btn" onclick="choosePlan('Gold Plan',70000,Infinity,8,14)">Select Plan</button>
-          </div>
-        </article>
-      </div>
+function updateAddress() {
+  const asset = document.getElementById("depositAsset").value;
+  document.getElementById("walletAddress").textContent = receivingAddresses[asset];
+}
 
-      <div class="notice">
-        These are the plan terms supplied for this website. The stated percentages are not verified or guaranteed earnings. This dashboard preview does not create an investment or process a payment.
-      </div>
+async function copyAddress() {
+  const address = document.getElementById("walletAddress").textContent;
+  try {
+    await navigator.clipboard.writeText(address);
+    showStatus("depositStatus","Address copied. Please confirm the asset and network before using it.");
+  } catch(e) {
+    showStatus("depositStatus","Copy was blocked by the browser. Press and hold the address to copy it manually.");
+  }
+}
 
-      <div class="form-card" id="planForm" hidden>
-        <h3 id="selectedPlanTitle">Selected plan</h3>
-        <p id="selectedPlanInfo"></p>
+function showStatus(id, message) {
+  const el = document.getElementById(id);
+  el.textContent = message;
+  el.style.display = "block";
+}
 
-        <form id="investmentForm">
-          <d
+function addActivity(message) {
+  activity.unshift(new Date().toLocaleString() + " — " + message);
+  activity = activity.slice(0,20);
+  try { sessionStorage.setItem("rwePreviewActivity", JSON.stringify(activity)); } catch(e) {}
+  renderActivity();
+}
+
+function renderActivity() {
+  const markup = activity.length
+    ? activity.map(item => '<p class="muted"></p>').join("")
+    : "";
+  ["activityList","homeActivity"].forEach(id => {
+    const el = document.getElementById(id);
+    el.innerHTML = "";
+    if (!activity.length) {
+      el.className = "empty";
+      el.textContent = "No activity recorded in this browser yet.";
+    } else {
+      el.className = "";
+      activity.forEach(item => {
+        const p = document.createElement("p");
+        p.className = "muted";
+        p.textContent = item;
+        el.appendChild(p);
+      });
+    }
+  });
+}
+
+function submitDeposit() {
+  const amount = Number(document.getElementById("depositAmount").value);
+  if (!Number.isFinite(amount) || amount <= 0) {
+    showStatus("depositStatus","Please enter a valid amount greater than zero.");
+    return;
+  }
+  const txid = document.getElementById("txid").value.trim();
+  showStatus("depositStatus",
+    "Preview only: your details have not been sent to an administrator, and your balance has not changed. A live deposit request needs a secure server.");
+  addActivity("Deposit details tested in preview — not a verified transaction");
+}
+
+function submitWithdrawal() {
+  const amount = Number(document.getElementById("withdrawAmount").value);
+  const address = document.getElementById("withdrawAddress").value.trim();
+  if (!Number.isFinite(amount) || amount <= 0) {
+    showStatus("withdrawStatus","Please enter a valid amount greater than zero.");
+    return;
+  }
+  if (!address) {
+    showStatus("withdrawStatus","Please enter your receiving wallet address.");
+    return;
+  }
+  showStatus("withdrawStatus",
+    "Preview only: no withdrawal has been submitted to a server, approved, or paid. Your balance has not changed.");
+  addActivity("Withdrawal details tested in preview — not a paid withdrawal");
+}
+
+function choosePlan(index) {
+  selectedPlan = plans[index].name;
+  const plan = plans[index];
+  const amountText = prompt(
+    selectedPlan + "\nPreview terms: " + plan.rate + " for " + plan.period +
+    "\nEnter an amount to check the plan range (USD). This will not invest money:"
+  );
+  if (amountText === null) return;
+  const amount = Number(amountText);
+  if (!Number.isFinite(amount) || amount < plan.min || (plan.max !== null && amount > plan.max)) {
+    alert("Enter an amount within the listed plan range.");
+    return;
+  }
+  alert("Preview only: " + money(amount) + " fits the listed " + selectedPlan +
+    " amount range. No investment has been created and no return is promised.");
+  addActivity("Checked " + selectedPlan + " amount range — preview only");
+}
+
+function renderPlans() {
+  const list = document.getElementById("planList");
+  plans.forEach((p,i) => {
+    const card = document.createElement("div");
+    card.className = "card";
+    const range = money(p.min) + " minimum · " + (p.max === null ? "No listed maximum" : money(p.max) + " maximum");
+    card.innerHTML =
+      '<div class="plan-title"><h2></h2><span class="tag">PREVIEW</span></div>' +
+      '<div class="plan-rate"></div><p class="muted"></p><p class="muted"></p>' +
+      '<button class="primary" style="width:100%">Select plan</button>';
+    card.querySelector("h2").textContent = p.name;
+    card.querySelector(".plan-rate").textContent = p.rate;
+    card.querySelectorAll("p")[0].textContent = "Listed period: " + p.period;
+    card.querySelectorAll("p")[1].textContent = "Amount range: " + range;
+    card.querySelector("button").addEventListener("click", () => choosePlan(i));
+    list.appendChild(card);
+  });
+}
+
+try {
+  const saved = sessionStorage.getItem("rwePreviewActivity");
+  if (saved) activity = JSON.parse(saved);
+} catch(e) {}
+
+renderPlans();
+updateAddress();
+renderActivity();
+</script>
+</body>
+</html>
+
