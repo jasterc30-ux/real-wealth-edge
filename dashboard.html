@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="auth-checking">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +13,7 @@
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--page);color:var(--navy);font-family:Arial,sans-serif;padding-bottom:92px}
+html.auth-checking body{visibility:hidden}
 header{padding:20px 17px;background:#fff;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px}
 .brand{font-weight:800;color:var(--gold);font-size:17px;letter-spacing:.4px}
 header small{display:block;color:var(--muted);font-size:11px;margin-top:5px}
@@ -422,6 +423,47 @@ updateAddress();
 renderActivity();
 prepareReferralLink();
 </script>
-</body>
-</html>
 
+<!-- Supabase authentication check. Existing dashboard layout and functions remain above. -->
+<script type="module">
+import { createClient } from
+  "https://esm.sh/@supabase/supabase-js@2";
+
+const SUPABASE_URL =
+  "https://ilbqpcqlqnwtukrzsqjq.supabase.co";
+
+const SUPABASE_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlsYnFwY3FscW53dHVrcnpzcWpxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI0MDAxOTUsImV4cCI6MjEwNzk3NjE5NX0.86g5_hBhM00fJurSIlZgMxHZYrtW3sAGknIZHJQmqWY";
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+async function protectDashboard(){
+  try{
+    const { data, error } = await supabase.auth.getSession();
+
+    if(error || !data.session){
+      window.location.replace("login.html");
+      return;
+    }
+
+    // Keep the existing dashboard visible once authentication is confirmed.
+    document.documentElement.classList.remove("auth-checking");
+
+    // The existing Account button now signs the member out first.
+    window.goToLogin = async function(){
+      try{
+        await supabase.auth.signOut();
+      }finally{
+        window.location.replace("login.html");
+      }
+    };
+  }catch(error){
+    window.location.replace("login.html");
+  }
+}
+
+protectDashboard();
+</script>
+</body>
+  </html>
+  
