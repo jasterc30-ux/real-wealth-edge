@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Member Dashboard | REAL WEALTH EDGE</title>
+<style>
+:root{--navy:#102b50;--blue:#1769d2;--light:#f3f7fc;--white:#fff;--text:#23344d;--muted:#6c7b90;--border:#e0e8f2}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--light);color:var(--text)}
+header{background:var(--navy);color:white;padding:19px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:19px;font-weight:800;letter-spacing:.4px}
+.brand small{display:block;color:#b9d4f7;font-size:11px;margin-top:5px;letter-spacing:1.5px}
+header a{color:white;text-decoration:none;font-size:13px}
+main{max-width:1100px;margin:auto;padding:24px 16px 50px}
+h1{font-size:25px;margin:0 0 8px}
+h2{font-size:19px;margin:0 0 16px}
+p{line-height:1.55}
+.muted{color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px;margin:22px 0}
+.card{background:white;border:1px solid var(--border);border-radius:14px;padding:19px;box-shadow:0 4px 14px #16365b08}
+.stat-label{font-size:13px;color:var(--muted)}
+.stat-value{font-size:25px;font-weight:800;margin-top:12px;color:var(--navy)}
+.section{margin-top:30px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}
+button,.btn{background:var(--blue);color:white;border:0;border-radius:8px;padding:12px 16px;font-weight:700;cursor:pointer;display:inline-block;font-size:14px}
+button.secondary,.btn.secondary{background:white;color:var(--blue);border:1px solid var(--blue)}
+button:disabled{opacity:.5;cursor:not-allowed}
+label{display:block;font-weight:700;font-size:13px;margin:14px 0 7px}
+input,select{width:100%;padding:12px;border:1px solid #cdd8e7;border-radius:8px;background:white;font-size:14px;color:var(--text)}
+.notice{padding:13px 14px;background:#edf5ff;border:1px solid #cfe2fc;border-radius:9px;font-size:13px;line-height:1.55;margin:12px 0}
+.wallet{background:#f7f9fc;border:1px dashed #9aadc5;border-radius:9px;padding:13px;overflow-wrap:anywhere;font-size:13px}
+.pill{display:inline-block;background:#edf3fb;color:#315579;padding:5px 9px;border-radius:20px;font-size:11px;font-weight:700}
+.plan-title{font-size:20px;font-weight:800;margin:12px 0 7px;color:var(--navy)}
+.plan-rate{font-size:26px;font-weight:800;color:var(--blue);margin:12px 0 5px}
+.plan-duration{font-size:13px;color:var(--muted);margin-bottom:15px}
+.plan-detail{padding:11px 0;border-bottom:1px solid var(--border);font-size:13px;display:flex;justify-content:space-between;gap:10px}
+.plan-detail:last-of-type{border-bottom:0}
+.plan-button{width:100%;margin-top:16px}
+.hidden{display:none}
+.status{margin-top:12px;font-size:13px;line-height:1.5}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{text-align:left;padding:12px 9px;border-bottom:1px solid var(--border)}
+th{color:var(--muted);font-weight:700}
+.table-wrap{overflow-x:auto}
+.plan-icon{font-size:25px}
+footer{text-align:center;padding:24px;color:var(--muted);font-size:12px}
+@media(max-width:520px){main{padding:20px 12px 40px}.stat-value{font-size:22px}header{padding:16px}.brand{font-size:16px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">REAL WEALTH EDGE
+    <small>BUILDING OPPORTUNITIES. EMPOWERING FINANCIAL GROWTH.</small>
+  </div>
+  <a href="login.html" id="logoutLink">Log out</a>
+</header>
+
+<main>
+  <p class="muted">MEMBER PORTAL</p>
+  <h1>Welcome to your dashboard</h1>
+  <p class="muted" id="memberEmail">Member account</p>
+
+  <div class="grid">
+    <div class="card">
+      <div class="stat-label">Available Balance</div>
+      <div class="stat-value">—</div>
+      <p class="muted">Your account balance will appear here when connected.</p>
+    </div>
+    <div class="card">
+      <div class="stat-label">Total Invested</div>
+      <div class="stat-value">—</div>
+      <p class="muted">Your investment records will appear here when connected.</p>
+    </div>
+    <div class="card">
+      <div class="stat-label">Account Status</div>
+      <div class="stat-value" style="font-size:20px">Member</div>
+      <p class="muted">Your member account area.</p>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button onclick="showSection('deposit')">Deposit</button>
+    <button class="secondary" onclick="showSection('withdraw')">Withdraw</button>
+    <button class="secondary" onclick="showSection('plans')">Investment Plans</button>
+    <button class="secondary" onclick="showSection('history')">Transactions</button>
+  </div>
+
+  <section class="section card" id="deposit">
+    <h2>Make a Deposit</h2>
+    <p class="muted">Select your cryptocurrency and network, send funds to the official company wallet, and submit the transaction ID for review.</p>
+    <div class="notice">Company wallet addresses have not been configured yet. No deposit address is available until the correct company wallets are added and verified.</div>
+    <form id="depositForm">
+      <label for="depositAsset">Cryptocurrency</label>
+      <select id="depositAsset" required>
+        <option value="">Select cryptocurrency</option>
+        <option>Bitcoin (BTC)</option>
+        <option>Ethereum (ETH)</option>
+        <option>USDT</option>
+        <option>BNB</option>
+      </select>
+      <label for="depositNetwork">Network</label>
+      <select id="depositNetwork" required><option value="">Select network</option></select>
+      <label for="depositAmount">Amount sent</label>
+      <input id="depositAmount" type="number" min="0.00000001" step="any" placeholder="Enter amount" required>
+      <label for="txid">Transaction ID (TXID / hash)</label>
+      <input id="txid" type="text" placeholder="Paste transaction ID" required>
+      <button type="submit" disabled>Submit Deposit — Setup Required</button>
+      <div class="status muted" id="depositMessage">Deposit submission will be enabled after secure database and wallet setup.</div>
+    </form>
+  </section>
+
+  <section class="section card" id="withdraw">
+    <h2>Request a Withdrawal</h2>
+    <p class="muted">Enter the amount and your receiving wallet details. You will be able to submit the request once the secure system is connected.</p>
+    <form id="withdrawForm">
+      <label for="withdrawAsset">Cryptocurrency</label>
+      <select id="withdrawAsset" required>
+        <option value="">Select cryptocurrency</option>
+        <option>Bitcoin (BTC)</option>
+        <option>Ethereum (ETH)</option>
+        <option>USDT</option>
+        <option>BNB</option>
+      </select>
+      <label for="withdrawNetwork">Network</label>
+      <select id="withdrawNetwork" required><option value="">Select network</option></select>
+      <label for="withdrawAmount">Withdrawal amount</label>
+      <input id="withdrawAmount" type="number" min="0.00000001" step="any" placeholder="Enter amount" required>
+      <label for="withdrawWallet">Your receiving wallet address</label>
+      <input id="withdrawWallet" type="text" placeholder="Paste your wallet address" required>
+      <button type="submit" disabled>Submit Withdrawal — Setup Required</button>
+      <div class="status muted">Withdrawal processing will be enabled after secure database setup.</div>
+    </form>
+  </section>
+
+  <section class="section" id="plans">
+    <h2>Our Investment Plans</h2>
+    <p class="muted">Choose the plan that matches your intended deposit amount.</p>
+
+    <div class="grid">
+      <div class="card">
+        <div class="plan-icon">🌱</div>
+        <span class="pill">PLAN 01</span>
+        <p class="plan-title">Trial Plan</p>
+        <div class="plan-rate">2.5% daily</div>
+        <div class="plan-duration">Duration: 4 days</div>
+        <div class="plan-detail"><span>Minimum deposit</span><strong>$20</strong></div>
+        <div class="plan-detail"><span>Maximum deposit</span><strong>$99</strong></div>
+        <button class="plan-button" onclick="selectPlan('Trial Plan',20,99)">Select Trial Plan</button>
+      </div>
+
+      <div class="card">
+        <div class="plan-icon">🥉</div>
+        <span class="pill">PLAN 02</span>
+        <p class="plan-title">Bronze Plan</p>
+        <div class="plan-rate">4% daily</div>
+        <div class="plan-duration">Duration: 4 days</div>
+        <div class="plan-detail"><span>Minimum deposit</span><strong>$100</strong></div>
+        <div class="plan-detail"><span>Maximum deposit</span><strong>$29,999</strong></div>
+        <button class="plan-button" onclick="selectPlan('Bronze Plan',100,29999)">Select Bronze Plan</button>
+      </div>
+
+      <div class="card">
+        <div class="plan-icon">🥈</div>
+        <span class="pill">PLAN 03</span>
+        <p class="plan-title">Silver Plan</p>
+        <div class="plan-rate">6% daily</div>
+        <div class="plan-duration">Duration: 7 days</div>
+        <div class="plan-detail"><span>Minimum deposit</span><strong>$30,000</strong></div>
+        <div class="plan-detail"><span>Maximum deposit</span><strong>$69,999</strong></div>
+        <button class="plan-button" onclick="selectPlan('Silver Plan',30000,69999)">Select Silver Plan</button>
+      </div>
+
+      <div class="card">
+        <div class="plan-icon">🥇</div>
+        <span class="pill">PLAN 04</span>
+        <p class="plan-title">Gold Plan</p>
+        <div class="plan-rate">8% daily</div>
+        <div class="plan-duration">Duration: 14 days</div>
+        <div class="plan-detail"><span>Minimum deposit</span><strong>$70,000</strong></div>
+        <div class="plan-detail"><span>Maximum deposit</span><strong>Unlimited</strong></div>
+        <button class="plan-button" onclick="selectPlan('Gold Plan',70000,Infinity)">Select Gold Plan</button>
+      </div>
+    </div>
+    <div id="planMessage" class="notice hidden" aria-live="polite"></div>
+  </section>
+
+  <section class="section card" id="history">
+    <h2>Recent Transactions</h2>
+    <p class="muted">Your deposit and withdrawal records will appear here after the secure database is connected.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Type</th><th>Asset</th><th>Amount</th><th>Status</th></tr></thead>
+        <tbody><tr><td colspan="4" class="muted">No transaction records to display.</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer>© <span id="year"></span> REAL WEALTH EDGE. All rights reserved.</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+function showSection(id) {
+  const section = document.getElementById(id);
+  if (section) section.scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+function selectPlan(name,minimum,maximum) {
+  const message = document.getElementById("planMessage");
+  message.classList.remove("hidden");
+  message.textContent = name + " selected. The permitted deposit range is $" +
+    minimum.toLocaleString("en-US") + " to " +
+    (maximum === Infinity ? "unlimited" : "$" + maximum.toLocaleString("en-US")) +
+    ". Plan activation is not connected yet. No investment has been created.";
+  message.scrollIntoView({behavior:"smooth",block:"center"});
+}
+
+const networks = {
+  "Bitcoin (BTC)": ["Bitcoin"],
+  "Ethereum (ETH)": ["Ethereum (ERC20)"],
+  "USDT": ["Ethereum (ERC20)","BNB Smart Chain (BEP20)","Tron (TRC20)"],
+  "BNB": ["BNB Smart Chain (BEP20)"]
+};
+
+function setupNetworks(assetId,networkId) {
+  const asset = document.getElementById(assetId);
+  const network = document.getElementById(networkId);
+  asset.addEventListener("change",function() {
+    network.innerHTML = '<option value="">Select network</option>';
+    (networks[asset.value] || []).forEach(function(name) {
+      const option = document.createElement("option");
+      option.value = name;
+      option.textContent = name;
+      network.appendChild(option);
+    });
+  });
+}
+
+setupNetworks("depositAsset","depositNetwork");
+setupNetworks("withdrawAsset","withdrawNetwork");
+
+document.getElementById("depositForm").addEventListener("submit",function(e) {
+  e.preventDefault();
+  document.getElementById("depositMessage").textContent =
+    "Not submitted: secure deposit processing has not been connected yet.";
+});
+
+document.getElementById("withdrawForm").addEventListener("submit",function(e) {
+  e.preventDefault();
+  alert("Withdrawal processing is not connected yet. No request has been sent.");
+});
+</script>
+</body>
+          </html>
+                                                                                   
