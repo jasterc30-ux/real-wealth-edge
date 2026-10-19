@@ -2,436 +2,884 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Investment Dashboard | REAL WEALTH EDGE</title>
-<style>
-:root{--navy:#102b50;--blue:#1769d2;--light:#f3f7fc;--white:#fff;--text:#23344d;--muted:#6c7b90;--border:#e0e8f2;--green:#157347}
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--light);color:var(--text)}
-header{background:var(--navy);color:white;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.brand{font-size:18px;font-weight:800;letter-spacing:.4px}
-.brand small{display:block;font-size:10px;color:#c6dcfa;margin-top:5px;letter-spacing:1px}
-header a{color:white;text-decoration:none;font-size:13px}
-main{max-width:1000px;margin:auto;padding:22px 14px 45px}
-h1{font-size:25px;margin:5px 0 8px}
-h2{font-size:20px;margin:0 0 12px}
-h3{font-size:17px;margin:8px 0}
-p{line-height:1.55}
-.muted{color:var(--muted);font-size:13px}
-.card{background:white;border:1px solid var(--border);border-radius:14px;padding:18px;margin:16px 0;box-shadow:0 4px 14px #16365b08}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:14px;margin:20px 0}
-.stat{background:white;border:1px solid var(--border);border-radius:12px;padding:16px}
-.stat strong{display:block;font-size:22px;color:var(--navy);margin-top:10px}
-.actions{display:flex;flex-wrap:wrap;gap:9px;margin:18px 0}
-button,.btn{border:0;border-radius:8px;background:var(--blue);color:white;padding:12px 15px;font-weight:700;font-size:14px;cursor:pointer;text-decoration:none;display:inline-block}
-button.secondary{background:white;color:var(--blue);border:1px solid var(--blue)}
-button:disabled{opacity:.5;cursor:not-allowed}
-label{display:block;font-size:13px;font-weight:700;margin:14px 0 7px}
-input,select{width:100%;padding:12px;border:1px solid #cdd8e7;border-radius:8px;background:white;font-size:15px;color:var(--text)}
-input:focus,select:focus{outline:2px solid #b9d5ff;border-color:var(--blue)}
-.plan-rate{font-size:25px;font-weight:800;color:var(--blue);margin:12px 0 5px}
-.pill{display:inline-block;border-radius:20px;background:#edf3fb;color:#315579;font-size:11px;padding:6px 9px;font-weight:700}
-.plan-line{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px}
-.plan-line:last-of-type{border-bottom:0}
-.plan-card button{width:100%;margin-top:15px}
-.step{display:none}
-.step.active{display:block}
-.progress{display:flex;gap:6px;margin:17px 0 22px}
-.progress span{height:5px;flex:1;background:#dce5f0;border-radius:8px}
-.progress span.done{background:var(--blue)}
-.notice{background:#edf5ff;border:1px solid #cfe2fc;border-radius:9px;padding:13px;font-size:13px;line-height:1.55;margin:14px 0}
-.warning{background:#fff8e8;border:1px solid #f0d9a1;border-radius:9px;padding:13px;font-size:13px;line-height:1.55;margin:14px 0}
-.wallet-address{padding:13px;background:#f7f9fc;border:1px dashed #9aadc5;border-radius:9px;overflow-wrap:anywhere;font-size:14px;font-weight:700;line-height:1.6}
-.wallet-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-.wallet-actions button{flex:1}
-.hidden{display:none!important}
-.status{font-size:13px;line-height:1.55;margin-top:12px}
-.success{color:var(--green)}
-footer{text-align:center;padding:24px;color:var(--muted);font-size:12px}
-hr{border:0;border-top:1px solid var(--border);margin:18px 0}
-@media(max-width:480px){header{padding:15px}.brand{font-size:16px}main{padding:18px 11px 35px}.card{padding:15px}.plan-rate{font-size:23px}}
-</style>
-</head>
-<body>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#102744">
+  <title>Member Dashboard | REAL WEALTH EDGE</title>
 
-<header>
-  <div class="brand">
-    REAL WEALTH EDGE
-    <small>BUILDING OPPORTUNITIES. EMPOWERING FINANCIAL GROWTH.</small>
-  </div>
-  <a href="login.html">Member Login</a>
-</header>
-
-<main>
-  <p class="muted">MEMBER PORTAL</p>
-  <h1>Investment Dashboard</h1>
-  <p class="muted">Choose a plan and follow the steps to prepare your investment payment request.</p>
-
-  <div class="grid">
-    <div class="stat">
-      <span class="muted">Available Balance</span>
-      <strong>—</strong>
-      <p class="muted">Account connection pending</p>
-    </div>
-    <div class="stat">
-      <span class="muted">Total Invested</span>
-      <strong>—</strong>
-      <p class="muted">Account connection pending</p>
-    </div>
-  </div>
-
-  <div class="actions">
-    <button class="secondary" onclick="goTo('plans')">Investment Plans</button>
-    <button class="secondary" onclick="goTo('investmentFlow')">Payment Steps</button>
-    <button class="secondary" onclick="goTo('withdrawal')">Withdrawals</button>
-  </div>
-
-  <section id="plans">
-    <h2>Choose Your Investment Plan</h2>
-    <p class="muted">Select a plan to continue to the amount and payment steps.</p>
-
-    <div class="grid">
-      <div class="card plan-card">
-        <span class="pill">PLAN 01</span>
-        <h3>Trial Plan</h3>
-        <div class="plan-rate">2.5% daily</div>
-        <p class="muted">Duration: 4 days</p>
-        <div class="plan-line"><span>Minimum deposit</span><strong>$20</strong></div>
-        <div class="plan-line"><span>Maximum deposit</span><strong>$99</strong></div>
-        <button onclick="choosePlan('Trial Plan',2.5,4,20,99)">Select Trial Plan</button>
-      </div>
-
-      <div class="card plan-card">
-        <span class="pill">PLAN 02</span>
-        <h3>Bronze Plan</h3>
-        <div class="plan-rate">4% daily</div>
-        <p class="muted">Duration: 4 days</p>
-        <div class="plan-line"><span>Minimum deposit</span><strong>$100</strong></div>
-        <div class="plan-line"><span>Maximum deposit</span><strong>$29,999</strong></div>
-        <button onclick="choosePlan('Bronze Plan',4,4,100,29999)">Select Bronze Plan</button>
-      </div>
-
-      <div class="card plan-card">
-        <span class="pill">PLAN 03</span>
-        <h3>Silver Plan</h3>
-        <div class="plan-rate">6% daily</div>
-        <p class="muted">Duration: 7 days</p>
-        <div class="plan-line"><span>Minimum deposit</span><strong>$30,000</strong></div>
-        <div class="plan-line"><span>Maximum deposit</span><strong>$69,999</strong></div>
-        <button onclick="choosePlan('Silver Plan',6,7,30000,69999)">Select Silver Plan</button>
-      </div>
-
-      <div class="card plan-card">
-        <span class="pill">PLAN 04</span>
-        <h3>Gold Plan</h3>
-        <div class="plan-rate">8% daily</div>
-        <p class="muted">Duration: 14 days</p>
-        <div class="plan-line"><span>Minimum deposit</span><strong>$70,000</strong></div>
-        <div class="plan-line"><span>Maximum deposit</span><strong>Unlimited</strong></div>
-        <button onclick="choosePlan('Gold Plan',8,14,70000,Infinity)">Select Gold Plan</button>
-      </div>
-    </div>
-  </section>
-
-  <section id="investmentFlow" class="card hidden">
-    <h2>Investment Payment Process</h2>
-    <p class="muted">Complete each step in order.</p>
-
-    <div class="progress" aria-label="Progress">
-      <span id="p1" class="done"></span>
-      <span id="p2"></span>
-      <span id="p3"></span>
-      <span id="p4"></span>
-    </div>
-
-    <div id="step1" class="step active">
-      <span class="pill">STEP 1 OF 4</span>
-      <h3>Confirm Your Plan</h3>
-      <div class="notice" id="chosenPlan">Choose an investment plan above to begin.</div>
-      <label for="usdAmount">Investment amount (USD)</label>
-      <input id="usdAmount" type="number" min="20" step="0.01" placeholder="Enter amount in USD">
-      <p class="muted" id="amountHint">Choose a plan first. The permitted amount range will appear here.</p>
-      <button onclick="continueAmount()">Continue to payment method</button>
-      <button class="secondary" onclick="goTo('plans')">Back to plans</button>
-      <div id="amountError" class="status" role="alert"></div>
-    </div>
-
-    <div id="step2" class="step">
-      <span class="pill">STEP 2 OF 4</span>
-      <h3>Select Payment Method</h3>
-      <p class="muted">Choose the exact cryptocurrency and network you will use to send the payment.</p>
-      <label for="asset">Cryptocurrency</label>
-      <select id="asset">
-        <option value="">Choose cryptocurrency</option>
-        <option value="BNB">BNB</option>
-        <option value="ETH">Ethereum (ETH)</option>
-        <option value="USDT_ERC20">USDT — Ethereum (ERC20)</option>
-        <option value="USDT_TRC20">USDT — TRON (TRC20)</option>
-        <option value="BTC">Bitcoin (BTC)</option>
-      </select>
-      <div class="notice">Only send the selected asset through the exact network shown on the next screen. Do not send a different cryptocurrency to this address.</div>
-      <button onclick="continueAsset()">Show company wallet</button>
-      <button class="secondary" onclick="showStep(1)">Back</button>
-      <div id="assetError" class="status" role="alert"></div>
-    </div>
-
-    <div id="step3" class="step">
-      <span class="pill">STEP 3 OF 4</span>
-      <h3>Company Deposit Wallet</h3>
-      <p>Selected plan: <strong id="summaryPlan"></strong></p>
-      <p>Investment amount: <strong id="summaryAmount"></strong></p>
-      <p>Payment method: <strong id="summaryAsset"></strong></p>
-
-      <label>Company wallet address</label>
-      <div id="walletAddress" class="wallet-address"></div>
-      <div class="wallet-actions">
-        <button onclick="copyWallet()">Copy Wallet Address</button>
-      </div>
-      <div class="notice">
-        Send the selected cryptocurrency using the network displayed above. Enter the actual amount sent in the next step. The USD investment amount and the cryptocurrency transfer amount may differ because exchange rates change.
-      </div>
-      <p class="muted" id="networkReminder"></p>
-      <button onclick="showStep(4)">I have made the payment</button>
-      <button class="secondary" onclick="showStep(2)">Back</button>
-      <div id="copyMessage" class="status" aria-live="polite"></div>
-    </div>
-
-    <div id="step4" class="step">
-      <span class="pill">STEP 4 OF 4</span>
-      <h3>Submit Transaction Details</h3>
-      <p class="muted">After sending your payment, provide the transaction details below.</p>
-      <form id="transactionForm">
-        <label for="cryptoAmount">Cryptocurrency amount sent</label>
-        <input id="cryptoAmount" type="number" min="0.00000001" step="any" placeholder="Enter actual amount sent" required>
-
-        <label for="txid">Transaction ID (TXID / hash)</label>
-        <input id="txid" type="text" placeholder="Paste transaction ID" required>
-
-        <label for="memberEmail">Your email address</label>
-        <input id="memberEmail" type="email" placeholder="Enter your account email" required>
-
-        <button type="submit">Prepare Deposit Request</button>
-      </form>
-
-      <div id="submissionMessage" class="notice hidden" role="status"></div>
-      <div class="warning">
-        This page is not yet connected to the secure member database or administrator dashboard. Pressing the button will prepare a preview only; it will not transmit your request, verify payment, or credit an account.
-      </div>
-      <button class="secondary" onclick="showStep(3)">Back to wallet details</button>
-    </div>
-  </section>
-
-  <section id="withdrawal" class="card">
-    <h2>Withdrawal Requests</h2>
-    <p class="muted">Members will be able to enter their receiving wallet address, select the cryptocurrency and network, and request a withdrawal.</p>
-    <form id="withdrawalForm">
-      <label for="withdrawAsset">Cryptocurrency</label>
-      <select id="withdrawAsset" required>
-        <option value="">Choose cryptocurrency</option>
-        <option value="BNB">BNB</option>
-        <option value="ETH">Ethereum (ETH)</option>
-        <option value="USDT_ERC20">USDT — Ethereum (ERC20)</option>
-        <option value="USDT_TRC20">USDT — TRON (TRC20)</option>
-        <option value="BTC">Bitcoin (BTC)</option>
-      </select>
-
-      <label for="withdrawAmount">Withdrawal amount</label>
-      <input id="withdrawAmount" type="number" min="0.00000001" step="any" placeholder="Enter amount" required>
-
-      <label for="withdrawWallet">Your receiving wallet address</label>
-      <input id="withdrawWallet" type="text" placeholder="Paste your receiving wallet address" required>
-
-      <button type="submit">Prepare Withdrawal Request</button>
-      <div id="withdrawMessage" class="status" aria-live="polite"></div>
-    </form>
-    <div class="notice">Withdrawal requests will need to be connected to a secure database before they can reach the administrator for review and manual payment.</div>
-  </section>
-
-  <section class="card">
-    <h2>Transaction History</h2>
-    <p class="muted">Deposit and withdrawal records will appear here after the secure database connection is implemented.</p>
-    <div class="notice">No connected transaction records are available yet.</div>
-  </section>
-</main>
-
-<footer>© <span id="year"></span> REAL WEALTH EDGE. All rights reserved.</footer>
-
-<script>
-document.getElementById("year").textContent = new Date().getFullYear();
-
-const plans = {
-  "Trial Plan": {rate:2.5,days:4,min:20,max:99},
-  "Bronze Plan": {rate:4,days:4,min:100,max:29999},
-  "Silver Plan": {rate:6,days:7,min:30000,max:69999},
-  "Gold Plan": {rate:8,days:14,min:70000,max:Infinity}
-};
-
-const wallets = {
-  "BNB": {
-    asset:"BNB",
-    network:"BNB Smart Chain (BEP20)",
-    address:"0xbc623c234c4806d7423496783605bd758afb8ea8"
-  },
-  "ETH": {
-    asset:"Ethereum (ETH)",
-    network:"Ethereum Mainnet",
-    address:"0xbc623c234c4806d7423496783605bd758afb8ea8"
-  },
-  "USDT_ERC20": {
-    asset:"USDT",
-    network:"Ethereum (ERC20)",
-    address:"0xbc623c234c4806d7423496783605bd758afb8ea8"
-  },
-  "USDT_TRC20": {
-    asset:"USDT",
-    network:"TRON (TRC20)",
-    address:"TMUxNnQRpyej4WKFMizkCtRRESZBBY3VeU"
-  },
-  "BTC": {
-    asset:"Bitcoin (BTC)",
-    network:"Bitcoin Mainnet",
-    address:"1CbzWHkakA7bwikUZ4YCwmhYZN4LX5PpUm"
-  }
-};
-
-let selectedPlan = null;
-let selectedMethod = null;
-let usdInvestment = 0;
-
-function goTo(id) {
-  const el = document.getElementById(id);
-  if (el) {
-    el.scrollIntoView({behavior:"smooth",block:"start"});
-  }
-}
-
-function choosePlan(name,rate,days,min,max) {
-  selectedPlan = {name,rate,days,min,max};
-  document.getElementById("investmentFlow").classList.remove("hidden");
-  document.getElementById("chosenPlan").textContent =
-    name + " — " + rate + "% daily, " + days + " days.";
-  document.getElementById("usdAmount").value = "";
-  document.getElementById("usdAmount").min = min;
-  document.getElementById("usdAmount").max = max === Infinity ? "" : max;
-  document.getElementById("amountHint").textContent =
-    "Minimum: $" + min.toLocaleString("en-US") +
-    " | Maximum: " + (max === Infinity ? "Unlimited" : "$" + max.toLocaleString("en-US"));
-  document.getElementById("amountError").textContent = "";
-  document.getElementById("submissionMessage").classList.add("hidden");
-  showStep(1);
-  goTo("investmentFlow");
-}
-
-function showStep(number) {
-  for (let i=1;i<=4;i++) {
-    document.getElementById("step"+i).classList.toggle("active",i===number);
-    document.getElementById("p"+i).classList.toggle("done",i<=number);
-  }
-  goTo("investmentFlow");
-}
-
-function continueAmount() {
-  const error = document.getElementById("amountError");
-  const amount = Number(document.getElementById("usdAmount").value);
-  error.textContent = "";
-
-  if (!selectedPlan) {
-    error.textContent = "Please select an investment plan first.";
-    return;
-  }
-  if (!Number.isFinite(amount) || amount < selectedPlan.min || amount > selectedPlan.max) {
-    error.textContent = "Enter an amount within this plan's permitted range.";
-    return;
-  }
-
-  usdInvestment = amount;
-  showStep(2);
-}
-
-function continueAsset() {
-  const method = document.getElementById("asset").value;
-  const error = document.getElementById("assetError");
-  error.textContent = "";
-
-  if (!method || !wallets[method]) {
-    error.textContent = "Please select a cryptocurrency and network.";
-    return;
-  }
-
-  selectedMethod = wallets[method];
-
-  document.getElementById("summaryPlan").textContent = selectedPlan.name;
-  document.getElementById("summaryAmount").textContent =
-    "$" + usdInvestment.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
-  document.getElementById("summaryAsset").textContent =
-    selectedMethod.asset + " — " + selectedMethod.network;
-  document.getElementById("walletAddress").textContent = selectedMethod.address;
-  document.getElementById("networkReminder").textContent =
-    "Required network: " + selectedMethod.network +
-    ". Confirm this network in your sending wallet before transferring funds.";
-  document.getElementById("copyMessage").textContent = "";
-  showStep(3);
-}
-
-async function copyWallet() {
-  const address = document.getElementById("walletAddress").textContent;
-  const message = document.getElementById("copyMessage");
-  try {
-    if (navigator.clipboard && window.isSecureContext) {
-      await navigator.clipboard.writeText(address);
-      message.textContent = "Wallet address copied.";
-    } else {
-      const area = document.createElement("textarea");
-      area.value = address;
-      area.style.position = "fixed";
-      area.style.opacity = "0";
-      document.body.appendChild(area);
-      area.select();
-      const copied = document.execCommand("copy");
-      area.remove();
-      message.textContent = copied
-        ? "Wallet address copied."
-        : "Please select and copy the wallet address manually.";
+  <style>
+    :root {
+      --navy: #102744;
+      --navy-light: #183b62;
+      --gold: #d8b56d;
+      --gold-light: #f5e8c8;
+      --white: #ffffff;
+      --background: #f3f6fa;
+      --text: #24364b;
+      --muted: #738195;
+      --border: #e2e8f0;
+      --green: #18794e;
+      --red: #b42318;
+      --shadow: 0 8px 28px rgba(16, 39, 68, 0.07);
     }
-  } catch (e) {
-    message.textContent = "Please select and copy the wallet address manually.";
-  }
-}
 
-document.getElementById("transactionForm").addEventListener("submit",function(e) {
-  e.preventDefault();
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  if (!selectedPlan || !selectedMethod) {
-    return;
-  }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+      padding-bottom: 95px;
+    }
 
-  const cryptoAmount = Number(document.getElementById("cryptoAmount").value);
-  const txid = document.getElementById("txid").value.trim();
-  const email = document.getElementById("memberEmail").value.trim();
+    button, input, select, textarea {
+      font: inherit;
+    }
 
-  if (!Number.isFinite(cryptoAmount) || cryptoAmount <= 0 || !txid || !email) {
-    return;
-  }
+    button {
+      cursor: pointer;
+    }
 
-  const box = document.getElementById("submissionMessage");
-  box.classList.remove("hidden");
-  box.textContent =
-    "Preview prepared only — NOT submitted to REAL WEALTH EDGE. " +
-    "Plan: " + selectedPlan.name +
-    "; investment amount: $" + usdInvestment.toFixed(2) +
-    "; payment method: " + selectedMethod.asset + " / " + selectedMethod.network +
-    "; crypto amount entered: " + cryptoAmount +
-    "; transaction ID entered. A secure backend must be connected before this request can be sent to the administrator. Do not treat this preview as a confirmed deposit.";
-  box.scrollIntoView({behavior:"smooth",block:"center"});
-});
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 3px solid #d8b56d;
+      outline-offset: 2px;
+    }
 
-document.getElementById("withdrawalForm").addEventListener("submit",function(e) {
-  e.preventDefault();
-  document.getElementById("withdrawMessage").textContent =
-    "Preview only: this withdrawal request has not been sent or saved. The secure database and administrator review system must be connected first.";
-});
-</script>
-</body>
-          </html>
-        
+    .topbar {
+      background: var(--navy);
+      color: var(--white);
+      padding: 17px 20px;
+      border-bottom: 3px solid var(--gold);
+    }
+
+    .topbar-inner {
+      max-width: 1050px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .brand-mark {
+      background: var(--gold);
+      color: var(--navy);
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .brand-name {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 0.7px;
+    }
+
+    .brand-subtitle {
+      color: #d7e0eb;
+      font-size: 10px;
+      letter-spacing: 1.7px;
+    }
+
+    .member-label {
+      font-size: 12px;
+      color: #e0e8f2;
+      text-align: right;
+    }
+
+    .page {
+      max-width: 1050px;
+      margin: auto;
+      padding: 24px 16px;
+    }
+
+    .welcome {
+      background: linear-gradient(120deg, var(--navy), var(--navy-light));
+      color: var(--white);
+      border-radius: 18px;
+      padding: 25px 22px;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .welcome::after {
+      content: "";
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      right: -55px;
+      top: -70px;
+      border: 25px solid rgba(216, 181, 109, 0.12);
+      border-radius: 50%;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+
+    .welcome h1 {
+      font-size: clamp(23px, 5vw, 32px);
+      line-height: 1.25;
+      margin: 8px 0;
+    }
+
+    .welcome p {
+      color: #d9e4ef;
+      font-size: 14px;
+      max-width: 560px;
+    }
+
+    .section {
+      display: none;
+      animation: appear 0.2s ease;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    @keyframes appear {
+      from { opacity: 0.6; }
+      to { opacity: 1; }
+    }
+
+    .section-heading {
+      margin: 27px 0 14px;
+    }
+
+    .section-heading h2 {
+      color: var(--navy);
+      font-size: 21px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 3px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 19px;
+      box-shadow: var(--shadow);
+      min-width: 0;
+    }
+
+    .balance-card {
+      grid-column: 1 / -1;
+      background: var(--white);
+      border-top: 4px solid var(--gold);
+    }
+
+    .card-label {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .balance-amount {
+      color: var(--navy);
+      font-size: clamp(30px, 7vw, 39px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin: 5px 0;
+      overflow-wrap: anywhere;
+    }
+
+    .small-note {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .stat-value {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-top: 8px;
+      overflow-wrap: anywhere;
+    }
+
+    .stat-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: #edf2f8;
+      color: var(--navy);
+      font-size: 21px;
+      margin-bottom: 12px;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .action-btn {
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      background: white;
+      padding: 15px 7px;
+      color: var(--navy);
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .action-btn span {
+      font-size: 23px;
+    }
+
+    .action-btn:hover {
+      border-color: var(--gold);
+      background: #fffdf8;
+    }
+
+    .primary-btn, .secondary-btn, .gold-btn {
+      border: none;
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-weight: 700;
+      font-size: 13px;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .primary-btn {
+      background: var(--navy);
+      color: white;
+    }
+
+    .primary-btn:hover {
+      background: var(--navy-light);
+    }
+
+    .gold-btn {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .secondary-btn {
+      background: #edf2f8;
+      color: var(--navy);
+      border: 1px solid var(--border);
+    }
+
+    .full-btn {
+      width: 100%;
+      margin-top: 12px;
+    }
+
+    .announcement {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .announcement-icon {
+      flex: 0 0 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      background: var(--gold-light);
+      border-radius: 11px;
+      font-size: 20px;
+    }
+
+    .announcement h3 {
+      color: var(--navy);
+      font-size: 15px;
+      margin-bottom: 3px;
+    }
+
+    .announcement p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .plan-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .plan-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .plan-top {
+      background: var(--navy);
+      color: white;
+      padding: 18px;
+      border-bottom: 3px solid var(--gold);
+    }
+
+    .plan-top h3 {
+      font-size: 19px;
+    }
+
+    .plan-rate {
+      color: var(--gold);
+      font-size: 25px;
+      font-weight: 800;
+      margin-top: 5px;
+    }
+
+    .plan-top small {
+      color: #e0e8f2;
+      font-size: 12px;
+    }
+
+    .plan-details {
+      padding: 18px;
+    }
+
+    .plan-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      border-bottom: 1px solid #edf0f4;
+      padding: 9px 0;
+      font-size: 12px;
+    }
+
+    .plan-line span:first-child {
+      color: var(--muted);
+    }
+
+    .plan-line strong {
+      color: var(--navy);
+      text-align: right;
+      overflow-wrap: anywhere;
+    }
+
+    .plan-details button {
+      width: 100%;
+      margin-top: 15px;
+    }
+
+    .form-card {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      margin-top: 15px;
+    }
+
+    .form-card h3 {
+      color: var(--navy);
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .form-card > p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .field {
+      margin: 14px 0;
+    }
+
+    .field label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .field input, .field select, .field textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #cfd8e3;
+      border-radius: 9px;
+      background: white;
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    .field input:focus, .field select:focus,
+    .field textarea:focus {
+      border-color: var(--navy-light);
+    }
+
+    .wallet-box {
+      background: #f4f7fb;
+      border: 1px dashed #b7c5d6;
+      border-radius: 11px;
+      padding: 14px;
+      margin: 14px 0;
+    }
+
+    .wallet-box strong {
+      display: block;
+      font-size: 12px;
+      color: var(--navy);
+      margin-bottom: 5px;
+    }
+
+    .wallet-address {
+      font-size: 13px;
+      overflow-wrap: anywhere;
+      color: #263c55;
+      user-select: text;
+    }
+
+    .status-message {
+      display: none;
+      padding: 13px;
+      margin-top: 14px;
+      border-radius: 10px;
+      font-size: 13px;
+    }
+
+    .status-message.show {
+      display: block;
+    }
+
+    .status-message.info {
+      background: #edf4ff;
+      color: #244e83;
+      border: 1px solid #d3e4ff;
+    }
+
+    .status-message.success {
+      background: #eaf7ef;
+      color: var(--green);
+      border: 1px solid #c6e9d2;
+    }
+
+    .status-message.error {
+      background: #fff0ef;
+      color: var(--red);
+      border: 1px solid #ffd3cf;
+    }
+
+    .notice {
+      background: #fffaf0;
+      border: 1px solid #efdfb9;
+      border-radius: 12px;
+      padding: 14px;
+      margin-top: 15px;
+      color: #6b5626;
+      font-size: 12px;
+    }
+
+    .empty-state {
+      padding: 30px 15px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .empty-state .empty-icon {
+      font-size: 32px;
+      margin-bottom: 7px;
+    }
+
+    .empty-state h3 {
+      color: var(--navy);
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .activity-row {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .activity-row:last-child {
+      border-bottom: none;
+    }
+
+    .activity-row strong {
+      color: var(--navy);
+      font-size: 13px;
+    }
+
+    .activity-row p {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .tag {
+      display: inline-block;
+      background: #edf2f8;
+      color: var(--navy);
+      border-radius: 30px;
+      padding: 4px 9px;
+      font-size: 10px;
+      font-weight: bold;
+    }
+
+    .account-row {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 13px;
+    }
+
+    .account-row:last-child {
+      border-bottom: none;
+    }
+
+    .account-row span {
+      color: var(--muted);
+    }
+
+    .account-row strong {
+      text-align: right;
+      overflow-wrap: anywhere;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      z-index: 20;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      border-top: 1px solid var(--border);
+      box-shadow: 0 -5px 20px rgba(16, 39, 68, 0.07);
+      padding: 8px 4px calc(8px + env(safe-area-inset-bottom));
+    }
+
+    .nav-inner {
+      max-width: 650px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .nav-btn {
+      border: none;
+      background: transparent;
+      color: #8290a2;
+      padding: 5px 1px;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .nav-icon {
+      font-size: 21px;
+      line-height: 1.3;
+    }
+
+    .nav-btn.active {
+      color: var(--navy);
+    }
+
+    .nav-btn.active .nav-icon {
+      color: #b38b3c;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 11px;
+      color: var(--muted);
+      padding: 25px 8px 12px;
+    }
+
+    @media (max-width: 600px) {
+      .page {
+        padding: 17px 12px;
+      }
+
+      .topbar {
+        padding: 14px 13px;
+      }
+
+      .brand-name {
+        font-size: 13px;
+      }
+
+      .brand-subtitle {
+        font-size: 9px;
+        letter-spacing: 1px;
+      }
+
+      .brand-mark {
+        width: 37px;
+        height: 37px;
+      }
+
+      .member-label {
+        font-size: 10px;
+      }
+
+      .grid, .plan-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .actions {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 6px;
+      }
+
+      .action-btn {
+        padding: 12px 3px;
+        font-size: 10px;
+      }
+
+      .action-btn span {
+        font-size: 21px;
+      }
+
+      .card {
+        padding: 16px;
+      }
+
+      .balance-card {
+        grid-column: auto;
+      }
+
+      .welcome {
+        padding: 22px 17px;
+      }
+
+      .form-card {
+        padding: 16px;
+      }
+    }
+
+    @media (min-width: 601px) {
+      .balance-card-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .balance-card .actions {
+        min-width: 300px;
+        margin-top: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">R</div>
+        <div>
+          <div class="brand-name">REAL WEALTH EDGE</div>
+          <div class="brand-subtitle">MEMBER PORTAL</div>
+        </div>
+      </div>
+      <div class="member-label">
+        <div>MEMBER AREA</div>
+        <div>Account overview</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <section id="home" class="section active">
+      <div class="welcome">
+        <div class="eyebrow">Member dashboard</div>
+        <h1>Your financial overview</h1>
+        <p>Manage your account, explore investment plans and review your activity in one place.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card balance-card">
+          <div class="balance-card-inner">
+            <div>
+              <div class="card-label">Available Balance (USD)</div>
+              <div class="balance-amount" id="availableBalance">$0.00</div>
+              <div class="small-note">Funds available in your account</div>
+            </div>
+            <div class="actions">
+              <button class="action-btn" onclick="showPage('wallet'); setWalletMode('deposit')">
+                <span>＋</span>Deposit
+              </button>
+              <button class="action-btn" onclick="showPage('invest')">
+                <span>◈</span>Invest
+              </button>
+              <button class="action-btn" onclick="showPage('wallet'); setWalletMode('withdraw')">
+                <span>↗</span>Withdraw
+              </button>
+              <button class="action-btn" onclick="showPage('activity')">
+                <span>↻</span>Activity
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="stat-icon">＋</div>
+          <div class="card-label">Total Deposited</div>
+          <div class="stat-value">$0.00</div>
+          <div class="small-note">Verified deposits only</div>
+        </div>
+
+        <div class="card">
+          <div class="stat-icon">◈</div>
+          <div class="card-label">Active Investments</div>
+          <div class="stat-value">$0.00</div>
+          <div class="small-note">Investment amount currently active</div>
+        </div>
+
+        <div class="card">
+          <div class="stat-icon">◷</div>
+          <div class="card-label">Pending Requests</div>
+          <div class="stat-value">0</div>
+          <div class="small-note">Requests awaiting review</div>
+        </div>
+      </div>
+
+      <div class="section-heading">
+        <h2>Recent Activity</h2>
+        <p>Your latest account transactions will appear here.</p>
+      </div>
+
+      <div class="card">
+        <div class="empty-state">
+          <div class="empty-icon">▤</div>
+          <h3>No transactions yet</h3>
+          <p>Your verified deposits, investments and withdrawals will be shown here once account history is connected.</p>
+        </div>
+      </div>
+
+      <div class="section-heading">
+        <h2>Platform Announcements</h2>
+      </div>
+
+      <div class="card announcement">
+        <div class="announcement-icon">✦</div>
+        <div>
+          <h3>Welcome to REAL WEALTH EDGE</h3>
+          <p>Explore the member dashboard and available plan information. Account balances and transaction history will become live when the secure account system is connected.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="invest" class="section">
+      <div class="section-heading">
+        <h2>Investment Plans</h2>
+        <p>Review the plan terms and choose a plan to continue.</p>
+      </div>
+
+      <div class="plan-grid">
+        <article class="plan-card">
+          <div class="plan-top">
+            <h3>Trial Plan</h3>
+            <div class="plan-rate">2.5% daily</div>
+            <small>Duration: 4 days</small>
+          </div>
+          <div class="plan-details">
+            <div class="plan-line"><span>Minimum</span><strong>$20</strong></div>
+            <div class="plan-line"><span>Maximum</span><strong>$99</strong></div>
+            <div class="plan-line"><span>Plan duration</span><strong>4 days</strong></div>
+            <button class="primary-btn" onclick="choosePlan('Trial Plan',20,99,2.5,4)">Select Plan</button>
+          </div>
+        </article>
+
+        <article class="plan-card">
+          <div class="plan-top">
+            <h3>Bronze Plan</h3>
+            <div class="plan-rate">4% daily</div>
+            <small>Duration: 4 days</small>
+          </div>
+          <div class="plan-details">
+            <div class="plan-line"><span>Minimum</span><strong>$100</strong></div>
+            <div class="plan-line"><span>Maximum</span><strong>$29,999</strong></div>
+            <div class="plan-line"><span>Plan duration</span><strong>4 days</strong></div>
+            <button class="primary-btn" onclick="choosePlan('Bronze Plan',100,29999,4,4)">Select Plan</button>
+          </div>
+        </article>
+
+        <article class="plan-card">
+          <div class="plan-top">
+            <h3>Silver Plan</h3>
+            <div class="plan-rate">6% daily</div>
+            <small>Duration: 7 days</small>
+          </div>
+          <div class="plan-details">
+            <div class="plan-line"><span>Minimum</span><strong>$30,000</strong></div>
+            <div class="plan-line"><span>Maximum</span><strong>$69,999</strong></div>
+            <div class="plan-line"><span>Plan duration</span><strong>7 days</strong></div>
+            <button class="primary-btn" onclick="choosePlan('Silver Plan',30000,69999,6,7)">Select Plan</button>
+          </div>
+        </article>
+
+        <article class="plan-card">
+          <div class="plan-top">
+            <h3>Gold Plan</h3>
+            <div class="plan-rate">8% daily</div>
+            <small>Duration: 14 days</small>
+          </div>
+          <div class="plan-details">
+            <div class="plan-line"><span>Minimum</span><strong>$70,000</strong></div>
+            <div class="plan-line"><span>Maximum</span><strong>Unlimited</strong></div>
+            <div class="plan-line"><span>Plan duration</span><strong>14 days</strong></div>
+            <button class="primary-btn" onclick="choosePlan('Gold Plan',70000,Infinity,8,14)">Select Plan</button>
+          </div>
+        </article>
+      </div>
+
+      <div class="notice">
+        These are the plan terms supplied for this website. The stated percentages are not verified or guaranteed earnings. This dashboard preview does not create an investment or process a payment.
+      </div>
+
+      <div class="form-card" id="planForm" hidden>
+        <h3 id="selectedPlanTitle">Selected plan</h3>
+        <p id="selectedPlanInfo"></p>
+
+        <form id="investmentForm">
+          <d
