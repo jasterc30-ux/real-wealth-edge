@@ -2,428 +2,690 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>REAL WEALTH EDGE | Dashboard</title>
-<style>
-:root{
-  --navy:#13243a;--panel:#ffffff;--gold:#b78b2e;
-  --white:#ffffff;--muted:#68778a;--line:#e1e6ed;
-  --green:#147a52;--page:#f5f7fa;
-}
-*{box-sizing:border-box}
-body{margin:0;background:var(--page);color:var(--navy);font-family:Arial,sans-serif;padding-bottom:92px}
-header{padding:20px 17px;background:#fff;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px}
-.brand{font-weight:800;color:var(--gold);font-size:17px;letter-spacing:.4px}
-header small{display:block;color:var(--muted);font-size:11px;margin-top:5px}
-main{max-width:760px;margin:auto;padding:18px 14px}
-section.page{display:none}
-section.page.active{display:block}
-h1{font-size:25px;margin:8px 0}
-h2{font-size:18px;margin:0 0 14px}
-p{line-height:1.55}
-.muted{color:var(--muted);font-size:13px}
-.card{background:#fff;border:1px solid var(--line);border-radius:15px;padding:17px;margin:13px 0;box-shadow:0 3px 12px #12243a08}
-.balance{background:#fff;border:1px solid #d8c28f}
-.balance strong{font-size:30px;display:block;margin:12px 0;color:var(--navy)}
-.gold{color:var(--gold)}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.stat{background:#fff;border:1px solid var(--line);padding:14px;border-radius:12px}
-.stat strong{display:block;font-size:18px;margin-top:8px}
-button,input,select{font:inherit}
-button{cursor:pointer;border:0;border-radius:9px;padding:12px 14px;font-weight:700}
-.primary{background:var(--gold);color:#fff}
-.secondary{background:#fff;color:var(--navy);border:1px solid #cbd4df}
-.danger{background:#fff0f0;color:#a32f37;border:1px solid #efc8cb}
-.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}
-.actions button{flex:1}
-label{display:block;font-size:13px;color:var(--navy);margin:13px 0 7px}
-input,select{width:100%;padding:13px;background:#fff;border:1px solid #cbd4df;border-radius:9px;color:var(--navy)}
-input::placeholder{color:#8995a5}
-.plan-title{display:flex;justify-content:space-between;align-items:center;gap:8px}
-.tag{color:#8b671d;font-size:12px;border:1px solid #d9c18a;border-radius:20px;padding:5px 8px}
-.plan-rate{font-size:24px;font-weight:800;color:var(--gold);margin:12px 0}
-.address{overflow-wrap:anywhere;background:#f5f7fa;padding:12px;border-radius:8px;font-size:12px;line-height:1.6;border:1px solid var(--line);color:var(--navy)}
-.notice{font-size:12px;color:var(--muted);line-height:1.6}
-.status{display:none;padding:12px;border-radius:9px;background:#edf8f2;color:#17633f;font-size:13px;margin-top:12px;line-height:1.5}
-.empty{text-align:center;padding:25px 10px;color:var(--muted);line-height:1.6}
-nav{position:fixed;bottom:0;left:0;right:0;z-index:10;display:grid;grid-template-columns:repeat(5,1fr);background:#fff;border-top:1px solid var(--line);padding:8px 2px max(8px,env(safe-area-inset-bottom))}
-nav button{background:transparent;color:var(--muted);font-size:11px;padding:8px 1px;border-radius:8px}
-nav button span{display:block;font-size:19px;margin-bottom:5px}
-nav button.active{color:#8b671d;background:#f8f2e5}
-.hidden{display:none!important}
-.ref-link{font-size:12px;overflow-wrap:anywhere;background:#f5f7fa;border:1px solid var(--line);padding:12px;border-radius:8px;line-height:1.6}
-@media(min-width:600px){main{padding:24px}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10264b">
+  <title>Dashboard | REAL WEALTH EDGE</title>
+
+  <style>
+    :root {
+      --navy: #10264b;
+      --navy-light: #193966;
+      --white: #ffffff;
+      --page: #f4f7fc;
+      --border: #dce4f0;
+      --text: #24344d;
+      --muted: #687991;
+      --gold: #c6a45b;
+      --success: #16794b;
+      --danger: #b42332;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--page);
+      color: var(--text);
+    }
+
+    button, input, select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .topbar {
+      background: var(--navy);
+      color: var(--white);
+      padding: 20px;
+    }
+
+    .topbar-inner {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-weight: 800;
+      font-size: 19px;
+      letter-spacing: 1px;
+    }
+
+    .brand-subtitle {
+      color: #d8e2f1;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    .logout {
+      background: transparent;
+      color: white;
+      border: 1px solid #8092b1;
+      border-radius: 8px;
+      padding: 10px 13px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 24px auto;
+      padding: 0 16px 35px;
+    }
+
+    .welcome {
+      margin-bottom: 20px;
+    }
+
+    h1, h2, h3 {
+      color: var(--navy);
+    }
+
+    h1 {
+      font-size: 25px;
+      margin: 0 0 8px;
+    }
+
+    h2 {
+      font-size: 21px;
+      margin-top: 0;
+    }
+
+    h3 {
+      font-size: 17px;
+      margin-top: 0;
+    }
+
+    p {
+      line-height: 1.6;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .nav {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 8px;
+      border-radius: 13px;
+      margin-bottom: 22px;
+    }
+
+    .nav button {
+      padding: 12px 5px;
+      border: 0;
+      border-radius: 8px;
+      background: transparent;
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .nav button.active {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .panel {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 18px;
+      box-shadow: 0 3px 12px rgba(16, 38, 75, 0.035);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .stat {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 16px;
+      border-radius: 12px;
+      min-width: 0;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 9px;
+    }
+
+    .stat-value {
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 21px;
+      overflow-wrap: anywhere;
+    }
+
+    .button {
+      display: inline-block;
+      border: 1px solid var(--navy);
+      background: var(--navy);
+      color: var(--white);
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .button.secondary {
+      color: var(--navy);
+      background: var(--white);
+    }
+
+    .button.gold {
+      color: var(--navy);
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .button-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .plan {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+      background: white;
+    }
+
+    .plan-rate {
+      font-size: 25px;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 10px 0;
+    }
+
+    .plan p {
+      margin: 7px 0;
+    }
+
+    .tag {
+      display: inline-block;
+      border-radius: 20px;
+      padding: 5px 10px;
+      background: #edf2fa;
+      color: var(--navy);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    label {
+      display: block;
+      color: var(--navy);
+      font-weight: 700;
+      margin: 12px 0 7px;
+    }
+
+    input, select {
+      display: block;
+      width: 100%;
+      border: 1px solid #cbd6e5;
+      background: white;
+      color: var(--text);
+      padding: 12px;
+      border-radius: 8px;
+      outline-color: var(--navy-light);
+    }
+
+    .address {
+      overflow-wrap: anywhere;
+      padding: 12px;
+      background: #f0f4fa;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 13px;
+      line-height: 1.6;
+      margin: 8px 0;
+    }
+
+    .notice {
+      padding: 12px;
+      border-radius: 8px;
+      background: #f0f4fa;
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.6;
+      margin-top: 14px;
+    }
+
+    .message {
+      display: none;
+      padding: 12px;
+      border-radius: 8px;
+      margin-top: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .message.show {
+      display: block;
+    }
+
+    .message.error {
+      color: var(--danger);
+      background: #fff0f1;
+    }
+
+    .message.success {
+      color: var(--success);
+      background: #eaf8f0;
+    }
+
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .referral-rate {
+      font-size: 34px;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 10px 0;
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      padding: 20px 0;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 650px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .stat {
+        padding: 14px;
+      }
+
+      .nav {
+        gap: 3px;
+        padding: 5px;
+      }
+
+      .nav button {
+        font-size: 12px;
+        padding: 12px 2px;
+      }
+
+      .container {
+        margin-top: 18px;
+      }
+
+      .panel {
+        padding: 16px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<header>
-  <div>
-    <div class="brand">REAL WEALTH EDGE</div>
-    <small>MEMBER DASHBOARD</small>
-  </div>
-  <button class="secondary" onclick="goTo('account')">My Account</button>
-</header>
-
-<main>
-<section id="home" class="page active">
-  <p class="muted">MEMBER OVERVIEW</p>
-  <h1>Welcome back</h1>
-  <p class="muted">Manage your account, explore plans and review your wallet.</p>
-  <div class="card balance">
-    <span class="muted">Available balance</span>
-    <strong id="homeBalance">$0.00</strong>
-    <span class="muted">Preview balance · No live funds connected</span>
-    <div class="actions">
-      <button class="primary" onclick="walletMode('deposit')">Deposit</button>
-      <button class="secondary" onclick="walletMode('withdraw')">Withdraw</button>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div>
+        <div class="brand">REAL WEALTH EDGE</div>
+        <div class="brand-subtitle">Your Investment Dashboard</div>
+      </div>
+      <button class="logout" onclick="signOut()">Sign Out</button>
     </div>
-  </div>
-  <div class="stats">
-    <div class="stat"><span class="muted">Total deposited</span><strong id="totalDeposited">$0.00</strong></div>
-    <div class="stat"><span class="muted">Active investments</span><strong id="activeInvestments">$0.00</strong></div>
-    <div class="stat"><span class="muted">Pending requests</span><strong id="pendingRequests">0</strong></div>
-    <div class="stat"><span class="muted">Account status</span><strong style="font-size:15px">Preview</strong></div>
-  </div>
-  <div class="card">
-    <h2>Explore investment plans</h2>
-    <p class="muted">Review the available plan details.</p>
-    <button class="primary" style="width:100%" onclick="goTo('invest')">View Plans</button>
-  </div>
-  <div class="card">
-    <h2>Recent activity</h2>
-    <div id="homeActivity" class="empty">No activity recorded in this browser yet.</div>
-  </div>
-</section>
+  </header>
 
-<section id="invest" class="page">
-  <p class="muted">INVESTMENT OPTIONS</p>
-  <h1>Investment Plans</h1>
-  <p class="muted">The following are the plan terms entered for this website preview. Rates are not verified or guaranteed.</p>
-  <div id="planList"></div>
-  <div class="card">
-    <h2>Before you continue</h2>
-    <p class="notice">Selecting a plan is for demonstration only. No money will be invested, and no return will be credited. A secure backend is required before live investing.</p>
-  </div>
-</section>
-
-<section id="wallet" class="page">
-  <p class="muted">WALLET SERVICES</p>
-  <h1>My Wallet</h1>
-  <div class="card">
-    <span class="muted">Available balance</span>
-    <strong id="walletBalance" style="display:block;font-size:27px;margin-top:9px">$0.00</strong>
-    <p class="notice">Preview balance, not a record of verified funds.</p>
-  </div>
-  <div class="actions">
-    <button id="depositTab" class="primary" onclick="walletMode('deposit')">Deposit</button>
-    <button id="withdrawTab" class="secondary" onclick="walletMode('withdraw')">Withdraw</button>
-  </div>
-
-  <div id="depositPanel" class="card">
-    <h2>Deposit cryptocurrency</h2>
-    <p class="muted">Choose an asset and network to view the configured receiving address.</p>
-    <label for="depositAsset">Cryptocurrency and network</label>
-    <select id="depositAsset" onchange="updateAddress()">
-      <option value="bnb">BNB — BNB Smart Chain (BEP20)</option>
-      <option value="eth">ETH — Ethereum Mainnet</option>
-      <option value="usdt_erc">USDT — Ethereum (ERC20)</option>
-      <option value="usdt_trc">USDT — TRON (TRC20)</option>
-      <option value="btc">BTC — Bitcoin Mainnet</option>
-    </select>
-    <label>Receiving wallet address</label>
-    <div id="walletAddress" class="address"></div>
-    <button class="secondary" style="width:100%;margin-top:10px" onclick="copyAddress()">Copy wallet address</button>
-    <label for="depositAmount">Intended deposit amount (USD)</label>
-    <input id="depositAmount" type="number" min="1" step="any" placeholder="Enter amount">
-    <label for="txid">Transaction ID (TXID), if available</label>
-    <input id="txid" type="text" placeholder="Enter transaction ID">
-    <button class="primary" style="width:100%;margin-top:15px" onclick="submitDeposit()">Submit deposit details</button>
-    <div id="depositStatus" class="status"></div>
-    <p class="notice">This preview does not verify transactions or add funds. Confirm the address and network independently before sending cryptocurrency.</p>
-  </div>
-
-  <div id="withdrawPanel" class="card hidden">
-    <h2>Request a withdrawal</h2>
-    <label for="withdrawAsset">Cryptocurrency and network</label>
-    <select id="withdrawAsset">
-      <option>USDT — Ethereum (ERC20)</option>
-      <option>USDT — TRON (TRC20)</option>
-      <option>BTC — Bitcoin Mainnet</option>
-      <option>ETH — Ethereum Mainnet</option>
-      <option>BNB — BNB Smart Chain (BEP20)</option>
-    </select>
-    <label for="withdrawAmount">Withdrawal amount (USD)</label>
-    <input id="withdrawAmount" type="number" min="1" step="any" placeholder="Enter amount">
-    <label for="withdrawAddress">Your receiving wallet address</label>
-    <input id="withdrawAddress" type="text" placeholder="Paste your wallet address">
-    <button class="primary" style="width:100%;margin-top:15px" onclick="submitWithdrawal()">Submit withdrawal details</button>
-    <div id="withdrawStatus" class="status"></div>
-    <p class="notice">This preview cannot approve or pay withdrawals. No money will be deducted or paid.</p>
-  </div>
-</section>
-
-<section id="activity" class="page">
-  <p class="muted">ACCOUNT RECORDS</p>
-  <h1>Activity</h1>
-  <div class="card">
-    <h2>Recent activity</h2>
-    <div id="activityList" class="empty">No activity recorded in this browser yet.</div>
-  </div>
-  <p class="notice">Entries are stored only in this browser and are not verified financial transactions.</p>
-</section>
-
-<section id="account" class="page">
-  <p class="muted">MEMBER SETTINGS</p>
-  <h1>My Account</h1>
-
-  <div class="card">
-    <h2>Account overview</h2>
-    <p class="muted">Platform: REAL WEALTH EDGE</p>
-    <p class="muted">Status: Website preview</p>
-    <p class="notice">Secure account information must be connected to authentication before launch.</p>
-  </div>
-
-  <!-- Referral area added inside Account; existing navigation is unchanged -->
-  <div class="card" id="referralSection">
-    <p class="muted">GROW WITH REAL WEALTH EDGE</p>
-    <h2>Referral Program</h2>
-    <div class="plan-title">
-      <span class="muted">Advertised referral range</span>
-      <span class="tag">10%–40%</span>
-    </div>
-    <div class="plan-rate">10% Commission</div>
-    <p class="muted">Your intended working commission rate is 10% of a qualifying referred investment after verification and approval.</p>
-
-    <label>Your referral link</label>
-    <div id="referralLink" class="ref-link">Preparing preview link…</div>
-    <button class="primary" style="width:100%;margin-top:10px" onclick="copyReferralLink()">Copy Referral Link</button>
-    <div id="referralStatus" class="status"></div>
-
-    <div class="stats" style="margin-top:15px">
-      <div class="stat"><span class="muted">Referred members</span><strong id="referralCount">—</strong></div>
-      <div class="stat"><span class="muted">Qualifying investments</span><strong id="referralInvestments">$0.00</strong></div>
-      <div class="stat"><span class="muted">Referral earnings</span><strong id="referralEarnings">$0.00</strong></div>
-      <div class="stat"><span class="muted">Working rate</span><strong>10%</strong></div>
+  <main class="container">
+    <div class="welcome">
+      <h1>Welcome to Your Dashboard</h1>
+      <p class="muted">Manage your account, explore investment plans and view your wallet information.</p>
     </div>
 
-    <p class="notice">Preview only: this link is generated for this browser, not your verified member account. Referral registrations and commission figures are not yet connected to the database. No referral bonus is credited until secure tracking, investment verification and server-side approval are implemented.</p>
-  </div>
+    <nav class="nav" aria-label="Dashboard navigation">
+      <button class="active" data-section="home" onclick="showSection('home', this)">Home</button>
+      <button data-section="invest" onclick="showSection('invest', this)">Invest</button>
+      <button data-section="wallet" onclick="showSection('wallet', this)">Wallet</button>
+      <button data-section="activity" onclick="showSection('activity', this)">Activity</button>
+      <button data-section="account" onclick="showSection('account', this)">Account</button>
+    </nav>
 
-  <div class="card">
-    <h2>Account actions</h2>
-    <button class="secondary" style="width:100%" onclick="goTo('home')">Return to dashboard</button>
-    <button class="danger" style="width:100%;margin-top:10px" onclick="goToLogin()">Return to login page</button>
-  </div>
-</section>
-</main>
+    <!-- HOME -->
+    <section id="home" class="section active">
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-label">Account Balance</div>
+          <div class="stat-value" id="balance">$0.00</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Active Investments</div>
+          <div class="stat-value" id="activeInvestments">0</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Referral Rewards</div>
+          <div class="stat-value" id="referralRewards">$0.00</div>
+        </div>
+      </div>
 
-<nav aria-label="Dashboard navigation">
-  <button class="active" data-page="home" onclick="goTo('home')"><span>⌂</span>Home</button>
-  <button data-page="invest" onclick="goTo('invest')"><span>▤</span>Invest</button>
-  <button data-page="wallet" onclick="walletMode('deposit')"><span>◈</span>Wallet</button>
-  <button data-page="activity" onclick="goTo('activity')"><span>↻</span>Activity</button>
-  <button data-page="account" onclick="goTo('account')"><span>☻</span>Account</button>
-</nav>
+      <div class="panel">
+        <h2>Account Overview</h2>
+        <p class="muted">Welcome to your REAL WEALTH EDGE member area.</p>
+        <div class="button-row">
+          <button class="button" onclick="showSection('wallet')">Deposit Funds</button>
+          <button class="button secondary" onclick="showSection('wallet')">Withdraw Funds</button>
+          <button class="button gold" onclick="showSection('invest')">Explore Investment Plans</button>
+        </div>
+      </div>
 
-<script>
-const receivingAddresses = {
-  bnb:"0xbc623c234c4806d7423496783605bd758afb8ea8",
-  eth:"0xbc623c234c4806d7423496783605bd758afb8ea8",
-  usdt_erc:"0xbc623c234c4806d7423496783605bd758afb8ea8",
-  usdt_trc:"TMUxNnQRpyej4WKFMizkCtRRESZBBY3VeU",
-  btc:"1CbzWHkakA7bwikUZ4YCwmhYZN4LX5PpUm"
-};
+      <div class="panel">
+        <h2>Getting Started</h2>
+        <p>Explore the available investment plans, review supported wallet networks and manage your account details from the sections above.</p>
+        <div class="notice">
+          Dashboard balances and activities are currently demonstration data. Real account balances and transactions will require database integration and server-side verification.
+        </div>
+      </div>
+    </section>
 
-const plans = [
-  {name:"Trial Plan",rate:"2.5% daily",period:"4 days",min:20,max:99},
-  {name:"Bronze Plan",rate:"4% daily",period:"4 days",min:100,max:29999},
-  {name:"Silver Plan",rate:"6% daily",period:"7 days",min:30000,max:69999},
-  {name:"Gold Plan",rate:"8% daily",period:"14 days",min:70000,max:null}
-];
+    <!-- INVEST -->
+    <section id="invest" class="section">
+      <div class="panel">
+        <h2>Investment Plans</h2>
+        <p class="muted">Review each plan's displayed rate, duration and investment limits.</p>
 
-let activity = [];
+        <div class="grid">
+          <div class="plan">
+            <span class="tag">Starter</span>
+            <h3>Trial Plan</h3>
+            <div class="plan-rate">2.5% daily</div>
+            <p>Duration: 4 days</p>
+            <p>Minimum: $20</p>
+            <p>Maximum: $99</p>
+            <button class="button" onclick="choosePlan('Trial Plan', 20, 99)">Select Plan</button>
+          </div>
 
-function money(n){
-  return "$"+Number(n).toLocaleString("en-US",{
-    minimumFractionDigits:2,maximumFractionDigits:2
-  });
-}
+          <div class="plan">
+            <span class="tag">Bronze</span>
+            <h3>Bronze Plan</h3>
+            <div class="plan-rate">4% daily</div>
+            <p>Duration: 4 days</p>
+            <p>Minimum: $100</p>
+            <p>Maximum: $29,999</p>
+            <button class="button" onclick="choosePlan('Bronze Plan', 100, 29999)">Select Plan</button>
+          </div>
 
-function goTo(page){
-  document.querySelectorAll("section.page").forEach(s=>s.classList.remove("active"));
-  const target=document.getElementById(page);
-  if(target) target.classList.add("active");
-  document.querySelectorAll("nav button").forEach(b=>{
-    b.classList.toggle("active",b.dataset.page===page);
-  });
-  window.scrollTo({top:0,behavior:"smooth"});
-}
+          <div class="plan">
+            <span class="tag">Silver</span>
+            <h3>Silver Plan</h3>
+            <div class="plan-rate">6% daily</div>
+            <p>Duration: 7 days</p>
+            <p>Minimum: $30,000</p>
+            <p>Maximum: $69,999</p>
+            <button class="button" onclick="choosePlan('Silver Plan', 30000, 69999)">Select Plan</button>
+          </div>
 
-function walletMode(mode){
-  goTo("wallet");
-  document.getElementById("depositPanel").classList.toggle("hidden",mode!=="deposit");
-  document.getElementById("withdrawPanel").classList.toggle("hidden",mode!=="withdraw");
-  document.getElementById("depositTab").className=mode==="deposit"?"primary":"secondary";
-  document.getElementById("withdrawTab").className=mode==="withdraw"?"primary":"secondary";
-}
+          <div class="plan">
+            <span class="tag">Gold</span>
+            <h3>Gold Plan</h3>
+            <div class="plan-rate">8% daily</div>
+            <p>Duration: 14 days</p>
+            <p>Minimum: $70,000</p>
+            <p>Maximum: No upper limit displayed</p>
+            <button class="button" onclick="choosePlan('Gold Plan', 70000, null)">Select Plan</button>
+          </div>
+        </div>
 
-function updateAddress(){
-  const asset=document.getElementById("depositAsset").value;
-  document.getElementById("walletAddress").textContent=receivingAddresses[asset];
-}
+        <div id="investmentForm" class="notice" style="display:none;">
+          <h3 id="selectedPlanName">Selected Plan</h3>
+          <label for="investmentAmount">Investment amount (USD)</label>
+          <input id="investmentAmount" type="number" min="1" step="0.01" placeholder="Enter amount">
+          <button class="button" style="margin-top:12px;" onclick="previewInvestment()">Continue</button>
+          <div id="investmentMessage" class="message"></div>
+        </div>
 
-function showStatus(id,message){
-  const el=document.getElementById(id);
-  el.textContent=message;
-  el.style.display="block";
-}
+        <div class="notice">
+          The displayed rates and durations are plan information, not a guarantee of returns. Investment activation and account balance updates are not connected yet.
+        </div>
+      </div>
+    </section>
 
-async function copyText(value,statusId,successMessage){
-  try{
-    await navigator.clipboard.writeText(value);
-    showStatus(statusId,successMessage);
-  }catch(e){
-    showStatus(statusId,"Automatic copying was blocked. Press and hold the displayed text to copy it manually.");
-  }
-}
+    <!-- WALLET -->
+    <section id="wallet" class="section">
+      <div class="panel">
+        <h2>Wallet</h2>
+        <p class="muted">Review deposit details or preview a withdrawal request.</p>
 
-function copyAddress(){
-  copyText(
-    document.getElementById("walletAddress").textContent,
-    "depositStatus",
-    "Address copied. Confirm the asset and network before using it."
-  );
-}
+        <div class="grid">
+          <div class="panel">
+            <h3>Deposit Funds</h3>
 
-function addActivity(message){
-  activity.unshift(new Date().toLocaleString()+" — "+message);
-  activity=activity.slice(0,20);
-  try{sessionStorage.setItem("rwePreviewActivity",JSON.stringify(activity));}catch(e){}
-  renderActivity();
-}
+            <label for="depositNetwork">Select asset and network</label>
+            <select id="depositNetwork" onchange="showDepositAddress()">
+              <option value="BNB">BNB — BNB Smart Chain (BEP20)</option>
+              <option value="ETH">ETH — Ethereum Mainnet</option>
+              <option value="USDT_ERC20">USDT — Ethereum (ERC20)</option>
+              <option value="USDT_TRC20">USDT — TRON (TRC20)</option>
+              <option value="BTC">BTC — Bitcoin Mainnet</option>
+            </select>
 
-function renderActivity(){
-  ["activityList","homeActivity"].forEach(id=>{
-    const el=document.getElementById(id);
-    el.innerHTML="";
-    if(!activity.length){
-      el.className="empty";
-      el.textContent="No activity recorded in this browser yet.";
-    }else{
-      el.className="";
-      activity.forEach(item=>{
-        const p=document.createElement("p");
-        p.className="muted";
-        p.textContent=item;
-        el.appendChild(p);
+            <label>Company deposit address</label>
+            <div id="depositAddress" class="address"></div>
+            <button class="button secondary" onclick="copyDepositAddress()">Copy Address</button>
+
+            <label for="depositAmount">Amount sent (USD equivalent)</label>
+            <input id="depositAmount" type="number" min="1" step="0.01" placeholder="Enter amount">
+
+            <label for="transactionHash">Transaction ID / hash</label>
+            <input id="transactionHash" type="text" placeholder="Enter transaction hash">
+
+            <button class="button" style="margin-top:12px;" onclick="previewDeposit()">Preview Deposit</button>
+            <div id="depositMessage" class="message"></div>
+          </div>
+
+          <div class="panel">
+            <h3>Withdraw Funds</h3>
+
+            <label for="withdrawNetwork">Select asset and network</label>
+            <select id="withdrawNetwork">
+              <option value="BNB">BNB — BNB Smart Chain (BEP20)</option>
+              <option value="ETH">ETH — Ethereum Mainnet</option>
+              <option value="USDT_ERC20">USDT — Ethereum (ERC20)</option>
+              <option value="USDT_TRC20">USDT — TRON (TRC20)</option>
+              <option value="BTC">BTC — Bitcoin Mainnet</option>
+            </select>
+
+            <label for="withdrawAmount">Amount (USD equivalent)</label>
+            <input id="withdrawAmount" type="number" min="1" step="0.01" placeholder="Enter amount">
+
+            <label for="withdrawAddress">Your receiving wallet address</label>
+            <input id="withdrawAddress" type="text" placeholder="Enter your wallet address">
+
+            <button class="button" style="margin-top:12px;" onclick="previewWithdrawal()">Preview Withdrawal</button>
+            <div id="withdrawMessage" class="message"></div>
+          </div>
+        </div>
+
+        <div class="notice">
+          These forms are previews only. They do not submit real transactions, verify blockchain payments, change balances or send withdrawals. Confirm the asset and network carefully before making any real transfer. The displayed addresses should be verified as yours and compatible with the selected network before use.
+        </div>
+      </div>
+    </section>
+
+    <!-- ACTIVITY -->
+    <section id="activity" class="section">
+      <div class="panel">
+        <h2>Account Activity</h2>
+        <p class="muted">Preview actions made in this browser session.</p>
+        <div id="activityList">
+          <p>No activity to display yet.</p>
+        </div>
+        <div class="notice">
+          This activity list is temporary browser-session data, not a permanent transaction history.
+        </div>
+      </div>
+    </section>
+
+    <!-- ACCOUNT -->
+    <section id="account" class="section">
+      <div class="panel">
+        <h2>Account Details</h2>
+        <p class="muted">Your member account information will be connected to the database in the next stage.</p>
+        <div class="stat">
+          <div class="stat-label">Platform</div>
+          <div class="stat-value" style="font-size:17px;">REAL WEALTH EDGE</div>
+        </div>
+        <div class="stat" style="margin-top:12px;">
+          <div class="stat-label">Account Status</div>
+          <div class="stat-value" style="font-size:17px;">Demo Preview</div>
+        </div>
+      </div>
+
+      <div class="panel" id="referral">
+        <h2>Referral Program</h2>
+        <p class="muted">Grow with REAL WEALTH EDGE</p>
+
+        <h3>We Offer 10%–40% Referral Commission</h3>
+        <p>Invite others to join REAL WEALTH EDGE and explore referral commission opportunities. Share your unique referral link and grow your network as more people discover our platform.</p>
+
+        <div class="stat">
+          <div class="stat-label">Referral Commission Range</div>
+          <div class="referral-rate">10%–40%</div>
+          <p class="muted" style="font-size:13px;margin-bottom:0;">
+            Commission eligibility and applicable rates are subject to the REAL WEALTH EDGE referral program terms.
+          </p>
+        </div>
+
+        <label for="referralLink">Your Referral Link</label>
+        <input id="referralLink" type="text" readonly>
+
+        <div class="button-row">
+          <button class="button" onclick="copyReferralLink()">Copy Referral Link</button>
+          <button class="button secondary" onclick="shareReferralLink()">Share Link</button>
+        </div>
+
+        <div class="grid" style="margin-top:16px;">
+          <div class="stat">
+            <div class="stat-label">People Referred</div>
+            <div class="stat-value" id="referralCount">0</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Referral Rewards</div>
+            <div class="stat-value">$0.00</div>
+          </div>
+        </div>
+
+        <div id="referralMessage" class="message"></div>
+
+        <div class="notice">
+          Referral tracking and commission payments will become active after the referral system is connected to the database and verified investment transactions. Displaying this range does not mean commissions are currently being tracked or paid.
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      REAL WEALTH EDGE<br>
+      Member Dashboard<br>
+      Demonstration version — database integration is the next stage.
+    </footer>
+  </main>
+
+  <script>
+    const companyWallets = {
+      BNB: "0xbc623c234c4806d7423496783605bd758afb8ea8",
+      ETH: "0xbc623c234c4806d7423496783605bd758afb8ea8",
+      USDT_ERC20: "0xbc623c234c4806d7423496783605bd758afb8ea8",
+      USDT_TRC20: "TMUxNnQRpyej4WKFMizkCtRRESZBBY3VeU",
+      BTC: "1CbzWHkakA7bwikUZ4YCwmhYZN4LX5PpUm"
+    };
+
+    let selectedPlan = null;
+    let activityItems = [];
+
+    function showSection(sectionId, button) {
+      document.querySelectorAll(".section").forEach(section => {
+        section.classList.remove("active");
+      });
+
+      const target = document.getElementById(sectionId);
+      if (target) target.classList.add("active");
+
+      document.querySelectorAll(".nav button").forEach(navButton => {
+        navButton.classList.remove("active");
+      });
+
+      const activeButton = button ||
+        document.querySelector('.nav button[data-section="' + sectionId + '"]');
+
+      if (activeButton) activeButton.classList.add("active");
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function signOut() {
+      window.location.href = "login.html";
+    }
+
+    function choosePlan(name, minimum, maximum) {
+      selectedPlan = { name, minimum, maximum };
+      document.getElementById("selectedPlanName").textContent = name;
+      document.getElementById("investmentAmount").value = "";
+      document.getElementById("investmentForm").style.display = "block";
+      setMessage("investmentMessage",
+        "Enter an amount to preview this plan. This does not create an investment.",
+        "success");
+      document.getElementById("investmentForm").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
       });
     }
-  });
-}
 
-function submitDeposit(){
-  const amount=Number(document.getElementById("depositAmount").value);
-  if(!Number.isFinite(amount)||amount<=0){
-    showStatus("depositStatus","Please enter an amount greater than zero.");
-    return;
-  }
-  showStatus("depositStatus","Preview only: details have not been sent to an administrator. Your balance has not changed.");
-  addActivity("Deposit details tested — not a verified transaction");
-}
+    function previewInvestment() {
+      const amount = Number(document.getElementById("investmentAmount").value);
 
-function submitWithdrawal(){
-  const amount=Number(document.getElementById("withdrawAmount").value);
-  const address=document.getElementById("withdrawAddress").value.trim();
-  if(!Number.isFinite(amount)||amount<=0){
-    showStatus("withdrawStatus","Please enter an amount greater than zero.");
-    return;
-  }
-  if(!address){
-    showStatus("withdrawStatus","Please enter your receiving wallet address.");
-    return;
-  }
-  showStatus("withdrawStatus","Preview only: no withdrawal has been submitted to a server, approved or paid. Your balance has not changed.");
-  addActivity("Withdrawal details tested — not a paid withdrawal");
-}
+      if (!selectedPlan) {
+        setMessage("investmentMessage", "Please select a plan first.", "error");
+        return;
+      }
 
-function choosePlan(index){
-  const plan=plans[index];
-  const entered=prompt(
-    plan.name+" — "+plan.rate+" for "+plan.period+
-    ". Listed amount range: "+money(plan.min)+" to "+
-    (plan.max===null?"no listed maximum":money(plan.max))+
-    ". Enter an amount to check the range only:"
-  );
-  if(entered===null)return;
-  const amount=Number(entered);
-  if(!Number.isFinite(amount)||amount<plan.min||(plan.max!==null&&amount>plan.max)){
-    alert("Enter an amount within the listed plan range.");
-    return;
-  }
-  alert("Preview only: "+money(amount)+" fits the "+plan.name+
-    " amount range. No investment has been created and no return is promised.");
-  addActivity("Checked "+plan.name+" amount range — preview only");
-}
+      if (!Number.isFinite(amount) || amount < selectedPlan.minimum) {
+        setMessage("investmentMessage",
+          "The amount is below the minimum for this plan.", "error");
+        return;
+      }
 
-function renderPlans(){
-  const list=document.getElementById("planList");
-  plans.forEach((p,i)=>{
-    const card=document.createElement("div");
-    card.className="card";
-    card.innerHTML=
-      '<div class="plan-title"><h2></h2><span class="tag">PREVIEW</span></div>'+
-      '<div class="plan-rate"></div><p class="muted"></p><p class="muted"></p>'+
-      '<button class="primary" style="width:100%">Select plan</button>';
-    card.querySelector("h2").textContent=p.name;
-    card.querySelector(".plan-rate").textContent=p.rate;
-    card.querySelectorAll("p")[0].textContent="Listed period: "+p.period;
-    card.querySelectorAll("p")[1].textContent="Amount range: "+money(p.min)+
-      " minimum · "+(p.max===null?"No listed maximum":money(p.max)+" maximum");
-    card.querySelector("button").addEventListener("click",()=>choosePlan(i));
-    list.appendChild(card);
-  });
-}
-
-/* Preview referral link. Real member-specific links require authentication/database. */
-function prepareReferralLink(){
-  let previewCode;
-  try{
-    previewCode=localStorage.getItem("rwe_preview_referral_code");
-    if(!previewCode){
-      previewCode="RWE-"+Math.random().toString(36).slice(2,10).toUpperCase();
-      localStorage.setItem("rwe_preview_referral_code",previewCode);
-    }
-  }catch(e){
-    previewCode="RWE-PREVIEW";
-  }
-  const link=window.location.origin+window.location.pathname.replace(/dashboard\.html$/,"index.html")+
-    "?ref="+encodeURIComponent(previewCode);
-  document.getElementById("referralLink").textContent=link;
-}
-
-function copyReferralLink(){
-  copyText(
-    document.getElementById("referralLink").textContent,
-    "referralStatus",
-    "Preview link copied. Referral tracking is not yet active."
-  );
-}
-
-function goToLogin(){
-  window.location.href="login.html";
-}
-
-try{
-  const saved=sessionStorage.getItem("rwePreviewActivity");
-  if(saved)activity=JSON.parse(saved);
-}catch(e){}
-
-renderPlans();
-updateAddress();
-renderActivity();
-prepareReferralLink();
-</script>
-</body>
-  </html>
-  
+      if (selectedPlan.maximum !== null && amount > selectedPlan.maximum) {
+        setMessage("investmentMessage",
+          "The amount is above the maximum for this plan.", "err
