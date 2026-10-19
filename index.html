@@ -4,130 +4,753 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0b1426">
-  <title>REAL WEALTH EDGE | Build Your Future</title>
+  <meta name="theme-color" content="#103b78">
+  <meta name="description" content="Discover REAL WEALTH EDGE, an investment platform concept focused on digital assets, account management and transparent investment information.">
+  <title>REAL WEALTH EDGE | Investment Platform</title>
+
   <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0b1426;
-      color: #ffffff;
+    :root {
+      --blue: #103b78;
+      --deep-blue: #08254d;
+      --light-blue: #edf5ff;
+      --white: #ffffff;
+      --gold: #d9a83e;
+      --text: #243247;
+      --muted: #63738a;
+      --border: #e1e9f3;
     }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
     header {
-      padding: 22px 18px;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      min-height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid #26344c;
+      gap: 12px;
     }
-    .brand { font-size: 18px; font-weight: bold; color: #f4c45e; }
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 12px;
-      font-size: 13px;
+
+    .brand {
+      color: var(--blue);
+      font-weight: 800;
+      font-size: 19px;
+      line-height: 1.2;
     }
-    .hero {
-      text-align: center;
-      padding: 85px 22px 65px;
-    }
-    .tag {
-      color: #f4c45e;
+
+    .brand span {
+      display: block;
+      color: var(--gold);
+      font-size: 10px;
       letter-spacing: 3px;
-      font-size: 12px;
+      margin-top: 5px;
     }
-    h1 { font-size: 38px; line-height: 1.2; margin: 20px 0; }
-    h1 span { color: #f4c45e; }
-    .hero p {
-      color: #bdc8da;
-      line-height: 1.8;
-      max-width: 520px;
-      margin: 0 auto 28px;
-    }
-    .button {
-      display: inline-block;
-      background: #f4c45e;
-      color: #101a2c;
-      padding: 14px 25px;
-      border-radius: 6px;
-      text-decoration: none;
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 13px;
       font-weight: bold;
     }
-    .features {
-      padding: 35px 20px 55px;
-      background: #111e33;
-      text-align: center;
+
+    .nav-links a {
+      color: var(--blue);
     }
-    .features h2 { margin-bottom: 25px; }
+
+    .button {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 7px;
+      font-weight: bold;
+      font-size: 14px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .button-primary {
+      background: var(--blue);
+      color: white !important;
+    }
+
+    .button-outline {
+      border: 1px solid var(--blue);
+      color: var(--blue) !important;
+    }
+
+    .hero {
+      background: linear-gradient(125deg, #08254d, #1456a0);
+      color: white;
+      padding: 82px 0 76px;
+      overflow: hidden;
+    }
+
+    .eyebrow {
+      color: #f0cb70;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(35px, 6vw, 58px);
+      line-height: 1.15;
+      margin: 18px 0;
+      max-width: 760px;
+    }
+
+    .hero p {
+      color: #e1ebfa;
+      max-width: 660px;
+      font-size: 17px;
+      margin-bottom: 26px;
+    }
+
+    .hero .button-primary {
+      background: var(--gold);
+      color: var(--deep-blue) !important;
+      margin-right: 8px;
+    }
+
+    .hero .button-outline {
+      color: white !important;
+      border-color: #b8d3f7;
+    }
+
+    .hero-note {
+      font-size: 12px !important;
+      margin-top: 24px;
+      margin-bottom: 0 !important;
+    }
+
+    section {
+      padding: 65px 0;
+      scroll-margin-top: 85px;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 34px;
+    }
+
+    .section-heading h2 {
+      color: var(--deep-blue);
+      font-size: clamp(27px, 4vw, 36px);
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    .about {
+      background: var(--light-blue);
+    }
+
     .cards {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-      max-width: 850px;
-      margin: auto;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
     }
+
     .card {
-      padding: 24px;
-      border: 1px solid #30415b;
-      border-radius: 10px;
-      text-align: left;
+      background: white;
+      padding: 26px 22px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 5px 18px rgba(8, 37, 77, 0.05);
     }
-    .card h3 { color: #f4c45e; }
-    .card p { color: #bdc8da; line-height: 1.7; }
-    footer {
-      padding: 24px;
+
+    .card-icon {
+      display: inline-flex;
+      width: 45px;
+      height: 45px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      background: var(--light-blue);
+      color: var(--blue);
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      color: var(--blue);
+      font-size: 19px;
+      margin-bottom: 9px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .plans {
+      background: #f7faff;
+    }
+
+    .plan-name {
+      font-size: 12px;
+      font-weight: bold;
+      color: #a87617;
+      letter-spacing: 2px;
+    }
+
+    .plan-amount {
+      color: var(--deep-blue);
+      font-size: 25px;
+      font-weight: bold;
+      margin: 13px 0;
+    }
+
+    .plan-details {
+      list-style: none;
+      margin: 18px 0;
+      font-size: 14px;
+    }
+
+    .plan-details li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .status {
+      display: block;
+      padding: 10px;
+      background: #fff6df;
+      color: #76520b;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    .notice {
+      margin-top: 24px;
+      padding: 18px;
+      border-left: 4px solid var(--gold);
+      background: #fffaf0;
+      border-radius: 5px;
+      font-size: 13px;
+      color: #614c24;
+    }
+
+    .steps {
+      counter-reset: step;
+    }
+
+    .step {
+      position: relative;
+      padding-left: 58px;
+      margin-bottom: 23px;
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 2px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--blue);
+      color: white;
+      font-weight: bold;
+    }
+
+    .step h3 {
+      color: var(--blue);
+      margin-bottom: 4px;
+    }
+
+    .step p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .referral {
+      background: var(--light-blue);
+    }
+
+    .faq-item {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-item h3 {
+      color: var(--blue);
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .faq-item p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .contact-box {
+      background: var(--deep-blue);
+      color: white;
+      padding: 34px 24px;
+      border-radius: 12px;
       text-align: center;
-      color: #aab6c9;
+    }
+
+    .contact-box h2 {
+      margin-bottom: 10px;
+    }
+
+    .contact-box p {
+      color: #dce8f8;
+      margin-bottom: 20px;
+    }
+
+    footer {
+      background: #061a35;
+      color: #dce8f8;
+      padding: 35px 0;
+      text-align: center;
       font-size: 12px;
     }
-    @media (min-width: 600px) {
-      h1 { font-size: 54px; }
-      .cards { grid-template-columns: repeat(3, 1fr); }
+
+    footer a {
+      color: #f0cb70;
+      margin: 0 7px;
+    }
+
+    footer p {
+      margin-top: 10px;
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        flex-wrap: wrap;
+        padding: 15px 0;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: space-between;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .nav-links .button {
+        padding: 9px 12px;
+      }
+
+      .hero {
+        padding: 62px 0;
+      }
+
+      section {
+        padding: 48px 0;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 24px;
+      }
     }
   </style>
 </head>
+
 <body>
+
   <header>
-    <div class="brand">REAL WEALTH EDGE</div>
-    <nav><a href="index.html">Home</a><a href="login.html">Login</a></nav>
+    <div class="container nav">
+      <a class="brand" href="#home">
+        REAL WEALTH EDGE
+        <span>INVESTMENT PLATFORM</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#plans">Plans</a>
+        <a href="#how-it-works">How It Works</a>
+        <a class="button button-outline" href="login.html">Login</a>
+        <a class="button button-primary" href="login.html">Register</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="tag">YOUR FUTURE STARTS HERE</div>
-      <h1>BUILD WEALTH.<br><span>BUILD YOUR FUTURE.</span></h1>
-      <p>
-        Welcome to REAL WEALTH EDGE. Explore our platform
-        concept and discover tools designed to help you
-        plan for your financial future.
-      </p>
-      <a class="button" href="login.html">Get Started</a>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="eyebrow">Your ambition. Your strategy. Your future.</div>
+        <h1>A Smarter Approach to Strategic Investing</h1>
+        <p>
+          Discover the vision behind REAL WEALTH EDGE, an investment
+          platform concept focused on digital assets, thoughtful planning,
+          account management and a clear customer experience.
+        </p>
+        <a class="button button-primary" href="#about">Discover Our Approach</a>
+        <a class="button button-outline" href="login.html">Client Login</a>
+        <p class="hero-note">
+          A platform in development, designed with clarity and customer
+          experience in mind.
+        </p>
+      </div>
     </section>
 
-    <section class="features">
-      <h2>Explore Our Platform</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>Investment Plans</h3>
-          <p>Explore investment plan information as the platform develops.</p>
+    <section class="about" id="about">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Welcome to REAL WEALTH EDGE</h2>
+          <p>
+            A vision for a more organised online investment experience.
+          </p>
         </div>
-        <div class="card">
-          <h3>Customer Wallet</h3>
-          <p>A planned space for viewing balances and transaction history.</p>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon">◆</div>
+            <h3>About Us</h3>
+            <p>
+              Our vision is to develop an accessible platform where people
+              can learn about investment opportunities, digital assets and
+              account management in one organised online environment.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">◎</div>
+            <h3>Our Vision</h3>
+            <p>
+              We aim to build a service centred on clear information,
+              thoughtful product design, responsible innovation and
+              continuous improvement.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">◇</div>
+            <h3>Our Approach</h3>
+            <p>
+              We believe customers should be able to review product
+              information, understand applicable terms and access clear
+              records before making financial decisions.
+            </p>
+          </article>
         </div>
-        <div class="card">
-          <h3>Account Access</h3>
-          <p>A dedicated login page will be developed for customer accounts.</p>
+      </div>
+    </section>
+
+    <section id="why-us">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Why Choose REAL WEALTH EDGE?</h2>
+          <p>
+            A planned customer experience built around accessibility,
+            clear information and organised account services.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon">◷</div>
+            <h3>Online Access</h3>
+            <p>
+              A design intended to make platform information accessible
+              from supported devices.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">▣</div>
+            <h3>Account Management</h3>
+            <p>
+              A planned account area for profiles, activity records and
+              available customer services.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">✓</div>
+            <h3>Security by Design</h3>
+            <p>
+              Secure authentication, protected data and transaction
+              verification are priorities for the future implementation.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="plans" id="plans">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Our Investment Plans</h2>
+          <p>
+            An overview of the proposed plan structure. Product details
+            and financial terms must be verified before launch.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="plan-name">BRONZE PLAN</div>
+            <div class="plan-amount">Starting at $100</div>
+            <ul class="plan-details">
+              <li>Proposed duration: 4 days</li>
+              <li>Proposed minimum: $100</li>
+              <li>Proposed maximum: $29,999</li>
+              <li>Return terms: pending verification</li>
+            </ul>
+            <span class="status">Preview only — not open for investment</span>
+          </article>
+
+          <article class="card">
+            <div class="plan-name">SILVER PLAN</div>
+            <div class="plan-amount">Starting at $30,000</div>
+            <ul class="plan-details">
+              <li>Proposed duration: 7 days</li>
+              <li>Proposed minimum: $30,000</li>
+              <li>Proposed maximum: $69,999</li>
+              <li>Return terms: pending verification</li>
+            </ul>
+            <span class="status">Preview only — not open for investment</span>
+          </article>
+
+          <article class="card">
+            <div class="plan-name">GOLD PLAN</div>
+            <div class="plan-amount">Starting at $70,000</div>
+            <ul class="plan-details">
+              <li>Proposed duration: 14 days</li>
+              <li>Proposed minimum: $70,000</li>
+              <li>Proposed maximum: to be confirmed</li>
+              <li>Return terms: pending verification</li>
+            </ul>
+            <span class="status">Preview only — not open for investment</span>
+          </article>
+        </div>
+
+        <div class="notice">
+          The plans shown are preliminary examples, not active investment
+          offers. Returns, fees, eligibility, risks and other terms must
+          be established and clearly disclosed before any investment
+          service is offered.
+        </div>
+      </div>
+    </section>
+
+    <section id="how-it-works">
+      <div class="container">
+        <div class="section-heading">
+          <h2>How It Works</h2>
+          <p>The planned customer journey.</p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <h3>Registration</h3>
+            <p>Create a customer account once secure registration is available.</p>
+          </div>
+          <div class="step">
+            <h3>Review Available Plans</h3>
+            <p>Read the product information, fees, eligibility and applicable terms.</p>
+          </div>
+          <div class="step">
+            <h3>Fund Your Account</h3>
+            <p>Use verified deposit instructions after supported payment systems are activated.</p>
+          </div>
+          <div class="step">
+            <h3>Monitor Account Activity</h3>
+            <p>Review verified balances and transaction records in your account.</p>
+          </div>
+          <div class="step">
+            <h3>Request a Withdrawal</h3>
+            <p>Submit a request through the secure withdrawal system when available.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="referral" id="referrals">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Referral Opportunities</h2>
+          <p>
+            Learn about the proposed referral programme and its conditions.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon">↗</div>
+            <h3>Share & Connect</h3>
+            <p>
+              A planned referral feature will help members share the
+              platform with interested people.
+            </p>
+          </article>
+          <article class="card">
+            <div class="card-icon">%</div>
+            <h3>Commission Terms</h3>
+            <p>
+              Commission rates, eligibility, qualifying activities and
+              payment conditions must be confirmed before launch.
+            </p>
+          </article>
+          <article class="card">
+            <div class="card-icon">♧</div>
+            <h3>Clear Programme Rules</h3>
+            <p>
+              The final programme will need clear written rules explaining
+              how qualifying referrals are counted.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="accounts">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Account Management</h2>
+          <p>
+            The planned dashboard will bring account details, investment
+            records and supported services together in one place.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <h3>Personal Profile</h3>
+            <p>View and update account information through secure account settings.</p>
+          </article>
+          <article class="card">
+            <h3>Transaction History</h3>
+            <p>Review verified deposits, withdrawals and account activity when implemented.</p>
+          </article>
+          <article class="card">
+            <h3>Digital Asset Support</h3>
+            <p>Cryptocurrency networks will be listed only after integration and testing.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Frequently Asked Questions</h2>
+          <p>Some useful information about the planned platform.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>How do I join REAL WEALTH EDGE?</h3>
+          <p>
+            Online registration is planned. Customer accounts are not
+            active on this demonstration website yet.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>How do I choose an investment plan?</h3>
+          <p>
+            Review the final plan details and terms when verified
+            investment products become available.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Can I deposit cryptocurrency?</h3>
+          <p>
+            Cryptocurrency deposits are planned, subject to supported
+            networks, payment infrastructure and security testing.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Can I withdraw funds?</h3>
+          <p>
+            A withdrawal feature requires a secure backend, verified
+            balances and an operational payment system. It is not active yet.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>How can I contact customer support?</h3>
+          <p>
+            Contact information will be published when the official
+            customer support channel is established.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <h2>Building the Future of REAL WEALTH EDGE</h2>
+          <p>
+            We are developing the platform and its customer services.
+            Official support and service details will be published when ready.
+          </p>
+          <a class="button button-primary" href="login.html">Visit Login Page</a>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    &copy; 2026 REAL WEALTH EDGE. All rights reserved.
-    <p>This website is under development. No financial transactions are processed here.</p>
+    <div class="container">
+      <div class="brand" style="color:white">REAL WEALTH EDGE</div>
+      <p>© 2026 REAL WEALTH EDGE. All rights reserved.</p>
+      <p>
+        <a href="#about">About</a>
+        <a href="#plans">Plans</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </p>
+      <p>
+        This website is a platform preview. Account, deposit, investment
+        and withdrawal services are not yet active.
+      </p>
+    </div>
   </footer>
+
 </body>
   </html>
-          
+  
