@@ -4,197 +4,254 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Member Dashboard | REAL WEALTH EDGE</title>
+<title>Investment Dashboard | REAL WEALTH EDGE</title>
 <style>
-:root{--navy:#102b50;--blue:#1769d2;--light:#f3f7fc;--white:#fff;--text:#23344d;--muted:#6c7b90;--border:#e0e8f2}
+:root{--navy:#102b50;--blue:#1769d2;--light:#f3f7fc;--white:#fff;--text:#23344d;--muted:#6c7b90;--border:#e0e8f2;--green:#157347}
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--light);color:var(--text)}
-header{background:var(--navy);color:white;padding:19px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.brand{font-size:19px;font-weight:800;letter-spacing:.4px}
-.brand small{display:block;color:#b9d4f7;font-size:11px;margin-top:5px;letter-spacing:1.5px}
+header{background:var(--navy);color:white;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{font-size:18px;font-weight:800;letter-spacing:.4px}
+.brand small{display:block;font-size:10px;color:#c6dcfa;margin-top:5px;letter-spacing:1px}
 header a{color:white;text-decoration:none;font-size:13px}
-main{max-width:1100px;margin:auto;padding:24px 16px 50px}
-h1{font-size:25px;margin:0 0 8px}
-h2{font-size:19px;margin:0 0 16px}
+main{max-width:1000px;margin:auto;padding:22px 14px 45px}
+h1{font-size:25px;margin:5px 0 8px}
+h2{font-size:20px;margin:0 0 12px}
+h3{font-size:17px;margin:8px 0}
 p{line-height:1.55}
 .muted{color:var(--muted);font-size:13px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px;margin:22px 0}
-.card{background:white;border:1px solid var(--border);border-radius:14px;padding:19px;box-shadow:0 4px 14px #16365b08}
-.stat-label{font-size:13px;color:var(--muted)}
-.stat-value{font-size:25px;font-weight:800;margin-top:12px;color:var(--navy)}
-.section{margin-top:30px}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}
-button,.btn{background:var(--blue);color:white;border:0;border-radius:8px;padding:12px 16px;font-weight:700;cursor:pointer;display:inline-block;font-size:14px}
-button.secondary,.btn.secondary{background:white;color:var(--blue);border:1px solid var(--blue)}
+.card{background:white;border:1px solid var(--border);border-radius:14px;padding:18px;margin:16px 0;box-shadow:0 4px 14px #16365b08}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:14px;margin:20px 0}
+.stat{background:white;border:1px solid var(--border);border-radius:12px;padding:16px}
+.stat strong{display:block;font-size:22px;color:var(--navy);margin-top:10px}
+.actions{display:flex;flex-wrap:wrap;gap:9px;margin:18px 0}
+button,.btn{border:0;border-radius:8px;background:var(--blue);color:white;padding:12px 15px;font-weight:700;font-size:14px;cursor:pointer;text-decoration:none;display:inline-block}
+button.secondary{background:white;color:var(--blue);border:1px solid var(--blue)}
 button:disabled{opacity:.5;cursor:not-allowed}
-label{display:block;font-weight:700;font-size:13px;margin:14px 0 7px}
-input,select{width:100%;padding:12px;border:1px solid #cdd8e7;border-radius:8px;background:white;font-size:14px;color:var(--text)}
-.notice{padding:13px 14px;background:#edf5ff;border:1px solid #cfe2fc;border-radius:9px;font-size:13px;line-height:1.55;margin:12px 0}
-.wallet{background:#f7f9fc;border:1px dashed #9aadc5;border-radius:9px;padding:13px;overflow-wrap:anywhere;font-size:13px}
-.pill{display:inline-block;background:#edf3fb;color:#315579;padding:5px 9px;border-radius:20px;font-size:11px;font-weight:700}
-.plan-title{font-size:20px;font-weight:800;margin:12px 0 7px;color:var(--navy)}
-.plan-rate{font-size:26px;font-weight:800;color:var(--blue);margin:12px 0 5px}
-.plan-duration{font-size:13px;color:var(--muted);margin-bottom:15px}
-.plan-detail{padding:11px 0;border-bottom:1px solid var(--border);font-size:13px;display:flex;justify-content:space-between;gap:10px}
-.plan-detail:last-of-type{border-bottom:0}
-.plan-button{width:100%;margin-top:16px}
-.hidden{display:none}
-.status{margin-top:12px;font-size:13px;line-height:1.5}
-table{width:100%;border-collapse:collapse;font-size:13px}
-th,td{text-align:left;padding:12px 9px;border-bottom:1px solid var(--border)}
-th{color:var(--muted);font-weight:700}
-.table-wrap{overflow-x:auto}
-.plan-icon{font-size:25px}
+label{display:block;font-size:13px;font-weight:700;margin:14px 0 7px}
+input,select{width:100%;padding:12px;border:1px solid #cdd8e7;border-radius:8px;background:white;font-size:15px;color:var(--text)}
+input:focus,select:focus{outline:2px solid #b9d5ff;border-color:var(--blue)}
+.plan-rate{font-size:25px;font-weight:800;color:var(--blue);margin:12px 0 5px}
+.pill{display:inline-block;border-radius:20px;background:#edf3fb;color:#315579;font-size:11px;padding:6px 9px;font-weight:700}
+.plan-line{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px}
+.plan-line:last-of-type{border-bottom:0}
+.plan-card button{width:100%;margin-top:15px}
+.step{display:none}
+.step.active{display:block}
+.progress{display:flex;gap:6px;margin:17px 0 22px}
+.progress span{height:5px;flex:1;background:#dce5f0;border-radius:8px}
+.progress span.done{background:var(--blue)}
+.notice{background:#edf5ff;border:1px solid #cfe2fc;border-radius:9px;padding:13px;font-size:13px;line-height:1.55;margin:14px 0}
+.warning{background:#fff8e8;border:1px solid #f0d9a1;border-radius:9px;padding:13px;font-size:13px;line-height:1.55;margin:14px 0}
+.wallet-address{padding:13px;background:#f7f9fc;border:1px dashed #9aadc5;border-radius:9px;overflow-wrap:anywhere;font-size:14px;font-weight:700;line-height:1.6}
+.wallet-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.wallet-actions button{flex:1}
+.hidden{display:none!important}
+.status{font-size:13px;line-height:1.55;margin-top:12px}
+.success{color:var(--green)}
 footer{text-align:center;padding:24px;color:var(--muted);font-size:12px}
-@media(max-width:520px){main{padding:20px 12px 40px}.stat-value{font-size:22px}header{padding:16px}.brand{font-size:16px}}
+hr{border:0;border-top:1px solid var(--border);margin:18px 0}
+@media(max-width:480px){header{padding:15px}.brand{font-size:16px}main{padding:18px 11px 35px}.card{padding:15px}.plan-rate{font-size:23px}}
 </style>
 </head>
 <body>
+
 <header>
-  <div class="brand">REAL WEALTH EDGE
+  <div class="brand">
+    REAL WEALTH EDGE
     <small>BUILDING OPPORTUNITIES. EMPOWERING FINANCIAL GROWTH.</small>
   </div>
-  <a href="login.html" id="logoutLink">Log out</a>
+  <a href="login.html">Member Login</a>
 </header>
 
 <main>
   <p class="muted">MEMBER PORTAL</p>
-  <h1>Welcome to your dashboard</h1>
-  <p class="muted" id="memberEmail">Member account</p>
+  <h1>Investment Dashboard</h1>
+  <p class="muted">Choose a plan and follow the steps to prepare your investment payment request.</p>
 
   <div class="grid">
-    <div class="card">
-      <div class="stat-label">Available Balance</div>
-      <div class="stat-value">—</div>
-      <p class="muted">Your account balance will appear here when connected.</p>
+    <div class="stat">
+      <span class="muted">Available Balance</span>
+      <strong>—</strong>
+      <p class="muted">Account connection pending</p>
     </div>
-    <div class="card">
-      <div class="stat-label">Total Invested</div>
-      <div class="stat-value">—</div>
-      <p class="muted">Your investment records will appear here when connected.</p>
-    </div>
-    <div class="card">
-      <div class="stat-label">Account Status</div>
-      <div class="stat-value" style="font-size:20px">Member</div>
-      <p class="muted">Your member account area.</p>
+    <div class="stat">
+      <span class="muted">Total Invested</span>
+      <strong>—</strong>
+      <p class="muted">Account connection pending</p>
     </div>
   </div>
 
   <div class="actions">
-    <button onclick="showSection('deposit')">Deposit</button>
-    <button class="secondary" onclick="showSection('withdraw')">Withdraw</button>
-    <button class="secondary" onclick="showSection('plans')">Investment Plans</button>
-    <button class="secondary" onclick="showSection('history')">Transactions</button>
+    <button class="secondary" onclick="goTo('plans')">Investment Plans</button>
+    <button class="secondary" onclick="goTo('investmentFlow')">Payment Steps</button>
+    <button class="secondary" onclick="goTo('withdrawal')">Withdrawals</button>
   </div>
 
-  <section class="section card" id="deposit">
-    <h2>Make a Deposit</h2>
-    <p class="muted">Select your cryptocurrency and network, send funds to the official company wallet, and submit the transaction ID for review.</p>
-    <div class="notice">Company wallet addresses have not been configured yet. No deposit address is available until the correct company wallets are added and verified.</div>
-    <form id="depositForm">
-      <label for="depositAsset">Cryptocurrency</label>
-      <select id="depositAsset" required>
-        <option value="">Select cryptocurrency</option>
-        <option>Bitcoin (BTC)</option>
-        <option>Ethereum (ETH)</option>
-        <option>USDT</option>
-        <option>BNB</option>
-      </select>
-      <label for="depositNetwork">Network</label>
-      <select id="depositNetwork" required><option value="">Select network</option></select>
-      <label for="depositAmount">Amount sent</label>
-      <input id="depositAmount" type="number" min="0.00000001" step="any" placeholder="Enter amount" required>
-      <label for="txid">Transaction ID (TXID / hash)</label>
-      <input id="txid" type="text" placeholder="Paste transaction ID" required>
-      <button type="submit" disabled>Submit Deposit — Setup Required</button>
-      <div class="status muted" id="depositMessage">Deposit submission will be enabled after secure database and wallet setup.</div>
-    </form>
-  </section>
-
-  <section class="section card" id="withdraw">
-    <h2>Request a Withdrawal</h2>
-    <p class="muted">Enter the amount and your receiving wallet details. You will be able to submit the request once the secure system is connected.</p>
-    <form id="withdrawForm">
-      <label for="withdrawAsset">Cryptocurrency</label>
-      <select id="withdrawAsset" required>
-        <option value="">Select cryptocurrency</option>
-        <option>Bitcoin (BTC)</option>
-        <option>Ethereum (ETH)</option>
-        <option>USDT</option>
-        <option>BNB</option>
-      </select>
-      <label for="withdrawNetwork">Network</label>
-      <select id="withdrawNetwork" required><option value="">Select network</option></select>
-      <label for="withdrawAmount">Withdrawal amount</label>
-      <input id="withdrawAmount" type="number" min="0.00000001" step="any" placeholder="Enter amount" required>
-      <label for="withdrawWallet">Your receiving wallet address</label>
-      <input id="withdrawWallet" type="text" placeholder="Paste your wallet address" required>
-      <button type="submit" disabled>Submit Withdrawal — Setup Required</button>
-      <div class="status muted">Withdrawal processing will be enabled after secure database setup.</div>
-    </form>
-  </section>
-
-  <section class="section" id="plans">
-    <h2>Our Investment Plans</h2>
-    <p class="muted">Choose the plan that matches your intended deposit amount.</p>
+  <section id="plans">
+    <h2>Choose Your Investment Plan</h2>
+    <p class="muted">Select a plan to continue to the amount and payment steps.</p>
 
     <div class="grid">
-      <div class="card">
-        <div class="plan-icon">🌱</div>
+      <div class="card plan-card">
         <span class="pill">PLAN 01</span>
-        <p class="plan-title">Trial Plan</p>
+        <h3>Trial Plan</h3>
         <div class="plan-rate">2.5% daily</div>
-        <div class="plan-duration">Duration: 4 days</div>
-        <div class="plan-detail"><span>Minimum deposit</span><strong>$20</strong></div>
-        <div class="plan-detail"><span>Maximum deposit</span><strong>$99</strong></div>
-        <button class="plan-button" onclick="selectPlan('Trial Plan',20,99)">Select Trial Plan</button>
+        <p class="muted">Duration: 4 days</p>
+        <div class="plan-line"><span>Minimum deposit</span><strong>$20</strong></div>
+        <div class="plan-line"><span>Maximum deposit</span><strong>$99</strong></div>
+        <button onclick="choosePlan('Trial Plan',2.5,4,20,99)">Select Trial Plan</button>
       </div>
 
-      <div class="card">
-        <div class="plan-icon">🥉</div>
+      <div class="card plan-card">
         <span class="pill">PLAN 02</span>
-        <p class="plan-title">Bronze Plan</p>
+        <h3>Bronze Plan</h3>
         <div class="plan-rate">4% daily</div>
-        <div class="plan-duration">Duration: 4 days</div>
-        <div class="plan-detail"><span>Minimum deposit</span><strong>$100</strong></div>
-        <div class="plan-detail"><span>Maximum deposit</span><strong>$29,999</strong></div>
-        <button class="plan-button" onclick="selectPlan('Bronze Plan',100,29999)">Select Bronze Plan</button>
+        <p class="muted">Duration: 4 days</p>
+        <div class="plan-line"><span>Minimum deposit</span><strong>$100</strong></div>
+        <div class="plan-line"><span>Maximum deposit</span><strong>$29,999</strong></div>
+        <button onclick="choosePlan('Bronze Plan',4,4,100,29999)">Select Bronze Plan</button>
       </div>
 
-      <div class="card">
-        <div class="plan-icon">🥈</div>
+      <div class="card plan-card">
         <span class="pill">PLAN 03</span>
-        <p class="plan-title">Silver Plan</p>
+        <h3>Silver Plan</h3>
         <div class="plan-rate">6% daily</div>
-        <div class="plan-duration">Duration: 7 days</div>
-        <div class="plan-detail"><span>Minimum deposit</span><strong>$30,000</strong></div>
-        <div class="plan-detail"><span>Maximum deposit</span><strong>$69,999</strong></div>
-        <button class="plan-button" onclick="selectPlan('Silver Plan',30000,69999)">Select Silver Plan</button>
+        <p class="muted">Duration: 7 days</p>
+        <div class="plan-line"><span>Minimum deposit</span><strong>$30,000</strong></div>
+        <div class="plan-line"><span>Maximum deposit</span><strong>$69,999</strong></div>
+        <button onclick="choosePlan('Silver Plan',6,7,30000,69999)">Select Silver Plan</button>
       </div>
 
-      <div class="card">
-        <div class="plan-icon">🥇</div>
+      <div class="card plan-card">
         <span class="pill">PLAN 04</span>
-        <p class="plan-title">Gold Plan</p>
+        <h3>Gold Plan</h3>
         <div class="plan-rate">8% daily</div>
-        <div class="plan-duration">Duration: 14 days</div>
-        <div class="plan-detail"><span>Minimum deposit</span><strong>$70,000</strong></div>
-        <div class="plan-detail"><span>Maximum deposit</span><strong>Unlimited</strong></div>
-        <button class="plan-button" onclick="selectPlan('Gold Plan',70000,Infinity)">Select Gold Plan</button>
+        <p class="muted">Duration: 14 days</p>
+        <div class="plan-line"><span>Minimum deposit</span><strong>$70,000</strong></div>
+        <div class="plan-line"><span>Maximum deposit</span><strong>Unlimited</strong></div>
+        <button onclick="choosePlan('Gold Plan',8,14,70000,Infinity)">Select Gold Plan</button>
       </div>
     </div>
-    <div id="planMessage" class="notice hidden" aria-live="polite"></div>
   </section>
 
-  <section class="section card" id="history">
-    <h2>Recent Transactions</h2>
-    <p class="muted">Your deposit and withdrawal records will appear here after the secure database is connected.</p>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Type</th><th>Asset</th><th>Amount</th><th>Status</th></tr></thead>
-        <tbody><tr><td colspan="4" class="muted">No transaction records to display.</td></tr></tbody>
-      </table>
+  <section id="investmentFlow" class="card hidden">
+    <h2>Investment Payment Process</h2>
+    <p class="muted">Complete each step in order.</p>
+
+    <div class="progress" aria-label="Progress">
+      <span id="p1" class="done"></span>
+      <span id="p2"></span>
+      <span id="p3"></span>
+      <span id="p4"></span>
     </div>
+
+    <div id="step1" class="step active">
+      <span class="pill">STEP 1 OF 4</span>
+      <h3>Confirm Your Plan</h3>
+      <div class="notice" id="chosenPlan">Choose an investment plan above to begin.</div>
+      <label for="usdAmount">Investment amount (USD)</label>
+      <input id="usdAmount" type="number" min="20" step="0.01" placeholder="Enter amount in USD">
+      <p class="muted" id="amountHint">Choose a plan first. The permitted amount range will appear here.</p>
+      <button onclick="continueAmount()">Continue to payment method</button>
+      <button class="secondary" onclick="goTo('plans')">Back to plans</button>
+      <div id="amountError" class="status" role="alert"></div>
+    </div>
+
+    <div id="step2" class="step">
+      <span class="pill">STEP 2 OF 4</span>
+      <h3>Select Payment Method</h3>
+      <p class="muted">Choose the exact cryptocurrency and network you will use to send the payment.</p>
+      <label for="asset">Cryptocurrency</label>
+      <select id="asset">
+        <option value="">Choose cryptocurrency</option>
+        <option value="BNB">BNB</option>
+        <option value="ETH">Ethereum (ETH)</option>
+        <option value="USDT_ERC20">USDT — Ethereum (ERC20)</option>
+        <option value="USDT_TRC20">USDT — TRON (TRC20)</option>
+        <option value="BTC">Bitcoin (BTC)</option>
+      </select>
+      <div class="notice">Only send the selected asset through the exact network shown on the next screen. Do not send a different cryptocurrency to this address.</div>
+      <button onclick="continueAsset()">Show company wallet</button>
+      <button class="secondary" onclick="showStep(1)">Back</button>
+      <div id="assetError" class="status" role="alert"></div>
+    </div>
+
+    <div id="step3" class="step">
+      <span class="pill">STEP 3 OF 4</span>
+      <h3>Company Deposit Wallet</h3>
+      <p>Selected plan: <strong id="summaryPlan"></strong></p>
+      <p>Investment amount: <strong id="summaryAmount"></strong></p>
+      <p>Payment method: <strong id="summaryAsset"></strong></p>
+
+      <label>Company wallet address</label>
+      <div id="walletAddress" class="wallet-address"></div>
+      <div class="wallet-actions">
+        <button onclick="copyWallet()">Copy Wallet Address</button>
+      </div>
+      <div class="notice">
+        Send the selected cryptocurrency using the network displayed above. Enter the actual amount sent in the next step. The USD investment amount and the cryptocurrency transfer amount may differ because exchange rates change.
+      </div>
+      <p class="muted" id="networkReminder"></p>
+      <button onclick="showStep(4)">I have made the payment</button>
+      <button class="secondary" onclick="showStep(2)">Back</button>
+      <div id="copyMessage" class="status" aria-live="polite"></div>
+    </div>
+
+    <div id="step4" class="step">
+      <span class="pill">STEP 4 OF 4</span>
+      <h3>Submit Transaction Details</h3>
+      <p class="muted">After sending your payment, provide the transaction details below.</p>
+      <form id="transactionForm">
+        <label for="cryptoAmount">Cryptocurrency amount sent</label>
+        <input id="cryptoAmount" type="number" min="0.00000001" step="any" placeholder="Enter actual amount sent" required>
+
+        <label for="txid">Transaction ID (TXID / hash)</label>
+        <input id="txid" type="text" placeholder="Paste transaction ID" required>
+
+        <label for="memberEmail">Your email address</label>
+        <input id="memberEmail" type="email" placeholder="Enter your account email" required>
+
+        <button type="submit">Prepare Deposit Request</button>
+      </form>
+
+      <div id="submissionMessage" class="notice hidden" role="status"></div>
+      <div class="warning">
+        This page is not yet connected to the secure member database or administrator dashboard. Pressing the button will prepare a preview only; it will not transmit your request, verify payment, or credit an account.
+      </div>
+      <button class="secondary" onclick="showStep(3)">Back to wallet details</button>
+    </div>
+  </section>
+
+  <section id="withdrawal" class="card">
+    <h2>Withdrawal Requests</h2>
+    <p class="muted">Members will be able to enter their receiving wallet address, select the cryptocurrency and network, and request a withdrawal.</p>
+    <form id="withdrawalForm">
+      <label for="withdrawAsset">Cryptocurrency</label>
+      <select id="withdrawAsset" required>
+        <option value="">Choose cryptocurrency</option>
+        <option value="BNB">BNB</option>
+        <option value="ETH">Ethereum (ETH)</option>
+        <option value="USDT_ERC20">USDT — Ethereum (ERC20)</option>
+        <option value="USDT_TRC20">USDT — TRON (TRC20)</option>
+        <option value="BTC">Bitcoin (BTC)</option>
+      </select>
+
+      <label for="withdrawAmount">Withdrawal amount</label>
+      <input id="withdrawAmount" type="number" min="0.00000001" step="any" placeholder="Enter amount" required>
+
+      <label for="withdrawWallet">Your receiving wallet address</label>
+      <input id="withdrawWallet" type="text" placeholder="Paste your receiving wallet address" required>
+
+      <button type="submit">Prepare Withdrawal Request</button>
+      <div id="withdrawMessage" class="status" aria-live="polite"></div>
+    </form>
+    <div class="notice">Withdrawal requests will need to be connected to a secure database before they can reach the administrator for review and manual payment.</div>
+  </section>
+
+  <section class="card">
+    <h2>Transaction History</h2>
+    <p class="muted">Deposit and withdrawal records will appear here after the secure database connection is implemented.</p>
+    <div class="notice">No connected transaction records are available yet.</div>
   </section>
 </main>
 
@@ -203,56 +260,178 @@ footer{text-align:center;padding:24px;color:var(--muted);font-size:12px}
 <script>
 document.getElementById("year").textContent = new Date().getFullYear();
 
-function showSection(id) {
-  const section = document.getElementById(id);
-  if (section) section.scrollIntoView({behavior:"smooth",block:"start"});
-}
-
-function selectPlan(name,minimum,maximum) {
-  const message = document.getElementById("planMessage");
-  message.classList.remove("hidden");
-  message.textContent = name + " selected. The permitted deposit range is $" +
-    minimum.toLocaleString("en-US") + " to " +
-    (maximum === Infinity ? "unlimited" : "$" + maximum.toLocaleString("en-US")) +
-    ". Plan activation is not connected yet. No investment has been created.";
-  message.scrollIntoView({behavior:"smooth",block:"center"});
-}
-
-const networks = {
-  "Bitcoin (BTC)": ["Bitcoin"],
-  "Ethereum (ETH)": ["Ethereum (ERC20)"],
-  "USDT": ["Ethereum (ERC20)","BNB Smart Chain (BEP20)","Tron (TRC20)"],
-  "BNB": ["BNB Smart Chain (BEP20)"]
+const plans = {
+  "Trial Plan": {rate:2.5,days:4,min:20,max:99},
+  "Bronze Plan": {rate:4,days:4,min:100,max:29999},
+  "Silver Plan": {rate:6,days:7,min:30000,max:69999},
+  "Gold Plan": {rate:8,days:14,min:70000,max:Infinity}
 };
 
-function setupNetworks(assetId,networkId) {
-  const asset = document.getElementById(assetId);
-  const network = document.getElementById(networkId);
-  asset.addEventListener("change",function() {
-    network.innerHTML = '<option value="">Select network</option>';
-    (networks[asset.value] || []).forEach(function(name) {
-      const option = document.createElement("option");
-      option.value = name;
-      option.textContent = name;
-      network.appendChild(option);
-    });
-  });
+const wallets = {
+  "BNB": {
+    asset:"BNB",
+    network:"BNB Smart Chain (BEP20)",
+    address:"0xbc623c234c4806d7423496783605bd758afb8ea8"
+  },
+  "ETH": {
+    asset:"Ethereum (ETH)",
+    network:"Ethereum Mainnet",
+    address:"0xbc623c234c4806d7423496783605bd758afb8ea8"
+  },
+  "USDT_ERC20": {
+    asset:"USDT",
+    network:"Ethereum (ERC20)",
+    address:"0xbc623c234c4806d7423496783605bd758afb8ea8"
+  },
+  "USDT_TRC20": {
+    asset:"USDT",
+    network:"TRON (TRC20)",
+    address:"TMUxNnQRpyej4WKFMizkCtRRESZBBY3VeU"
+  },
+  "BTC": {
+    asset:"Bitcoin (BTC)",
+    network:"Bitcoin Mainnet",
+    address:"1CbzWHkakA7bwikUZ4YCwmhYZN4LX5PpUm"
+  }
+};
+
+let selectedPlan = null;
+let selectedMethod = null;
+let usdInvestment = 0;
+
+function goTo(id) {
+  const el = document.getElementById(id);
+  if (el) {
+    el.scrollIntoView({behavior:"smooth",block:"start"});
+  }
 }
 
-setupNetworks("depositAsset","depositNetwork");
-setupNetworks("withdrawAsset","withdrawNetwork");
+function choosePlan(name,rate,days,min,max) {
+  selectedPlan = {name,rate,days,min,max};
+  document.getElementById("investmentFlow").classList.remove("hidden");
+  document.getElementById("chosenPlan").textContent =
+    name + " — " + rate + "% daily, " + days + " days.";
+  document.getElementById("usdAmount").value = "";
+  document.getElementById("usdAmount").min = min;
+  document.getElementById("usdAmount").max = max === Infinity ? "" : max;
+  document.getElementById("amountHint").textContent =
+    "Minimum: $" + min.toLocaleString("en-US") +
+    " | Maximum: " + (max === Infinity ? "Unlimited" : "$" + max.toLocaleString("en-US"));
+  document.getElementById("amountError").textContent = "";
+  document.getElementById("submissionMessage").classList.add("hidden");
+  showStep(1);
+  goTo("investmentFlow");
+}
 
-document.getElementById("depositForm").addEventListener("submit",function(e) {
+function showStep(number) {
+  for (let i=1;i<=4;i++) {
+    document.getElementById("step"+i).classList.toggle("active",i===number);
+    document.getElementById("p"+i).classList.toggle("done",i<=number);
+  }
+  goTo("investmentFlow");
+}
+
+function continueAmount() {
+  const error = document.getElementById("amountError");
+  const amount = Number(document.getElementById("usdAmount").value);
+  error.textContent = "";
+
+  if (!selectedPlan) {
+    error.textContent = "Please select an investment plan first.";
+    return;
+  }
+  if (!Number.isFinite(amount) || amount < selectedPlan.min || amount > selectedPlan.max) {
+    error.textContent = "Enter an amount within this plan's permitted range.";
+    return;
+  }
+
+  usdInvestment = amount;
+  showStep(2);
+}
+
+function continueAsset() {
+  const method = document.getElementById("asset").value;
+  const error = document.getElementById("assetError");
+  error.textContent = "";
+
+  if (!method || !wallets[method]) {
+    error.textContent = "Please select a cryptocurrency and network.";
+    return;
+  }
+
+  selectedMethod = wallets[method];
+
+  document.getElementById("summaryPlan").textContent = selectedPlan.name;
+  document.getElementById("summaryAmount").textContent =
+    "$" + usdInvestment.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
+  document.getElementById("summaryAsset").textContent =
+    selectedMethod.asset + " — " + selectedMethod.network;
+  document.getElementById("walletAddress").textContent = selectedMethod.address;
+  document.getElementById("networkReminder").textContent =
+    "Required network: " + selectedMethod.network +
+    ". Confirm this network in your sending wallet before transferring funds.";
+  document.getElementById("copyMessage").textContent = "";
+  showStep(3);
+}
+
+async function copyWallet() {
+  const address = document.getElementById("walletAddress").textContent;
+  const message = document.getElementById("copyMessage");
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(address);
+      message.textContent = "Wallet address copied.";
+    } else {
+      const area = document.createElement("textarea");
+      area.value = address;
+      area.style.position = "fixed";
+      area.style.opacity = "0";
+      document.body.appendChild(area);
+      area.select();
+      const copied = document.execCommand("copy");
+      area.remove();
+      message.textContent = copied
+        ? "Wallet address copied."
+        : "Please select and copy the wallet address manually.";
+    }
+  } catch (e) {
+    message.textContent = "Please select and copy the wallet address manually.";
+  }
+}
+
+document.getElementById("transactionForm").addEventListener("submit",function(e) {
   e.preventDefault();
-  document.getElementById("depositMessage").textContent =
-    "Not submitted: secure deposit processing has not been connected yet.";
+
+  if (!selectedPlan || !selectedMethod) {
+    return;
+  }
+
+  const cryptoAmount = Number(document.getElementById("cryptoAmount").value);
+  const txid = document.getElementById("txid").value.trim();
+  const email = document.getElementById("memberEmail").value.trim();
+
+  if (!Number.isFinite(cryptoAmount) || cryptoAmount <= 0 || !txid || !email) {
+    return;
+  }
+
+  const box = document.getElementById("submissionMessage");
+  box.classList.remove("hidden");
+  box.textContent =
+    "Preview prepared only — NOT submitted to REAL WEALTH EDGE. " +
+    "Plan: " + selectedPlan.name +
+    "; investment amount: $" + usdInvestment.toFixed(2) +
+    "; payment method: " + selectedMethod.asset + " / " + selectedMethod.network +
+    "; crypto amount entered: " + cryptoAmount +
+    "; transaction ID entered. A secure backend must be connected before this request can be sent to the administrator. Do not treat this preview as a confirmed deposit.";
+  box.scrollIntoView({behavior:"smooth",block:"center"});
 });
 
-document.getElementById("withdrawForm").addEventListener("submit",function(e) {
+document.getElementById("withdrawalForm").addEventListener("submit",function(e) {
   e.preventDefault();
-  alert("Withdrawal processing is not connected yet. No request has been sent.");
+  document.getElementById("withdrawMessage").textContent =
+    "Preview only: this withdrawal request has not been sent or saved. The secure database and administrator review system must be connected first.";
 });
 </script>
 </body>
-          </html>
-                                                                                   
+                                                                     </html>
+  
