@@ -4,20 +4,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#103b78">
-  <meta name="description" content="Discover REAL WEALTH EDGE, an investment platform concept focused on digital assets, account management and transparent investment information.">
-  <title>REAL WEALTH EDGE | Investment Platform</title>
+  <meta name="theme-color" content="#07172e">
+  <meta name="description" content="Explore Real Wealth Edge, an online platform focused on investment information, cryptocurrency, blockchain technology and financial markets.">
+  <title>Real Wealth Edge | Investment Opportunities</title>
 
   <style>
     :root {
-      --blue: #103b78;
-      --deep-blue: #08254d;
-      --light-blue: #edf5ff;
+      --navy: #07172e;
+      --blue: #102b50;
+      --gold: #d9ad52;
       --white: #ffffff;
-      --gold: #d9a83e;
-      --text: #243247;
-      --muted: #63738a;
-      --border: #e1e9f3;
+      --light: #f4f7fb;
+      --text: #253247;
+      --muted: #68758a;
     }
 
     * {
@@ -41,232 +40,228 @@
       text-decoration: none;
     }
 
+    button, select {
+      font: inherit;
+    }
+
     .container {
-      width: min(1120px, 92%);
+      width: min(1120px, 91%);
       margin: auto;
     }
 
     header {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 10;
+      background: var(--navy);
+      color: white;
+      border-bottom: 2px solid var(--gold);
     }
 
-    .nav {
-      min-height: 76px;
+    .navbar {
+      min-height: 82px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 18px;
+      flex-wrap: wrap;
+      padding: 15px 0;
     }
 
     .brand {
-      color: var(--blue);
+      color: white;
+      font-size: 21px;
       font-weight: 800;
-      font-size: 19px;
-      line-height: 1.2;
+      letter-spacing: 1px;
     }
 
     .brand span {
-      display: block;
       color: var(--gold);
-      font-size: 10px;
-      letter-spacing: 3px;
-      margin-top: 5px;
     }
 
-    .nav-links {
+    nav {
       display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
       align-items: center;
-      gap: 18px;
+    }
+
+    nav a {
+      color: white;
       font-size: 13px;
-      font-weight: bold;
     }
 
-    .nav-links a {
-      color: var(--blue);
+    nav a:hover {
+      color: var(--gold);
     }
 
-    .button {
-      display: inline-block;
-      padding: 12px 20px;
-      border-radius: 7px;
-      font-weight: bold;
-      font-size: 14px;
-      text-align: center;
-      cursor: pointer;
-    }
-
-    .button-primary {
-      background: var(--blue);
-      color: white !important;
-    }
-
-    .button-outline {
-      border: 1px solid var(--blue);
-      color: var(--blue) !important;
+    .language {
+      padding: 7px;
+      border-radius: 5px;
+      border: 1px solid #b8c4d4;
+      background: white;
+      color: var(--navy);
+      max-width: 145px;
     }
 
     .hero {
-      background: linear-gradient(125deg, #08254d, #1456a0);
       color: white;
-      padding: 82px 0 76px;
-      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(4,17,37,.96), rgba(7,23,46,.82)),
+        url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1800&q=85")
+        center/cover no-repeat;
+      padding: 105px 0 95px;
     }
 
-    .eyebrow {
-      color: #f0cb70;
-      font-size: 12px;
-      font-weight: bold;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      font-size: clamp(35px, 6vw, 58px);
-      line-height: 1.15;
-      margin: 18px 0;
+    .hero-content {
       max-width: 760px;
     }
 
+    .eyebrow {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: clamp(37px, 7vw, 65px);
+      line-height: 1.12;
+      margin: 17px 0;
+    }
+
+    h1 span {
+      color: var(--gold);
+    }
+
     .hero p {
-      color: #e1ebfa;
-      max-width: 660px;
       font-size: 17px;
-      margin-bottom: 26px;
+      color: #e0e8f3;
+      max-width: 680px;
+      margin-bottom: 24px;
     }
 
-    .hero .button-primary {
+    .buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 25px;
+    }
+
+    .btn {
+      display: inline-block;
+      border-radius: 5px;
+      padding: 12px 20px;
+      font-weight: bold;
+      font-size: 13px;
+      text-align: center;
+      border: 1px solid var(--gold);
+    }
+
+    .btn-gold {
       background: var(--gold);
-      color: var(--deep-blue) !important;
-      margin-right: 8px;
+      color: var(--navy);
     }
 
-    .hero .button-outline {
-      color: white !important;
-      border-color: #b8d3f7;
+    .btn-outline {
+      color: white;
+      background: transparent;
     }
 
-    .hero-note {
-      font-size: 12px !important;
-      margin-top: 24px;
-      margin-bottom: 0 !important;
+    .btn:hover {
+      opacity: .85;
+    }
+
+    .notice {
+      background: #fff8e8;
+      border-left: 4px solid var(--gold);
+      padding: 16px;
+      margin-top: 22px;
+      font-size: 13px;
+      color: #554321;
     }
 
     section {
-      padding: 65px 0;
-      scroll-margin-top: 85px;
+      padding: 75px 0;
+      scroll-margin-top: 20px;
+    }
+
+    .light {
+      background: var(--light);
     }
 
     .section-heading {
       text-align: center;
-      max-width: 720px;
-      margin: 0 auto 34px;
+      margin-bottom: 38px;
     }
 
     .section-heading h2 {
-      color: var(--deep-blue);
-      font-size: clamp(27px, 4vw, 36px);
-      line-height: 1.25;
-      margin-bottom: 12px;
+      color: var(--navy);
+      font-size: clamp(27px, 4vw, 38px);
+      margin-bottom: 10px;
     }
 
     .section-heading p {
+      max-width: 720px;
+      margin: auto;
       color: var(--muted);
     }
 
-    .about {
-      background: var(--light-blue);
+    .about-text {
+      max-width: 850px;
+      margin: auto;
     }
 
-    .cards {
+    .about-text p {
+      margin-bottom: 17px;
+    }
+
+    .grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
     }
 
     .card {
       background: white;
-      padding: 26px 22px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      box-shadow: 0 5px 18px rgba(8, 37, 77, 0.05);
-    }
-
-    .card-icon {
-      display: inline-flex;
-      width: 45px;
-      height: 45px;
-      align-items: center;
-      justify-content: center;
-      border-radius: 10px;
-      background: var(--light-blue);
-      color: var(--blue);
-      font-size: 22px;
-      margin-bottom: 15px;
+      border: 1px solid #e3e9f1;
+      border-radius: 9px;
+      padding: 25px;
+      box-shadow: 0 6px 22px rgba(7,23,46,.04);
     }
 
     .card h3 {
-      color: var(--blue);
+      color: var(--navy);
+      margin-bottom: 10px;
       font-size: 19px;
-      margin-bottom: 9px;
     }
 
-    .card p {
+    .card p, .card li {
       color: var(--muted);
       font-size: 14px;
     }
 
-    .plans {
-      background: #f7faff;
+    .card ul {
+      padding-left: 18px;
+      margin-top: 12px;
     }
 
-    .plan-name {
-      font-size: 12px;
+    .plan {
+      border-top: 4px solid var(--gold);
+    }
+
+    .plan .rate {
+      color: var(--navy);
+      font-size: 29px;
       font-weight: bold;
-      color: #a87617;
-      letter-spacing: 2px;
+      margin: 12px 0;
     }
 
-    .plan-amount {
-      color: var(--deep-blue);
-      font-size: 25px;
-      font-weight: bold;
-      margin: 13px 0;
-    }
-
-    .plan-details {
-      list-style: none;
-      margin: 18px 0;
-      font-size: 14px;
-    }
-
-    .plan-details li {
-      padding: 8px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .status {
-      display: block;
-      padding: 10px;
-      background: #fff6df;
-      color: #76520b;
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: bold;
-      margin-top: 15px;
-    }
-
-    .notice {
-      margin-top: 24px;
-      padding: 18px;
-      border-left: 4px solid var(--gold);
-      background: #fffaf0;
-      border-radius: 5px;
+    .plan .rate small {
       font-size: 13px;
-      color: #614c24;
+      font-weight: normal;
+    }
+
+    .plan p {
+      margin: 7px 0;
     }
 
     .steps {
@@ -275,8 +270,8 @@
 
     .step {
       position: relative;
-      padding-left: 58px;
-      margin-bottom: 23px;
+      padding-left: 56px;
+      margin-bottom: 24px;
     }
 
     .step::before {
@@ -284,112 +279,94 @@
       content: counter(step);
       position: absolute;
       left: 0;
-      top: 2px;
+      top: 0;
+      background: var(--navy);
+      color: var(--gold);
       width: 40px;
       height: 40px;
       border-radius: 50%;
       display: grid;
       place-items: center;
-      background: var(--blue);
-      color: white;
       font-weight: bold;
     }
 
     .step h3 {
-      color: var(--blue);
-      margin-bottom: 4px;
+      color: var(--navy);
     }
 
-    .step p {
+    .faq {
+      max-width: 850px;
+      margin: auto;
+    }
+
+    details {
+      background: white;
+      padding: 18px;
+      border-bottom: 1px solid #e0e6ee;
+    }
+
+    summary {
+      color: var(--navy);
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    details p {
+      padding-top: 12px;
       color: var(--muted);
-      font-size: 14px;
-    }
-
-    .referral {
-      background: var(--light-blue);
-    }
-
-    .faq-item {
-      padding: 18px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .faq-item h3 {
-      color: var(--blue);
-      font-size: 16px;
-      margin-bottom: 6px;
-    }
-
-    .faq-item p {
-      color: var(--muted);
-      font-size: 14px;
     }
 
     .contact-box {
-      background: var(--deep-blue);
+      background: var(--navy);
       color: white;
-      padding: 34px 24px;
-      border-radius: 12px;
+      border-radius: 10px;
+      padding: 35px;
       text-align: center;
     }
 
     .contact-box h2 {
-      margin-bottom: 10px;
-    }
-
-    .contact-box p {
-      color: #dce8f8;
-      margin-bottom: 20px;
+      color: var(--gold);
+      margin-bottom: 12px;
     }
 
     footer {
-      background: #061a35;
-      color: #dce8f8;
+      background: #041020;
+      color: #d0d8e4;
       padding: 35px 0;
+      font-size: 13px;
       text-align: center;
-      font-size: 12px;
-    }
-
-    footer a {
-      color: #f0cb70;
-      margin: 0 7px;
     }
 
     footer p {
-      margin-top: 10px;
+      margin: 7px 0;
     }
 
-    @media (max-width: 760px) {
-      .nav {
-        flex-wrap: wrap;
-        padding: 15px 0;
+    .footer-brand {
+      color: var(--gold);
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    @media (max-width: 650px) {
+      .navbar {
+        align-items: flex-start;
       }
 
-      .nav-links {
+      nav {
         width: 100%;
-        justify-content: space-between;
-        gap: 8px;
-        flex-wrap: wrap;
-      }
-
-      .nav-links .button {
-        padding: 9px 12px;
+        gap: 12px;
       }
 
       .hero {
-        padding: 62px 0;
+        padding: 75px 0;
       }
 
       section {
-        padding: 48px 0;
+        padding: 55px 0;
       }
 
-      .cards {
-        grid-template-columns: 1fr;
-      }
-
-      .card {
-        padding: 24px;
+      .btn {
+        width: 100%;
       }
     }
   </style>
@@ -397,360 +374,1078 @@
 
 <body>
 
-  <header>
-    <div class="container nav">
-      <a class="brand" href="#home">
-        REAL WEALTH EDGE
-        <span>INVESTMENT PLATFORM</span>
-      </a>
+<header>
+  <div class="container navbar">
+    <a class="brand" href="#home">
+      REAL WEALTH <span>EDGE</span>
+    </a>
 
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="#about">About</a>
-        <a href="#plans">Plans</a>
-        <a href="#how-it-works">How It Works</a>
-        <a class="button button-outline" href="login.html">Login</a>
-        <a class="button button-primary" href="login.html">Register</a>
-      </nav>
+    <nav aria-label="Main navigation">
+      <a href="#home" data-i18n="navHome">Home</a>
+      <a href="#about" data-i18n="navAbout">About</a>
+      <a href="#plans" data-i18n="navPlans">Plans</a>
+      <a href="#referrals" data-i18n="navReferrals">Referrals</a>
+      <a href="#faq" data-i18n="navFaq">FAQs</a>
+      <a href="#contact" data-i18n="navContact">Contact</a>
+      <select class="language" id="language" aria-label="Choose language">
+        <option value="en">English</option>
+        <option value="fr">Français</option>
+        <option value="es">Español</option>
+        <option value="pt">Português</option>
+        <option value="de">Deutsch</option>
+        <option value="ar">العربية</option>
+        <option value="ha">Hausa</option>
+        <option value="yo">Yorùbá</option>
+      </select>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="container hero-content">
+      <div class="eyebrow" data-i18n="eyebrow">
+        Innovation • Opportunity • Community
+      </div>
+
+      <h1 data-i18n="heroTitle">
+        Building Opportunities.
+        <span>Empowering Financial Growth.</span>
+      </h1>
+
+      <p data-i18n="heroText">
+        Welcome to Real Wealth Edge — your gateway to cryptocurrency,
+        blockchain technology and investment information.
+      </p>
+
+      <p data-i18n="heroText2">
+        Discover our platform, explore financial market information,
+        and access member services in one convenient online environment.
+      </p>
+
+      <div class="buttons">
+        <a class="btn btn-gold" href="#contact" data-i18n="create">
+          CREATE AN ACCOUNT
+        </a>
+        <a class="btn btn-outline" href="#plans" data-i18n="explore">
+          EXPLORE INVESTMENT PLANS
+        </a>
+        <a class="btn btn-outline" href="login.html" data-i18n="login">
+          MEMBER LOGIN
+        </a>
+      </div>
     </div>
-  </header>
+  </section>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="container">
-        <div class="eyebrow">Your ambition. Your strategy. Your future.</div>
-        <h1>A Smarter Approach to Strategic Investing</h1>
-        <p>
-          Discover the vision behind REAL WEALTH EDGE, an investment
-          platform concept focused on digital assets, thoughtful planning,
-          account management and a clear customer experience.
-        </p>
-        <a class="button button-primary" href="#about">Discover Our Approach</a>
-        <a class="button button-outline" href="login.html">Client Login</a>
-        <p class="hero-note">
-          A platform in development, designed with clarity and customer
-          experience in mind.
+  <section>
+    <div class="container about-text">
+      <div class="section-heading">
+        <h2 data-i18n="welcomeTitle">Welcome to Real Wealth Edge</h2>
+        <p data-i18n="welcomeSub">
+          A professional platform focused on financial information and innovation.
         </p>
       </div>
-    </section>
 
-    <section class="about" id="about">
-      <div class="container">
-        <div class="section-heading">
-          <h2>Welcome to REAL WEALTH EDGE</h2>
-          <p>
-            A vision for a more organised online investment experience.
-          </p>
-        </div>
+      <p data-i18n="welcomeP1">
+        We are committed to supporting innovation in the financial industry
+        by providing an online platform where members can explore financial
+        information, access account services and learn about our referral program.
+      </p>
 
-        <div class="cards">
-          <article class="card">
-            <div class="card-icon">◆</div>
-            <h3>About Us</h3>
-            <p>
-              Our vision is to develop an accessible platform where people
-              can learn about investment opportunities, digital assets and
-              account management in one organised online environment.
-            </p>
-          </article>
+      <p data-i18n="welcomeP2">
+        Our vision is to build lasting relationships through professional
+        service, continuous development and a commitment to a better online experience.
+      </p>
 
-          <article class="card">
-            <div class="card-icon">◎</div>
-            <h3>Our Vision</h3>
-            <p>
-              We aim to build a service centred on clear information,
-              thoughtful product design, responsible innovation and
-              continuous improvement.
-            </p>
-          </article>
-
-          <article class="card">
-            <div class="card-icon">◇</div>
-            <h3>Our Approach</h3>
-            <p>
-              We believe customers should be able to review product
-              information, understand applicable terms and access clear
-              records before making financial decisions.
-            </p>
-          </article>
-        </div>
+      <div class="notice" data-i18n="riskNotice">
+        Financial markets involve risk. Cryptocurrency, forex and other
+        investments can result in losses. No investment return is guaranteed.
+        Review all terms and risks independently before committing funds.
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="why-us">
-      <div class="container">
-        <div class="section-heading">
-          <h2>Why Choose REAL WEALTH EDGE?</h2>
-          <p>
-            A planned customer experience built around accessibility,
-            clear information and organised account services.
-          </p>
-        </div>
-
-        <div class="cards">
-          <article class="card">
-            <div class="card-icon">◷</div>
-            <h3>Online Access</h3>
-            <p>
-              A design intended to make platform information accessible
-              from supported devices.
-            </p>
-          </article>
-
-          <article class="card">
-            <div class="card-icon">▣</div>
-            <h3>Account Management</h3>
-            <p>
-              A planned account area for profiles, activity records and
-              available customer services.
-            </p>
-          </article>
-
-          <article class="card">
-            <div class="card-icon">✓</div>
-            <h3>Security by Design</h3>
-            <p>
-              Secure authentication, protected data and transaction
-              verification are priorities for the future implementation.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="plans" id="plans">
-      <div class="container">
-        <div class="section-heading">
-          <h2>Our Investment Plans</h2>
-          <p>
-            An overview of the proposed plan structure. Product details
-            and financial terms must be verified before launch.
-          </p>
-        </div>
-
-        <div class="cards">
-          <article class="card">
-            <div class="plan-name">BRONZE PLAN</div>
-            <div class="plan-amount">Starting at $100</div>
-            <ul class="plan-details">
-              <li>Proposed duration: 4 days</li>
-              <li>Proposed minimum: $100</li>
-              <li>Proposed maximum: $29,999</li>
-              <li>Return terms: pending verification</li>
-            </ul>
-            <span class="status">Preview only — not open for investment</span>
-          </article>
-
-          <article class="card">
-            <div class="plan-name">SILVER PLAN</div>
-            <div class="plan-amount">Starting at $30,000</div>
-            <ul class="plan-details">
-              <li>Proposed duration: 7 days</li>
-              <li>Proposed minimum: $30,000</li>
-              <li>Proposed maximum: $69,999</li>
-              <li>Return terms: pending verification</li>
-            </ul>
-            <span class="status">Preview only — not open for investment</span>
-          </article>
-
-          <article class="card">
-            <div class="plan-name">GOLD PLAN</div>
-            <div class="plan-amount">Starting at $70,000</div>
-            <ul class="plan-details">
-              <li>Proposed duration: 14 days</li>
-              <li>Proposed minimum: $70,000</li>
-              <li>Proposed maximum: to be confirmed</li>
-              <li>Return terms: pending verification</li>
-            </ul>
-            <span class="status">Preview only — not open for investment</span>
-          </article>
-        </div>
-
-        <div class="notice">
-          The plans shown are preliminary examples, not active investment
-          offers. Returns, fees, eligibility, risks and other terms must
-          be established and clearly disclosed before any investment
-          service is offered.
-        </div>
-      </div>
-    </section>
-
-    <section id="how-it-works">
-      <div class="container">
-        <div class="section-heading">
-          <h2>How It Works</h2>
-          <p>The planned customer journey.</p>
-        </div>
-
-        <div class="steps">
-          <div class="step">
-            <h3>Registration</h3>
-            <p>Create a customer account once secure registration is available.</p>
-          </div>
-          <div class="step">
-            <h3>Review Available Plans</h3>
-            <p>Read the product information, fees, eligibility and applicable terms.</p>
-          </div>
-          <div class="step">
-            <h3>Fund Your Account</h3>
-            <p>Use verified deposit instructions after supported payment systems are activated.</p>
-          </div>
-          <div class="step">
-            <h3>Monitor Account Activity</h3>
-            <p>Review verified balances and transaction records in your account.</p>
-          </div>
-          <div class="step">
-            <h3>Request a Withdrawal</h3>
-            <p>Submit a request through the secure withdrawal system when available.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="referral" id="referrals">
-      <div class="container">
-        <div class="section-heading">
-          <h2>Referral Opportunities</h2>
-          <p>
-            Learn about the proposed referral programme and its conditions.
-          </p>
-        </div>
-
-        <div class="cards">
-          <article class="card">
-            <div class="card-icon">↗</div>
-            <h3>Share & Connect</h3>
-            <p>
-              A planned referral feature will help members share the
-              platform with interested people.
-            </p>
-          </article>
-          <article class="card">
-            <div class="card-icon">%</div>
-            <h3>Commission Terms</h3>
-            <p>
-              Commission rates, eligibility, qualifying activities and
-              payment conditions must be confirmed before launch.
-            </p>
-          </article>
-          <article class="card">
-            <div class="card-icon">♧</div>
-            <h3>Clear Programme Rules</h3>
-            <p>
-              The final programme will need clear written rules explaining
-              how qualifying referrals are counted.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="accounts">
-      <div class="container">
-        <div class="section-heading">
-          <h2>Account Management</h2>
-          <p>
-            The planned dashboard will bring account details, investment
-            records and supported services together in one place.
-          </p>
-        </div>
-
-        <div class="cards">
-          <article class="card">
-            <h3>Personal Profile</h3>
-            <p>View and update account information through secure account settings.</p>
-          </article>
-          <article class="card">
-            <h3>Transaction History</h3>
-            <p>Review verified deposits, withdrawals and account activity when implemented.</p>
-          </article>
-          <article class="card">
-            <h3>Digital Asset Support</h3>
-            <p>Cryptocurrency networks will be listed only after integration and testing.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="faq">
-      <div class="container">
-        <div class="section-heading">
-          <h2>Frequently Asked Questions</h2>
-          <p>Some useful information about the planned platform.</p>
-        </div>
-
-        <div class="faq-item">
-          <h3>How do I join REAL WEALTH EDGE?</h3>
-          <p>
-            Online registration is planned. Customer accounts are not
-            active on this demonstration website yet.
-          </p>
-        </div>
-
-        <div class="faq-item">
-          <h3>How do I choose an investment plan?</h3>
-          <p>
-            Review the final plan details and terms when verified
-            investment products become available.
-          </p>
-        </div>
-
-        <div class="faq-item">
-          <h3>Can I deposit cryptocurrency?</h3>
-          <p>
-            Cryptocurrency deposits are planned, subject to supported
-            networks, payment infrastructure and security testing.
-          </p>
-        </div>
-
-        <div class="faq-item">
-          <h3>Can I withdraw funds?</h3>
-          <p>
-            A withdrawal feature requires a secure backend, verified
-            balances and an operational payment system. It is not active yet.
-          </p>
-        </div>
-
-        <div class="faq-item">
-          <h3>How can I contact customer support?</h3>
-          <p>
-            Contact information will be published when the official
-            customer support channel is established.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <div class="contact-box">
-          <h2>Building the Future of REAL WEALTH EDGE</h2>
-          <p>
-            We are developing the platform and its customer services.
-            Official support and service details will be published when ready.
-          </p>
-          <a class="button button-primary" href="login.html">Visit Login Page</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
+  <section class="light" id="about">
     <div class="container">
-      <div class="brand" style="color:white">REAL WEALTH EDGE</div>
-      <p>© 2026 REAL WEALTH EDGE. All rights reserved.</p>
-      <p>
-        <a href="#about">About</a>
-        <a href="#plans">Plans</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact">Contact</a>
-      </p>
-      <p>
-        This website is a platform preview. Account, deposit, investment
-        and withdrawal services are not yet active.
-      </p>
+      <div class="section-heading">
+        <h2 data-i18n="aboutTitle">About Real Wealth Edge</h2>
+        <p data-i18n="aboutSub">
+          Knowledge, innovation and responsible decision-making.
+        </p>
+      </div>
+
+      <div class="about-text">
+        <p data-i18n="aboutP1">
+          Real Wealth Edge is an online platform focused on cryptocurrency,
+          blockchain technology, forex trading and investment information.
+          We aim to make financial information and account services accessible
+          through our website.
+        </p>
+
+        <p data-i18n="aboutP2">
+          We believe that innovation, knowledge and strong client relationships
+          are important foundations for long-term development. Our aim is to
+          provide a clear online environment where visitors can learn about
+          financial markets and available platform services.
+        </p>
+      </div>
+
+      <div class="grid" style="margin-top:30px">
+        <article class="card">
+          <h3 data-i18n="visionTitle">Our Vision</h3>
+          <p data-i18n="visionText">
+            To grow through innovation, professional service and continuous improvement.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3 data-i18n="missionTitle">Our Mission</h3>
+          <p data-i18n="missionText">
+            To communicate information clearly, support our members and
+            encourage financial awareness.
+          </p>
+        </article>
+      </div>
     </div>
-  </footer>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-heading">
+        <h2 data-i18n="whyTitle">Why Investment Matters</h2>
+        <p data-i18n="whySub">
+          Understanding financial decisions can help people plan for the future.
+        </p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <h3 data-i18n="why1Title">Long-Term Goals</h3>
+          <p data-i18n="why1Text">
+            Financial planning can help people work toward education,
+            business, property and retirement goals.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3 data-i18n="why2Title">Capital Planning</h3>
+          <p data-i18n="why2Text">
+            Explore opportunities that align with your circumstances
+            and tolerance for risk.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3 data-i18n="why3Title">Market Knowledge</h3>
+          <p data-i18n="why3Text">
+            Learn about financial markets, digital technologies and
+            different investment approaches.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3 data-i18n="why4Title">Future Preparation</h3>
+          <p data-i18n="why4Text">
+            Organize your financial priorities and consider the risks
+            associated with each decision.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="light" id="interests">
+    <div class="container">
+      <div class="section-heading">
+        <h2 data-i18n="areasTitle">Our Areas of Interest</h2>
+        <p data-i18n="areasSub">
+          Exploring developments in financial markets and technology.
+        </p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <h3>₿ <span data-i18n="cryptoTitle">Cryptocurrency</span></h3>
+          <p data-i18n="cryptoText">
+            Follow developments in digital currencies and the wider
+            cryptocurrency ecosystem.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>◇ <span data-i18n="blockTitle">Blockchain Technology</span></h3>
+          <p data-i18n="blockText">
+            Explore blockchain applications in digital transactions
+            and financial services.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>↗ <span data-i18n="forexTitle">Forex Trading</span></h3>
+          <p data-i18n="forexText">
+            Learn about currency markets and the factors that influence
+            exchange rates.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>◎ <span data-i18n="opportunitiesTitle">Investment Information</span></h3>
+          <p data-i18n="opportunitiesText">
+            Review the details, conditions and risks of opportunities
+            listed on the platform.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="plans">
+    <div class="container">
+      <div class="section-heading">
+        <h2 data-i18n="plansTitle">Explore Our Investment Plans</h2>
+        <p data-i18n="plansSub">
+          Review the advertised plan details and understand the associated risks.
+        </p>
+      </div>
+
+      <div class="grid">
+        <article class="card plan">
+          <h3>BRONZE PLAN</h3>
+          <div class="rate">4% <small data-i18n="daily">advertised daily rate</small></div>
+          <p><strong data-i18n="duration">Duration:</strong> 4 days</p>
+          <p><strong data-i18n="minimum">Minimum:</strong> $100</p>
+          <p><strong data-i18n="maximum">Maximum:</strong> $29,999</p>
+          <p data-i18n="notVerified">
+            Advertised figures are unverified and are not guaranteed returns.
+          </p>
+          <a class="btn btn-gold" href="#contact" data-i18n="details">Request Details</a>
+        </article>
+
+        <article class="card plan">
+          <h3>SILVER PLAN</h3>
+          <div class="rate">6% <small data-i18n="daily">advertised daily rate</small></div>
+          <p><strong data-i18n="duration">Duration:</strong> 7 days</p>
+          <p><strong data-i18n="minimum">Minimum:</strong> $30,000</p>
+          <p><strong data-i18n="maximum">Maximum:</strong> $69,999</p>
+          <p data-i18n="notVerified">
+            Advertised figures are unverified and are not guaranteed returns.
+          </p>
+          <a class="btn btn-gold" href="#contact" data-i18n="details">Request Details</a>
+        </article>
+
+        <article class="card plan">
+          <h3>GOLD PLAN</h3>
+          <div class="rate">8% <small data-i18n="daily">advertised daily rate</small></div>
+          <p><strong data-i18n="duration">Duration:</strong> 14 days</p>
+          <p><strong data-i18n="minimum">Minimum:</strong> $70,000</p>
+          <p><strong data-i18n="maximum">Maximum:</strong> Unlimited</p>
+          <p data-i18n="notVerified">
+            Advertised figures are unverified and are not guaranteed returns.
+          </p>
+          <a class="btn btn-gold" href="#contact" data-i18n="details">Request Details</a>
+        </article>
+      </div>
+
+      <div class="notice" data-i18n="planWarning">
+        These are supplied advertising figures, not independently verified
+        performance data. Confirm the business's authorization, terms,
+        withdrawal conditions and risks before accepting deposits.
+      </div>
+    </div>
+  </section>
+
+  <section class="light" id="getting-started">
+    <div class="container">
+      <div class="section-heading">
+        <h2 data-i18n="startTitle">How to Get Started</h2>
+        <p data-i18n="startSub">
+          A simple overview of the intended member journey.
+        </p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <h3 data-i18n="step1Title">Register</h3>
+          <p data-i18n="step1Text">Create an account when registration services are available.</p>
+        </div>
+
+        <div class="step">
+          <h3 data-i18n="step2Title">Explore</h3>
+          <p data-i18n="step2Text">Read the platform information, terms and risk disclosures.</p>
+        </div>
+
+        <div class="step">
+          <h3 data-i18n="step3Title">Review Plans</h3>
+          <p data-i18n="step3Text">Review all plan requirements before making any decision.</p>
+        </div>
+
+        <div class="step">
+          <h3 data-i18n="step4Title">Manage Your Account</h3>
+          <p data-i18n="step4Text">Use the member dashboard when a secure backend has been implemented.</p>
+        </div>
+
+        <div class="step">
+          <h3 data-i18n="step5Title">Contact Support</h3>
+          <p data-i18n="step5Text">Use verified support channels for questions and assistance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="referrals">
+    <div class="container">
+      <div class="section-heading">
+        <h2 data-i18n="refTitle">Our Referral Program</h2>
+        <p data-i18n="refSub">
+          Learn how member referrals are intended to work.
+        </p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <h3 data-i18n="networkTitle">Expand Your Network</h3>
+          <p data-i18n="networkText">Introduce interested people to the platform and its published information.</p>
+        </article>
+
+        <article class="card">
+          <h3 data-i18n="shareTitle">Share Information</h3>
+          <p data-i18n="shareText">Help visitors learn about services, terms and account features.</p>
+        </article>
+
+        <article class="card">
+          <h3 data-i18n="commissionTitle">Commission Information</h3>
+          <p data-i18n="commissionText">Any commission must follow documented terms and applicable laws.</p>
+        </article>
+
+        <article class="card">
+          <h3 data-i18n="communityTitle">Build a Community</h3>
+          <p data-i18n="communityText">Encourage informed participation without misleading income claims.</p>
+        </article>
+      </div>
+
+      <div class="card" style="margin-top:22px">
+        <h3 data-i18n="refHowTitle">How the Referral Program Works</h3>
+        <ul>
+          <li data-i18n="refStep1">Register for an account if eligible.</li>
+          <li data-i18n="refStep2">Access a personal referral link if the feature is available.</li>
+          <li data-i18n="refStep3">Share accurate platform information.</li>
+          <li data-i18n="refStep4">Allow people to decide independently whether to register.</li>
+          <li data-i18n="refStep5">Check the official commission terms.</li>
+        </ul>
+        <p style="margin-top:16px">
+          <strong>Advertised referral commission:</strong> 10%
+          <br>
+          <strong>Advertised representative commission:</strong> 20%
+        </p>
+        <p data-i18n="refWarning">
+          These advertised percentages are unverified. Eligibility,
+          calculation methods and payment conditions must be confirmed
+          in official written terms.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="light" id="services">
+    <div class="container">
+      <div class="section-heading">
+        <h2 data-i18n="serviceTitle">Our Commitment to Client Service</h2>
+        <p data-i18n="serviceSub">Designed with clarity and convenient navigation in mind.</p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <h3 data-i18n="service1">Online Account Access</h3>
+          <p data-i18n="service1Text">A secure account area is planned for members.</p>
+        </article>
+
+        <article class="card">
+          <h3 data-i18n="service2">Plan Information</h3>
+          <p data-i18n="service2Text">Access plan descriptions and applicable terms.</p>
+        </article>
+
+        <article class="card">
+          <h3 data-i18n="service3">Member Support</h3>
+          <p data-i18n="service3Text">Find verified contact information and account guidance.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="languages">
+    <div class="container">
+      <div class="section-heading">
+        <h2 data-i18n="multiTitle">A Platform for a Global Community</h2>
+        <p data-i18n="multiText">
+          Choose from supported languages using the selector at the top
+          of the page. Additional translations can be added as the website develops.
+        </p>
+      </div>
+
+      <div class="card">
+        <p data-i18n="multiDetails">
+          Planned language support includes English, French, Spanish,
+          Portuguese, Arabic, Chinese, Hindi, Urdu, Bengali, Russian,
+          German, Italian, Japanese, Korean, Turkish, Swahili, Hausa,
+          Yoruba and Igbo. Translation coverage depends on implementation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="light" id="faq">
+    <div class="container">
+      <div class="section-heading">
+        <h2 data-i18n="faqTitle">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="faq">
+        <details>
+          <summary data-i18n="faq1Q">What is Real Wealth Edge?</summary>
+          <p data-i18n="faq1A">It is an online platform concept focused on financial markets, technology and member services.</p>
+        </details>
+
+        <details>
+          <summary data-i18n="faq2Q">How do I register?</summary>
+          <p data-i18n="faq2A">Registration requires a working registration page and secure account system.</p>
+        </details>
+
+        <details>
+          <summary data-i18n="faq3Q">How can I review the plans?</summary>
+          <p data-i18n="faq3A">Visit the plans section and carefully review the conditions and risks.</p>
+        </details>
+
+        <details>
+          <summary data-i18n="faq4Q">How does the referral program work?</summary>
+          <p data-i18n="faq4A">Review the official program rules, eligibility and commission calculations.</p>
+        </details>
+
+        <details>
+          <summary data-i18n="faq5Q">Can I use another language?</summary>
+          <p data-i18n="faq5A">Use the language selector to switch between the languages implemented on this page.</p>
+        </details>
+
+        <details>
+          <summary data-i18n="faq6Q">How can I contact support?</summary>
+          <p data-i18n="faq6A">Use the contact details supplied by the verified platform operator.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="contact-box">
+        <h2 data-i18n="contactTitle">Contact Real Wealth Edge</h2>
+        <p data-i18n="contactText">
+          Have a question about registration, platform services or account access?
+          Contact the platform team through a verified support channel.
+        </p>
+        <div class="buttons" style="justify-content:center">
+          <a class="btn btn-gold" href="login.html" data-i18n="login">MEMBER LOGIN</a>
+          <a class="btn btn-outline" href="mailto:">CONTACT SUPPORT</a>
+        </div>
+        <p style="margin-top:20px">
+          <strong>Website:</strong> realwealth-edge.com
+        </p>
+        <p style="font-size:12px;margin-top:8px" data-i18n="domainNote">
+          Confirm domain ownership and configure a valid support email before launch.
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-brand">REAL WEALTH EDGE</div>
+    <p data-i18n="tagline">Innovation. Opportunity. Community.</p>
+    <p data-i18n="footerText">
+      Connecting people with financial information and investment opportunities.
+    </p>
+    <p>© <span id="year"></span> Real Wealth Edge. All rights reserved.</p>
+    <p data-i18n="footerRisk">
+      Financial products involve risk. Review all disclosures and applicable terms.
+    </p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  const translations = {
+    en: {
+      navHome:"Home",navAbout:"About",navPlans:"Plans",navReferrals:"Referrals",navFaq:"FAQs",navContact:"Contact",
+      eyebrow:"Innovation • Opportunity • Community",
+      heroTitle:'Building Opportunities. <span>Empowering Financial Growth.</span>',
+      heroText:"Welcome to Real Wealth Edge — your gateway to cryptocurrency, blockchain technology and investment information.",
+      heroText2:"Discover our platform, explore financial market information, and access member services in one convenient online environment.",
+      create:"CREATE AN ACCOUNT",explore:"EXPLORE INVESTMENT PLANS",login:"MEMBER LOGIN",
+      welcomeTitle:"Welcome to Real Wealth Edge",welcomeSub:"A professional platform focused on financial information and innovation.",
+      welcomeP1:"We are committed to supporting innovation in the financial industry by providing an online platform where members can explore financial information, access account services and learn about our referral program.",
+      welcomeP2:"Our vision is to build lasting relationships through professional service, continuous development and a commitment to a better online experience.",
+      riskNotice:"Financial markets involve risk. Cryptocurrency, forex and other investments can result in losses. No investment return is guaranteed. Review all terms and risks independently before committing funds.",
+      aboutTitle:"About Real Wealth Edge",aboutSub:"Knowledge, innovation and responsible decision-making.",
+      aboutP1:"Real Wealth Edge is an online platform focused on cryptocurrency, blockchain technology, forex trading and investment information. We aim to make financial information and account services accessible through our website.",
+      aboutP2:"We believe that innovation, knowledge and strong client relationships are important foundations for long-term development. Our aim is to provide a clear online environment where visitors can learn about financial markets and available platform services.",
+      visionTitle:"Our Vision",visionText:"To grow through innovation, professional service and continuous improvement.",
+      missionTitle:"Our Mission",missionText:"To communicate information clearly, support our members and encourage financial awareness.",
+      whyTitle:"Why Investment Matters",whySub:"Understanding financial decisions can help people plan for the future.",
+      why1Title:"Long-Term Goals",why1Text:"Financial planning can help people work toward education, business, property and retirement goals.",
+      why2Title:"Capital Planning",why2Text:"Explore opportunities that align with your circumstances and tolerance for risk.",
+      why3Title:"Market Knowledge",why3Text:"Learn about financial markets, digital technologies and different investment approaches.",
+      why4Title:"Future Preparation",why4Text:"Organize your financial priorities and consider the risks associated with each decision.",
+      areasTitle:"Our Areas of Interest",areasSub:"Exploring developments in financial markets and technology.",
+      cryptoTitle:"Cryptocurrency",cryptoText:"Follow developments in digital currencies and the wider cryptocurrency ecosystem.",
+      blockTitle:"Blockchain Technology",blockText:"Explore blockchain applications in digital transactions and financial services.",
+      forexTitle:"Forex Trading",forexText:"Learn about currency markets and the factors that influence exchange rates.",
+      opportunitiesTitle:"Investment Information",opportunitiesText:"Review the details, conditions and risks of opportunities listed on the platform.",
+      plansTitle:"Explore Our Investment Plans",plansSub:"Review the advertised plan details and understand the associated risks.",
+      daily:"advertised daily rate",duration:"Duration:",minimum:"Minimum:",maximum:"Maximum:",
+      notVerified:"Advertised figures are unverified and are not guaranteed returns.",details:"Request Details",
+      planWarning:"These are supplied advertising figures, not independently verified performance data. Confirm the business's authorization, terms, withdrawal conditions and risks before accepting deposits.",
+      startTitle:"How to Get Started",startSub:"A simple overview of the intended member journey.",
+      step1Title:"Register",step1Text:"Create an account when registration services are available.",
+      step2Title:"Explore",step2Text:"Read the platform information, terms and risk disclosures.",
+      step3Title:"Review Plans",step3Text:"Review all plan requirements before making any decision.",
+      step4Title:"Manage Your Account",step4Text:"Use the member dashboard when a secure backend has been implemented.",
+      step5Title:"Contact Support",step5Text:"Use verified support channels for questions and assistance.",
+      refTitle:"Our Referral Program",refSub:"Learn how member referrals are intended to work.",
+      networkTitle:"Expand Your Network",networkText:"Introduce interested people to the platform and its published information.",
+      shareTitle:"Share Information",shareText:"Help visitors learn about services, terms and account features.",
+      commissionTitle:"Commission Information",commissionText:"Any commission must follow documented terms and applicable laws.",
+      communityTitle:"Build a Community",communityText:"Encourage informed participation without misleading income claims.",
+      refHowTitle:"How the Referral Program Works",refStep1:"Register for an account if eligible.",
+      refStep2:"Access a personal referral link if the feature is available.",
+      refStep3:"Share accurate platform information.",
+      refStep4:"Allow people to decide independently whether to register.",
+      refStep5:"Check the official commission terms.",
+      refWarning:"These advertised percentages are unverified. Eligibility, calculation methods and payment conditions must be confirmed in official written terms.",
+      serviceTitle:"Our Commitment to Client Service",serviceSub:"Designed with clarity and convenient navigation in mind.",
+      service1:"Online Account Access",service1Text:"A secure account area is planned for members.",
+      service2:"Plan Information",service2Text:"Access plan descriptions and applicable terms.",
+      service3:"Member Support",service3Text:"Find verified contact information and account guidance.",
+      multiTitle:"A Platform for a Global Community",
+      multiText:"Choose from supported languages using the selector at the top of the page. Additional translations can be added as the website develops.",
+      multiDetails:"Planned language support includes English, French, Spanish, Portuguese, Arabic, Chinese, Hindi, Urdu, Bengali, Russian, German, Italian, Japanese, Korean, Turkish, Swahili, Hausa, Yoruba and Igbo. Translation coverage depends on implementation.",
+      faqTitle:"Frequently Asked Questions",
+      faq1Q:"What is Real Wealth Edge?",faq1A:"It is an online platform concept focused on financial markets, technology and member services.",
+      faq2Q:"How do I register?",faq2A:"Registration requires a working registration page and secure account system.",
+      faq3Q:"How can I review the plans?",faq3A:"Visit the plans section and carefully review the conditions and risks.",
+      faq4Q:"How does the referral program work?",faq4A:"Review the official program rules, eligibility and commission calculations.",
+      faq5Q:"Can I use another language?",faq5A:"Use the language selector to switch between the languages implemented on this page.",
+      faq6Q:"How can I contact support?",faq6A:"Use the contact details supplied by the verified platform operator.",
+      contactTitle:"Contact Real Wealth Edge",
+      contactText:"Have a question about registration, platform services or account access? Contact the platform team through a verified support channel.",
+      domainNote:"Confirm domain ownership and configure a valid support email before launch.",
+      tagline:"Innovation. Opportunity. Community.",
+      footerText:"Connecting people with financial information and investment opportunities.",
+      footerRisk:"Financial products involve risk. Review all disclosures and applicable terms."
+    },
+
+    fr: {
+      navHome:"Accueil",navAbout:"À propos",navPlans:"Offres",navReferrals:"Parrainage",navFaq:"FAQ",navContact:"Contact",
+      eyebrow:"Innovation • Opportunité • Communauté",
+      heroTitle:'Créer des opportunités. <span>Favoriser la croissance financière.</span>',
+      heroText:"Bienvenue chez Real Wealth Edge, votre portail vers les cryptomonnaies, la blockchain et l'information sur les investissements.",
+      heroText2:"Découvrez notre plateforme, explorez les marchés financiers et accédez aux services membres.",
+      create:"CRÉER UN COMPTE",explore:"EXPLORER LES OFFRES",login:"CONNEXION MEMBRE",
+      welcomeTitle:"Bienvenue chez Real Wealth Edge",welcomeSub:"Une plateforme axée sur l'information financière et l'innovation.",
+      welcomeP1:"Nous soutenons l'innovation financière grâce à une plateforme permettant d'explorer des informations financières, d'accéder aux services de compte et de découvrir notre programme de parrainage.",
+      welcomeP2:"Notre vision est de bâtir des relations durables grâce à un service professionnel et à une amélioration continue.",
+      riskNotice:"Les marchés financiers comportent des risques. Les investissements peuvent entraîner des pertes. Aucun rendement n'est garanti. Vérifiez les conditions et les risques avant tout engagement.",
+      aboutTitle:"À propos de Real Wealth Edge",aboutSub:"Connaissance, innovation et décisions responsables.",
+      aboutP1:"Real Wealth Edge est une plateforme en ligne axée sur les cryptomonnaies, la blockchain, le forex et l'information sur les investissements.",
+      aboutP2:"Nous estimons que l'innovation, la connaissance et les relations avec les clients favorisent le développement à long terme.",
+      visionTitle:"Notre vision",visionText:"Progresser grâce à l'innovation, au professionnalisme et à l'amélioration continue.",
+      missionTitle:"Notre mission",missionText:"Communiquer clairement, accompagner les membres et encourager la sensibilisation financière.",
+      whyTitle:"L'importance de l'investissement",whySub:"Comprendre les décisions financières aide à préparer l'avenir.",
+      why1Title:"Objectifs à long terme",why1Text:"La planification financière peut soutenir des objectifs d'études, d'entreprise, de logement et de retraite.",
+      why2Title:"Planification du capital",why2Text:"Explorez des possibilités adaptées à votre situation et à votre tolérance au risque.",
+      why3Title:"Connaissance des marchés",why3Text:"Découvrez les marchés financiers et les technologies numériques.",
+      why4Title:"Préparer l'avenir",why4Text:"Organisez vos priorités financières et évaluez les risques.",
+      areasTitle:"Nos domaines d'intérêt",areasSub:"Explorer les évolutions des marchés financiers et de la technologie.",
+      cryptoTitle:"Cryptomonnaies",cryptoText:"Suivez l'évolution des monnaies numériques.",
+      blockTitle:"Technologie blockchain",blockText:"Découvrez les applications de la blockchain dans les transactions et les services financiers.",
+      forexTitle:"Trading forex",forexText:"Découvrez les marchés des changes et les facteurs qui influencent les taux.",
+      opportunitiesTitle:"Informations sur les investissements",opportunitiesText:"Consultez les conditions et les risques des possibilités présentées.",
+      plansTitle:"Découvrir nos offres d'investissement",plansSub:"Consultez les détails annoncés et comprenez les risques.",
+      daily:"taux journalier annoncé",duration:"Durée :",minimum:"Minimum :",maximum:"Maximum :",
+      notVerified:"Les chiffres annoncés ne sont pas vérifiés et ne constituent pas des rendements garantis.",details:"Demander des détails",
+      planWarning:"Ces chiffres sont des données publicitaires fournies et non des performances vérifiées indépendamment. Vérifiez les autorisations, conditions et risques.",
+      startTitle:"Comment commencer",startSub:"Aperçu du parcours membre envisagé.",
+      step1Title:"Inscription",step1Text:"Créez un compte lorsque le service sera disponible.",
+      step2Title:"Découvrir",step2Text:"Lisez les informations, les conditions et les risques.",
+      step3Title:"Examiner les offres",step3Text:"Vérifiez toutes les conditions avant de décider.",
+      step4Title:"Gérer votre compte",step4Text:"Utilisez le tableau de bord lorsqu'un système sécurisé sera disponible.",
+      step5Title:"Contacter l'assistance",step5Text:"Utilisez les canaux d'assistance vérifiés.",
+      refTitle:"Notre programme de parrainage",refSub:"Découvrez le fonctionnement prévu du parrainage.",
+      networkTitle:"Développer votre réseau",networkText:"Présentez la plateforme et ses informations.",
+      shareTitle:"Partager des informations",shareText:"Aidez les visiteurs à découvrir les services et conditions.",
+      commissionTitle:"Informations sur les commissions",commissionText:"Toute commission doit respecter les conditions écrites et la loi.",
+      communityTitle:"Créer une communauté",communityText:"Encouragez une participation éclairée sans promesses trompeuses.",
+      refHowTitle:"Fonctionnement du parrainage",refStep1:"Créez un compte si vous êtes admissible.",
+      refStep2:"Accédez à un lien personnel si la fonction est disponible.",
+      refStep3:"Partagez des informations exactes.",
+      refStep4:"Laissez chacun décider librement de s'inscrire.",
+      refStep5:"Consultez les conditions officielles des commissions.",
+      refWarning:"Ces pourcentages annoncés ne sont pas vérifiés. Vérifiez les critères et modalités de paiement dans les conditions officielles.",
+      serviceTitle:"Notre engagement envers les clients",serviceSub:"Une navigation claire et pratique.",
+      service1:"Accès au compte en ligne",service1Text:"Un espace sécurisé est prévu pour les membres.",
+      service2:"Informations sur les offres",service2Text:"Consultez les descriptions et conditions.",
+      service3:"Assistance aux membres",service3Text:"Trouvez des coordonnées vérifiées et des conseils.",
+      multiTitle:"Une plateforme pour une communauté mondiale",
+      multiText:"Choisissez une langue avec le sélecteur en haut de la page. D'autres traductions pourront être ajoutées.",
+      multiDetails:"Les langues envisagées comprennent l'anglais, le français, l'espagnol, le portugais, l'arabe, le chinois, le hindi, l'ourdou, le bengali, le russe, l'allemand, l'italien, le japonais, le coréen, le turc, le swahili, le haoussa, le yoruba et l'igbo.",
+      faqTitle:"Questions fréquentes",
+      faq1Q:"Qu'est-ce que Real Wealth Edge ?",faq1A:"Il s'agit d'un concept de plateforme en ligne consacré aux marchés financiers, à la technologie et aux services membres.",
+      faq2Q:"Comment m'inscrire ?",faq2A:"L'inscription nécessite une page dédiée et un système de compte sécurisé.",
+      faq3Q:"Comment consulter les offres ?",faq3A:"Consultez la section des offres et examinez les conditions et risques.",
+      faq4Q:"Comment fonctionne le parrainage ?",faq4A:"Consultez les règles officielles, les critères et le calcul des commissions.",
+      faq5Q:"Puis-je utiliser une autre langue ?",faq5A:"Utilisez le sélecteur pour changer parmi les langues disponibles sur cette page.",
+      faq6Q:"Comment contacter l'assistance ?",faq6A:"Utilisez les coordonnées fournies par l'opérateur vérifié.",
+      contactTitle:"Contacter Real Wealth Edge",
+      contactText:"Une question sur l'inscription ou les services ? Contactez l'équipe par un canal vérifié.",
+      domainNote:"Vérifiez la propriété du domaine et configurez une adresse d'assistance valide avant le lancement.",
+      tagline:"Innovation. Opportunité. Communauté.",
+      footerText:"Relier les personnes à l'information financière et aux possibilités d'investissement.",
+      footerRisk:"Les produits financiers comportent des risques. Consultez les informations et conditions applicables."
+    },
+
+    es: {
+      navHome:"Inicio",navAbout:"Nosotros",navPlans:"Planes",navReferrals:"Referidos",navFaq:"Preguntas",navContact:"Contacto",
+      eyebrow:"Innovación • Oportunidad • Comunidad",
+      heroTitle:'Crear oportunidades. <span>Impulsar el crecimiento financiero.</span>',
+      heroText:"Bienvenido a Real Wealth Edge, tu puerta a las criptomonedas, la tecnología blockchain y la información de inversión.",
+      heroText2:"Descubre nuestra plataforma, explora información financiera y accede a los servicios para miembros.",
+      create:"CREAR UNA CUENTA",explore:"EXPLORAR PLANES",login:"INICIAR SESIÓN",
+      welcomeTitle:"Bienvenido a Real Wealth Edge",welcomeSub:"Una plataforma centrada en información financiera e innovación.",
+      welcomeP1:"Apoyamos la innovación financiera mediante una plataforma donde los miembros pueden explorar información, acceder a servicios de cuenta y conocer nuestro programa de referidos.",
+      welcomeP2:"Nuestra visión es crear relaciones duraderas mediante un servicio profesional y una mejora continua.",
+      riskNotice:"Los mercados financieros implican riesgos y pueden producir pérdidas. Ninguna rentabilidad está garantizada. Revise los términos y riesgos antes de invertir.",
+      aboutTitle:"Acerca de Real Wealth Edge",aboutSub:"Conocimiento, innovación y decisiones responsables.",
+      aboutP1:"Real Wealth Edge es una plataforma en línea centrada en criptomonedas, blockchain, forex e información sobre inversiones.",
+      aboutP2:"Creemos que la innovación, el conocimiento y las relaciones sólidas con los clientes favorecen el desarrollo a largo plazo.",
+      visionTitle:"Nuestra visión",visionText:"Crecer mediante innovación, servicio profesional y mejora continua.",
+      missionTitle:"Nuestra misión",missionText:"Comunicar con claridad, apoyar a los miembros y fomentar la educación financiera.",
+      whyTitle:"Por qué importa invertir",whySub:"Comprender las decisiones financieras ayuda a planificar el futuro.",
+      why1Title:"Objetivos a largo plazo",why1Text:"La planificación financiera puede apoyar objetivos educativos, empresariales, de vivienda y jubilación.",
+      why2Title:"Planificación del capital",why2Text:"Explore oportunidades adecuadas a su situación y tolerancia al riesgo.",
+      why3Title:"Conocimiento del mercado",why3Text:"Aprenda sobre mercados financieros y tecnologías digitales.",
+      why4Title:"Prepararse para el futuro",why4Text:"Organice prioridades y considere los riesgos de cada decisión.",
+      areasTitle:"Áreas de interés",areasSub:"Explorando novedades en los mercados y la tecnología.",
+      cryptoTitle:"Criptomonedas",cryptoText:"Siga las novedades de las monedas digitales.",
+      blockTitle:"Tecnología blockchain",blockText:"Explore aplicaciones de blockchain en transacciones y servicios financieros.",
+      forexTitle:"Trading de forex",forexText:"Conozca los mercados de divisas y los factores que influyen en los tipos de cambio.",
+      opportunitiesTitle:"Información de inversión",opportunitiesText:"Revise los detalles, condiciones y riesgos de las oportunidades disponibles.",
+      plansTitle:"Explorar planes de inversión",plansSub:"Revise los detalles anunciados y comprenda los riesgos.",
+      daily:"tasa diaria anunciada",duration:"Duración:",minimum:"Mínimo:",maximum:"Máximo:",
+      notVerified:"Las cifras anunciadas no están verificadas y no son rendimientos garantizados.",details:"Solicitar detalles",
+      planWarning:"Estas cifras publicitarias no son datos de rendimiento verificados independientemente. Compruebe las autorizaciones, condiciones y riesgos.",
+      startTitle:"Cómo empezar",startSub:"Resumen del proceso previsto para los miembros.",
+      step1Title:"Registrarse",step1Text:"Cree una cuenta cuando el servicio esté disponible.",
+      step2Title:"Explorar",step2Text:"Lea la información, los términos y los riesgos.",
+      step3Title:"Revisar planes",step3Text:"Revise todos los requisitos antes de decidir.",
+      step4Title:"Gestionar su cuenta",step4Text:"Use el panel cuando exista un sistema seguro.",
+      step5Title:"Contactar con soporte",step5Text:"Utilice canales de asistencia verificados.",
+      refTitle:"Programa de referidos",refSub:"Conozca el funcionamiento previsto de las referencias.",
+      networkTitle:"Ampliar su red",networkText:"Presente la plataforma y su información.",
+      shareTitle:"Compartir información",shareText:"Ayude a conocer los servicios y condiciones.",
+      commissionTitle:"Información sobre comisiones",commissionText:"Las comisiones deben cumplir los términos escritos y la legislación.",
+      communityTitle:"Crear comunidad",communityText:"Fomente la participación informada sin promesas engañosas.",
+      refHowTitle:"Cómo funciona el programa",refStep1:"Regístrese si cumple los requisitos.",
+      refStep2:"Acceda a un enlace personal si la función está disponible.",
+      refStep3:"Comparta información precisa.",
+      refStep4:"Permita que cada persona decida libremente.",
+      refStep5:"Consulte las condiciones oficiales.",
+      refWarning:"Estos porcentajes anunciados no están verificados. Confirme las condiciones oficiales y los cálculos.",
+      serviceTitle:"Compromiso con el servicio",serviceSub:"Diseñado para una navegación clara y cómoda.",
+      service1:"Acceso a la cuenta",service1Text:"Se prevé un espacio seguro para los miembros.",
+      service2:"Información de planes",service2Text:"Consulte descripciones y condiciones.",
+      service3:"Atención al miembro",service3Text:"Encuentre contactos verificados y orientación.",
+      multiTitle:"Una plataforma para una comunidad global",
+      multiText:"Elija un idioma en el selector superior. Se podrán añadir más traducciones.",
+      multiDetails:"Los idiomas previstos incluyen inglés, francés, español, portugués, árabe, chino, hindi, urdu, bengalí, ruso, alemán, italiano, japonés, coreano, turco, suajili, hausa, yoruba e igbo.",
+      faqTitle:"Preguntas frecuentes",
+      faq1Q:"¿Qué es Real Wealth Edge?",faq1A:"Es un concepto de plataforma en línea centrada en mercados financieros, tecnología y servicios para miembros.",
+      faq2Q:"¿Cómo me registro?",faq2A:"Se necesita una página de registro funcional y un sistema seguro.",
+      faq3Q:"¿Cómo reviso los planes?",faq3A:"Visite la sección de planes y revise cuidadosamente los términos y riesgos.",
+      faq4Q:"¿Cómo funciona el programa de referidos?",faq4A:"Consulte las reglas oficiales, los requisitos y el cálculo de comisiones.",
+      faq5Q:"¿Puedo usar otro idioma?",faq5A:"Use el selector para cambiar entre los idiomas implementados en esta página.",
+      faq6Q:"¿Cómo contacto con soporte?",faq6A:"Utilice los datos proporcionados por el operador verificado.",
+      contactTitle:"Contactar con Real Wealth Edge",
+      contactText:"¿Tiene preguntas sobre el registro o los servicios? Contacte al equipo mediante un canal verificado.",
+      domainNote:"Confirme la propiedad del dominio y configure un correo válido de soporte antes del lanzamiento.",
+      tagline:"Innovación. Oportunidad. Comunidad.",
+      footerText:"Conectando personas con información financiera y oportunidades de inversión.",
+      footerRisk:"Los productos financieros implican riesgos. Revise las condiciones aplicables."
+    },
+
+    pt: {
+      navHome:"Início",navAbout:"Sobre",navPlans:"Planos",navReferrals:"Indicações",navFaq:"Perguntas",navContact:"Contacto",
+      eyebrow:"Inovação • Oportunidade • Comunidade",
+      heroTitle:'Criar oportunidades. <span>Promover o crescimento financeiro.</span>',
+      heroText:"Bem-vindo à Real Wealth Edge, o seu acesso a criptomoedas, blockchain e informação sobre investimentos.",
+      heroText2:"Explore a plataforma, conheça os mercados financeiros e aceda aos serviços para membros.",
+      create:"CRIAR CONTA",explore:"EXPLORAR PLANOS",login:"ENTRAR NA CONTA",
+      welcomeTitle:"Bem-vindo à Real Wealth Edge",welcomeSub:"Uma plataforma dedicada à informação financeira e à inovação.",
+      welcomeP1:"Apoiamos a inovação financeira através de uma plataforma onde os membros podem explorar informações, aceder a serviços de conta e conhecer o programa de indicações.",
+      welcomeP2:"A nossa visão é construir relações duradouras através de serviço profissional e melhoria contínua.",
+      riskNotice:"Os mercados financeiros envolvem riscos e podem causar perdas. Nenhum retorno é garantido. Analise as condições e os riscos antes de investir.",
+      aboutTitle:"Sobre a Real Wealth Edge",aboutSub:"Conhecimento, inovação e decisões responsáveis.",
+      aboutP1:"A Real Wealth Edge é uma plataforma online dedicada a criptomoedas, blockchain, forex e informação sobre investimentos.",
+      aboutP2:"Acreditamos que inovação, conhecimento e relações sólidas com clientes são importantes para o desenvolvimento a longo prazo.",
+      visionTitle:"A nossa visão",visionText:"Crescer através da inovação, serviço profissional e melhoria contínua.",
+      missionTitle:"A nossa missão",missionText:"Comunicar com clareza, apoiar membros e promover a literacia financeira.",
+      whyTitle:"A importância do investimento",whySub:"Compreender decisões financeiras ajuda a planear o futuro.",
+      why1Title:"Objetivos a longo prazo",why1Text:"O planeamento financeiro pode apoiar objetivos de educação, negócios, habitação e reforma.",
+      why2Title:"Planeamento de capital",why2Text:"Explore oportunidades adequadas à sua situação e tolerância ao risco.",
+      why3Title:"Conhecimento dos mercados",why3Text:"Aprenda sobre mercados financeiros e tecnologias digitais.",
+      why4Title:"Preparar o futuro",why4Text:"Organize prioridades financeiras e considere os riscos de cada decisão.",
+      areasTitle:"Áreas de interesse",areasSub:"Explorar desenvolvimentos nos mercados financeiros e na tecnologia.",
+      cryptoTitle:"Criptomoedas",cryptoText:"Acompanhe desenvolvimentos nas moedas digitais.",
+      blockTitle:"Tecnologia blockchain",blockText:"Explore aplicações da blockchain em transações e serviços financeiros.",
+      forexTitle:"Negociação forex",forexText:"Conheça o mercado cambial e os fatores que influenciam as taxas de câmbio.",
+      opportunitiesTitle:"Informação sobre investimentos",opportunitiesText:"Analise detalhes, condições e riscos das oportunidades apresentadas.",
+      plansTitle:"Explore os nossos planos",plansSub:"Consulte os detalhes anunciados e compreenda os riscos.",
+      daily:"taxa diária anunciada",duration:"Duração:",minimum:"Mínimo:",maximum:"Máximo:",
+      notVerified:"Os valores anunciados não foram verificados e não são retornos garantidos.",details:"Pedir detalhes",
+      planWarning:"Estes valores publicitários não são dados de desempenho verificados de forma independente. Confirme autorizações, condições e riscos.",
+      startTitle:"Como começar",startSub:"Resumo do percurso previsto para os membros.",
+      step1Title:"Registar",step1Text:"Crie uma conta quando o serviço estiver disponível.",
+      step2Title:"Explorar",step2Text:"Leia as informações, condições e riscos.",
+      step3Title:"Analisar planos",step3Text:"Verifique todos os requisitos antes de decidir.",
+      step4Title:"Gerir a conta",step4Text:"Utilize o painel quando existir um sistema seguro.",
+      step5Title:"Contactar suporte",step5Text:"Utilize canais de suporte verificados.",
+      refTitle:"Programa de indicações",refSub:"Saiba como o programa deverá funcionar.",
+      networkTitle:"Expandir a rede",networkText:"Apresente a plataforma e as suas informações.",
+      shareTitle:"Partilhar informação",shareText:"Ajude outras pessoas a conhecer os serviços e condições.",
+      commissionTitle:"Informação sobre comissões",commissionText:"As comissões devem cumprir as condições escritas e a legislação.",
+      communityTitle:"Criar comunidade",communityText:"Promova participação informada sem promessas enganosas.",
+      refHowTitle:"Como funciona",refStep1:"Registe-se se for elegível.",
+      refStep2:"Aceda a um link pessoal se a função estiver disponível.",
+      refStep3:"Partilhe informações corretas.",
+      refStep4:"Permita que cada pessoa decida livremente.",
+      refStep5:"Consulte as condições oficiais.",
+      refWarning:"Estas percentagens anunciadas não foram verificadas. Confirme os termos oficiais e os cálculos.",
+      serviceTitle:"Compromisso com os clientes",serviceSub:"Concebido para uma navegação clara e prática.",
+      service1:"Acesso à conta",service1Text:"Está prevista uma área segura para membros.",
+      service2:"Informação dos planos",service2Text:"Consulte descrições e condições.",
+      service3:"Apoio aos membros",service3Text:"Encontre contactos verificados e orientações.",
+      multiTitle:"Uma plataforma para uma comunidade global",
+      multiText:"Escolha um idioma no seletor superior. Poderão ser acrescentadas outras traduções.",
+      multiDetails:"Os idiomas previstos incluem inglês, francês, espanhol, português, árabe, chinês, hindi, urdu, bengali, russo, alemão, italiano, japonês, coreano, turco, suaíli, hauçá, iorubá e igbo.",
+      faqTitle:"Perguntas frequentes",
+      faq1Q:"O que é a Real Wealth Edge?",faq1A:"É um conceito de plataforma online dedicado aos mercados financeiros, tecnologia e serviços para membros.",
+      faq2Q:"Como posso registar-me?",faq2A:"É necessária uma página de registo funcional e um sistema seguro.",
+      faq3Q:"Como posso analisar os planos?",faq3A:"Consulte a secção de planos e analise condições e riscos.",
+      faq4Q:"Como funciona o programa de indicações?",faq4A:"Consulte as regras oficiais, elegibilidade e cálculo das comissões.",
+      faq5Q:"Posso usar outro idioma?",faq5A:"Utilize o seletor para alternar entre os idiomas implementados nesta página.",
+      faq6Q:"Como contacto o suporte?",faq6A:"Utilize os contactos fornecidos pelo operador verificado.",
+      contactTitle:"Contactar a Real Wealth Edge",
+      contactText:"Tem dúvidas sobre registo ou serviços? Contacte a equipa através de um canal verificado.",
+      domainNote:"Confirme a propriedade do domínio e configure um email de suporte válido antes do lançamento.",
+      tagline:"Inovação. Oportunidade. Comunidade.",
+      footerText:"Ligamos pessoas a informação financeira e oportunidades de investimento.",
+      footerRisk:"Os produtos financeiros envolvem riscos. Consulte as condições aplicáveis."
+    },
+
+    de: {
+      navHome:"Startseite",navAbout:"Über uns",navPlans:"Pläne",navReferrals:"Empfehlungen",navFaq:"FAQ",navContact:"Kontakt",
+      eyebrow:"Innovation • Chancen • Gemeinschaft",
+      heroTitle:'Chancen schaffen. <span>Finanzielles Wachstum fördern.</span>',
+      heroText:"Willkommen bei Real Wealth Edge – Ihrer Plattform für Kryptowährungen, Blockchain und Anlageinformationen.",
+      heroText2:"Entdecken Sie die Plattform, Finanzmarktinformationen und Mitgliederservices.",
+      create:"KONTO ERSTELLEN",explore:"ANLAGEPLÄNE ANSEHEN",login:"MITGLIEDER-LOGIN",
+      welcomeTitle:"Willkommen bei Real Wealth Edge",welcomeSub:"Eine Plattform für Finanzinformationen und Innovation.",
+      welcomeP1:"Wir unterstützen Innovationen im Finanzbereich mit einer Plattform für Informationen, Kontodienste und unser Empfehlungsprogramm.",
+      welcomeP2:"Wir möchten durch professionellen Service und kontinuierliche Verbesserung langfristige Beziehungen aufbauen.",
+      riskNotice:"Finanzmärkte sind mit Risiken verbunden und können Verluste verursachen. Renditen sind nicht garantiert. Prüfen Sie Bedingungen und Risiken vor einer Anlage.",
+      aboutTitle:"Über Real Wealth Edge",aboutSub:"Wissen, Innovation und verantwortungsvolle Entscheidungen.",
+      aboutP1:"Real Wealth Edge ist eine Online-Plattform mit Schwerpunkt auf Kryptowährungen, Blockchain, Forex und Anlageinformationen.",
+      aboutP2:"Wir sehen Innovation, Wissen und starke Kundenbeziehungen als wichtige Grundlagen für langfristige Entwicklung.",
+      visionTitle:"Unsere Vision",visionText:"Wachstum durch Innovation, professionellen Service und kontinuierliche Verbesserung.",
+      missionTitle:"Unsere Mission",missionText:"Klare Informationen vermitteln, Mitglieder unterstützen und Finanzwissen fördern.",
+      whyTitle:"Warum Anlagen wichtig sind",whySub:"Finanzielle Entscheidungen zu verstehen hilft bei der Zukunftsplanung.",
+      why1Title:"Langfristige Ziele",why1Text:"Finanzplanung kann Bildungs-, Geschäfts-, Immobilien- und Ruhestandsziele unterstützen.",
+      why2Title:"Kapitalplanung",why2Text:"Prüfen Sie Möglichkeiten, die zu Ihrer Situation und Risikobereitschaft passen.",
+      why3Title:"Marktwissen",why3Text:"Lernen Sie Finanzmärkte und digitale Technologien kennen.",
+      why4Title:"Zukunft vorbereiten",why4Text:"Ordnen Sie finanzielle Prioritäten und berücksichtigen Sie Risiken.",
+      areasTitle:"Unsere Interessengebiete",areasSub:"Entwicklungen an Finanzmärkten und in der Technologie entdecken.",
+      cryptoTitle:"Kryptowährungen",cryptoText:"Verfolgen Sie Entwicklungen digitaler Währungen.",
+      blockTitle:"Blockchain-Technologie",blockText:"Entdecken Sie Blockchain-Anwendungen in Transaktionen und Finanzdiensten.",
+      forexTitle:"Forex-Handel",forexText:"Lernen Sie Devisenmärkte und Einflussfaktoren auf Wechselkurse kennen.",
+      opportunitiesTitle:"Anlageinformationen",opportunitiesText:"Prüfen Sie Details, Bedingungen und Risiken vorgestellter Möglichkeiten.",
+      plansTitle:"Unsere Anlagepläne",plansSub:"Prüfen Sie die beworbenen Angaben und die damit verbundenen Risiken.",
+      daily:"beworbener Tagessatz",duration:"Laufzeit:",minimum:"Minimum:",maximum:"Maximum:",
+      notVerified:"Die beworbenen Zahlen sind ungeprüft und keine garantierten Renditen.",details:"Details anfragen",
+      planWarning:"Diese Werbeangaben sind keine unabhängig geprüften Leistungsdaten. Prüfen Sie Zulassung, Bedingungen und Risiken.",
+      startTitle:"So starten Sie",startSub:"Überblick über den vorgesehenen Mitgliederprozess.",
+      step1Title:"Registrieren",step1Text:"Erstellen Sie ein Konto, sobald der Dienst verfügbar ist.",
+      step2Title:"Entdecken",step2Text:"Lesen Sie Informationen, Bedingungen und Risikohinweise.",
+      step3Title:"Pläne prüfen",step3Text:"Prüfen Sie alle Anforderungen vor einer Entscheidung.",
+      step4Title:"Konto verwalten",step4Text:"Nutzen Sie das Dashboard, sobald ein sicheres System eingerichtet ist.",
+      step5Title:"Support kontaktieren",step5Text:"Nutzen Sie verifizierte Supportkanäle.",
+      refTitle:"Unser Empfehlungsprogramm",refSub:"Erfahren Sie, wie Empfehlungen vorgesehen sind.",
+      networkTitle:"Netzwerk erweitern",networkText:"Stellen Sie die Plattform und ihre Informationen vor.",
+      shareTitle:"Informationen teilen",shareText:"Helfen Sie anderen, Dienste und Bedingungen kennenzulernen.",
+      commissionTitle:"Provisionsinformationen",commissionText:"Provisionen müssen schriftlichen Bedingungen und geltendem Recht entsprechen.",
+      communityTitle:"Gemeinschaft aufbauen",communityText:"Fördern Sie informierte Teilnahme ohne irreführende Versprechen.",
+      refHowTitle:"So funktioniert das Programm",refStep1:"Registrieren Sie sich, sofern Sie berechtigt sind.",
+      refStep2:"Nutzen Sie einen persönlichen Link, sofern verfügbar.",
+      refStep3:"Teilen Sie korrekte Informationen.",
+      refStep4:"Lassen Sie anderen die freie Entscheidung.",
+      refStep5:"Prüfen Sie die offiziellen Provisionsbedingungen.",
+      refWarning:"Diese beworbenen Prozentsätze sind ungeprüft. Prüfen Sie die offiziellen Bedingungen und Berechnungen.",
+      serviceTitle:"Unser Kundenservice-Versprechen",serviceSub:"Klare und praktische Navigation.",
+      service1:"Online-Kontozugang",service1Text:"Ein sicherer Mitgliederbereich ist vorgesehen.",
+      service2:"Planinformationen",service2Text:"Sehen Sie Beschreibungen und Bedingungen ein.",
+      service3:"Mitgliedersupport",service3Text:"Finden Sie verifizierte Kontakte und Hinweise.",
+      multiTitle:"Eine Plattform für eine globale Gemeinschaft",
+      multiText:"Wählen Sie oben eine unterstützte Sprache. Weitere Übersetzungen können ergänzt werden.",
+      multiDetails:"Geplante Sprachen sind Englisch, Französisch, Spanisch, Portugiesisch, Arabisch, Chinesisch, Hindi, Urdu, Bengalisch, Russisch, Deutsch, Italienisch, Japanisch, Koreanisch, Türkisch, Suaheli, Hausa, Yoruba und Igbo.",
+      faqTitle:"Häufig gestellte Fragen",
+      faq1Q:"Was ist Real Wealth Edge?",faq1A:"Ein Online-Plattformkonzept mit Schwerpunkt auf Finanzmärkten, Technologie und Mitgliederservices.",
+      faq2Q:"Wie registriere ich mich?",faq2A:"Dafür sind eine funktionierende Registrierungsseite und ein sicheres Kontosystem erforderlich.",
+      faq3Q:"Wie prüfe ich die Pläne?",faq3A:"Besuchen Sie den Planbereich und prüfen Sie Bedingungen und Risiken.",
+      faq4Q:"Wie funktioniert das Empfehlungsprogramm?",faq4A:"Prüfen Sie offizielle Regeln, Teilnahmebedingungen und Provisionsberechnungen.",
+      faq5Q:"Kann ich eine andere Sprache nutzen?",faq5A:"Nutzen Sie den Selektor für die auf dieser Seite implementierten Sprachen.",
+      faq6Q:"Wie erreiche ich den Support?",faq6A:"Nutzen Sie die Kontaktdaten des verifizierten Betreibers.",
+      contactTitle:"Real Wealth Edge kontaktieren",
+      contactText:"Fragen zur Registrierung oder zu Diensten? Kontaktieren Sie das Team über einen verifizierten Kanal.",
+      domainNote:"Bestätigen Sie die Domaininhaberschaft und richten Sie vor dem Start eine gültige Support-E-Mail ein.",
+      tagline:"Innovation. Chancen. Gemeinschaft.",
+      footerText:"Menschen mit Finanzinformationen und Anlagechancen verbinden.",
+      footerRisk:"Finanzprodukte bergen Risiken. Prüfen Sie die geltenden Bedingungen."
+    },
+
+    ar: {
+      navHome:"الرئيسية",navAbout:"من نحن",navPlans:"الخطط",navReferrals:"الإحالات",navFaq:"الأسئلة",navContact:"اتصل بنا",
+      eyebrow:"الابتكار • الفرص • المجتمع",
+      heroTitle:'بناء الفرص. <span>تعزيز النمو المالي.</span>',
+      heroText:"مرحباً بكم في Real Wealth Edge، منصتكم للمعلومات حول العملات المشفرة والبلوك تشين والاستثمار.",
+      heroText2:"اكتشفوا المنصة والأسواق المالية وخدمات الأعضاء.",
+      create:"إنشاء حساب",explore:"استكشاف الخطط",login:"دخول الأعضاء",
+      welcomeTitle:"مرحباً بكم في Real Wealth Edge",welcomeSub:"منصة تركز على المعلومات المالية والابتكار.",
+      welcomeP1:"ندعم الابتكار المالي من خلال منصة تتيح استكشاف المعلومات والوصول إلى خدمات الحساب والتعرف على برنامج الإحالة.",
+      welcomeP2:"نسعى إلى بناء علاقات مستدامة من خلال الخدمة المهنية والتحسين المستمر.",
+      riskNotice:"تنطوي الأسواق المالية على مخاطر وقد تؤدي إلى خسائر. لا توجد عوائد مضمونة. راجعوا الشروط والمخاطر قبل الاستثمار.",
+      aboutTitle:"حول Real Wealth Edge",aboutSub:"المعرفة والابتكار واتخاذ القرارات المسؤولة.",
+      aboutP1:"Real Wealth Edge منصة إلكترونية تركز على العملات المشفرة والبلوك تشين والفوركس ومعلومات الاستثمار.",
+      aboutP2:"نؤمن بأن الابتكار والمعرفة والعلاقات القوية مع العملاء تدعم التطور على المدى الطويل.",
+      visionTitle:"رؤيتنا",visionText:"النمو من خلال الابتكار والخدمة المهنية والتحسين المستمر.",
+      missionTitle:"مهمتنا",missionText:"تقديم معلومات واضحة ودعم الأعضاء وتعزيز الوعي المالي.",
+      whyTitle:"أهمية الاستثمار",whySub:"فهم القرارات المالية يساعد على التخطيط للمستقبل.",
+      why1Title:"الأهداف طويلة الأجل",why1Text:"يمكن للتخطيط المالي دعم أهداف التعليم والأعمال والسكن والتقاعد.",
+      why2Title:"تخطيط رأس المال",why2Text:"استكشفوا الفرص التي تناسب ظروفكم وقدرتكم على تحمل المخاطر.",
+      why3Title:"معرفة الأسواق",why3Text:"تعرفوا على الأسواق المالية والتقنيات الرقمية.",
+      why4Title:"الاستعداد للمستقبل",why4Text:"نظموا أولوياتكم المالية وراعوا المخاطر.",
+      areasTitle:"مجالات اهتمامنا",areasSub:"استكشاف التطورات في الأسواق المالية والتكنولوجيا.",
+      cryptoTitle:"العملات المشفرة",cryptoText:"تابعوا تطورات العملات الرقمية.",
+      blockTitle:"تقنية البلوك تشين",blockText:"استكشفوا تطبيقات البلوك تشين في المعاملات والخدمات المالية.",
+      forexTitle:"تداول الفوركس",forexText:"تعرفوا على أسواق العملات والعوامل المؤثرة في أسعار الصرف.",
+      opportunitiesTitle:"معلومات الاستثمار",opportunitiesText:"راجعوا تفاصيل وشروط ومخاطر الفرص المعروضة.",
+      plansTitle:"استكشفوا خطط الاستثمار",plansSub:"راجعوا التفاصيل المعلنة وافهموا المخاطر.",
+      daily:"معدل يومي معلن",duration:"المدة:",minimum:"الحد الأدنى:",maximum:"الحد الأقصى:",
+      notVerified:"الأرقام المعلنة غير متحقق منها ولا تمثل عوائد مضمونة.",details:"طلب التفاصيل",
+      planWarning:"هذه أرقام إعلانية وليست بيانات أداء تم التحقق منها بشكل مستقل. تحققوا من التراخيص والشروط والمخاطر.",
+      startTitle:"كيفية البدء",startSub:"نظرة عامة على رحلة العضو المخطط لها.",
+      step1Title:"التسجيل",step1Text:"أنشئوا حساباً عندما تتوفر خدمة التسجيل.",
+      step2Title:"الاستكشاف",step2Text:"اقرؤوا المعلومات والشروط وإفصاحات المخاطر.",
+      step3Title:"مراجعة الخطط",step3Text:"راجعوا المتطلبات قبل اتخاذ أي قرار.",
+      step4Title:"إدارة الحساب",step4Text:"استخدموا لوحة التحكم عند توفير نظام آمن.",
+      step5Title:"الاتصال بالدعم",step5Text:"استخدموا قنوات الدعم التي تم التحقق منها.",
+      refTitle:"برنامج الإحالة",refSub:"تعرفوا على آلية الإحالة المقترحة.",
+      networkTitle:"توسيع الشبكة",networkText:"عرّفوا الآخرين بالمنصة ومعلوماتها.",
+      shareTitle:"مشاركة المعلومات",shareText:"ساعدوا الزوار على معرفة الخدمات والشروط.",
+      commissionTitle:"معلومات العمولة",commissionText:"يجب أن تخضع أي عمولة للشروط المكتوبة والقوانين المعمول بها.",
+      communityTitle:"بناء مجتمع",communityText:"شجعوا المشاركة الواعية دون وعود مضللة.",
+      refHowTitle:"كيفية عمل البرنامج",refStep1:"سجلوا إذا كنتم مؤهلين.",
+      refStep2:"استخدموا رابط الإحالة الشخصي إذا كانت الميزة متاحة.",
+      refStep3:"شاركوا معلومات دقيقة.",
+      refStep4:"اتركوا لكل شخص حرية اتخاذ القرار.",
+      refStep5:"راجعوا شروط العمولة الرسمية.",
+      refWarning:"النسب المعلنة غير متحقق منها. راجعوا الشروط الرسمية وطرق الحساب.",
+      serviceTitle:"التزامنا بخدمة العملاء",serviceSub:"تصميم يركز على الوضوح وسهولة الاستخدام.",
+      service1:"الوصول إلى الحساب",service1Text:"يجري التخطيط لمساحة آمنة للأعضاء.",
+      service2:"معلومات الخطط",service2Text:"اطلعوا على أوصاف الخطط وشروطها.",
+      service3:"دعم الأعضاء",service3Text:"ابحثوا عن معلومات الاتصال والإرشادات الموثقة.",
+      multiTitle:"منصة لمجتمع عالمي",
+      multiText:"اختاروا لغة من القائمة أعلى الصفحة. يمكن إضافة ترجمات أخرى لاحقاً.",
+      multiDetails:"تشمل اللغات المخطط لها الإنجليزية والفرنسية والإسبانية والبرتغالية والعربية والصينية والهندية والأردية والبنغالية والروسية والألمانية والإيطالية واليابانية والكورية والتركية والسواحيلية والهوسا واليوروبا والإيغبو.",
+      faqTitle:"الأسئلة الشائعة",
+      faq1Q:"ما هي Real Wealth Edge؟",faq1A:"هي فكرة منصة إلكترونية تركز على الأسواق المالية والتكنولوجيا وخدمات الأعضاء.",
+      faq2Q:"كيف أسجل؟",faq2A:"يتطلب التسجيل صفحة عاملة ونظام حساب آمن.",
+      faq3Q:"كيف أراجع الخطط؟",faq3A:"زوروا قسم الخطط وراجعوا الشروط والمخاطر بعناية.",
+      faq4Q:"كيف يعمل برنامج الإحالة؟",faq4A:"راجعوا القواعد الرسمية والأهلية وحساب العمولات.",
+      faq5Q:"هل يمكنني استخدام لغة أخرى؟",faq5A:"استخدموا القائمة لتغيير اللغة من بين اللغات المتاحة في هذه الصفحة.",
+      faq6Q:"كيف أتواصل مع الدعم؟",faq6A:"استخدموا بيانات الاتصال المقدمة من مشغل تم التحقق منه.",
+      contactTitle:"اتصلوا بـ Real Wealth Edge",
+      contactText:"هل لديكم أسئلة حول التسجيل أو الخدمات؟ تواصلوا عبر قناة دعم موثقة.",
+      domainNote:"تحققوا من ملكية النطاق وأعدّوا بريداً صالحاً للدعم قبل الإطلاق.",
+      tagline:"الابتكار. الفرص. المجتمع.",
+      footerText:"ربط الناس بالمعلومات المالية وفرص الاستثمار.",
+      footerRisk:"المنتجات المالية تنطوي على مخاطر. راجعوا الإفصاحات والشروط."
+    },
+
+    ha: {
+      navHome:"Gida",navAbout:"Game da Mu",navPlans:"Tsare-tsare",navReferrals:"Nasiha",navFaq:"Tambayoyi",navContact:"Tuntuɓa",
+      eyebrow:"Sabbin dabaru • Dama • Al'umma",
+      heroTitle:'Gina Dama. <span>Ƙarfafa Ci gaban Kuɗi.</span>',
+      heroText:"Barka da zuwa Real Wealth Edge, dandalin bayanai game da cryptocurrency, blockchain da zuba jari.",
+      heroText2:"Bincika dandalinmu, kasuwannin kuɗi da ayyukan membobi.",
+      create:"BUƊE ASUSU",explore:"DUBA TSARE-TSARE",login:"SHIGA ASUSU",
+      welcomeTitle:"Barka da zuwa Real Wealth Edge",welcomeSub:"Dandalin bayanan kuɗi da sabbin fasahohi.",
+      welcomeP1:"Muna tallafa wa sabbin fasahohin kuɗi ta hanyar samar da dandalin bayanai da ayyukan asusu da kuma shirin tura sababbin membobi.",
+      welcomeP2:"Muna son gina dangantaka mai ɗorewa ta hanyar ƙwarewa da inganta ayyuka akai-akai.",
+      riskNotice:"Kasuwannin kuɗi suna da haɗari kuma ana iya yin asara. Ba a tabbatar da riba ba. Duba sharudda da haɗari kafin zuba kuɗi.",
+      aboutTitle:"Game da Real Wealth Edge",aboutSub:"Ilimi, ƙirƙira da yanke shawara cikin hankali.",
+      aboutP1:"Real Wealth Edge dandali ne na yanar gizo game da cryptocurrency, blockchain, forex da bayanan zuba jari.",
+      aboutP2:"Muna ganin ƙirƙira, ilimi da kyakkyawar dangantaka da abokan ciniki a matsayin ginshiƙan ci gaba.",
+      visionTitle:"Manufar Gani",visionText:"Ci gaba ta hanyar ƙirƙira, ƙwarewa da ingantawa.",
+      missionTitle:"Manufarmu",missionText:"Bayar da bayanai a sarari, taimaka wa membobi da ƙarfafa ilimin kuɗi.",
+      whyTitle:"Muhimmancin Zuba Jari",whySub:"Fahimtar shawarar kuɗi na taimaka wa shirin gaba.",
+      why1Title:"Manufofin Dogon Zango",why1Text:"Shirin kuɗi na iya taimaka wa ilimi, kasuwanci, gida da ritaya.",
+      why2Title:"Tsarin Jari",why2Text:"Bincika damar da ta dace da halin ku da juriyar haɗari.",
+      why3Title:"Ilimin Kasuwa",why3Text:"Koyi game da kasuwannin kuɗi da fasahar dijital.",
+      why4Title:"Shirin Gaba",why4Text:"Tsara fifikon kuɗi kuma ku yi la'akari da haɗari.",
+      areasTitle:"Abubuwan da Muke Bincika",areasSub:"Binciken sabbin abubuwa a kasuwannin kuɗi da fasaha.",
+      cryptoTitle:"Cryptocurrency",cryptoText:"Bibiyi ci gaban kuɗaɗen dijital.",
+      blockTitle:"Fasahar Blockchain",blockText:"Bincika amfani da blockchain a mu'amaloli da ayyukan kuɗi.",
+      forexTitle:"Kasuwancin Forex",forexText:"Koyi game da kasuwar canjin kuɗi da abubuwan da ke tasiri farashi.",
+      opportunitiesTitle:"Bayanan Zuba Jari",opportunitiesText:"Duba bayanai, sharudda da haɗarin damar da aka nuna.",
+      plansTitle:"Duba Tsare-tsaren Zuba Jari",plansSub:"Duba bayanan da aka tallata kuma ku fahimci haɗari.",
+      daily:"ƙimar yau da kullum da aka tallata",duration:"Tsawon lokaci:",minimum:"Mafi ƙaranci:",maximum:"Mafi yawa:",
+      notVerified:"Ba a tabbatar da waɗannan lambobin ba, kuma ba garantin riba ba ne.",details:"Nemi Bayani",
+      planWarning:"Waɗannan lambobin talla ne, ba sakamakon da aka tabbatar da kansa ba. Tabbatar da izini, sharudda da haɗari.",
+      startTitle:"Yadda Ake Farawa",startSub:"Taƙaitaccen tsarin membobi da ake shirin yi.",
+      step1Title:"Rajista",step1Text:"Ƙirƙiri asusu idan an samar da rajista.",
+      step2Title:"Bincike",step2Text:"Karanta bayanai, sharudda da haɗari.",
+      step3Title:"Duba Tsare-tsare",step3Text:"Duba duk buƙatu kafin yanke shawara.",
+      step4Title:"Sarrafa Asusun",step4Text:"Yi amfani da dashboard idan an samar da tsarin tsaro.",
+      step5Title:"Tuntuɓi Taimako",step5Text:"Yi amfani da hanyoyin taimako da aka tabbatar.",
+      refTitle:"Shirin Tura Sabbin Membobi",refSub:"Koyi yadda shirin tura membobi zai yi aiki.",
+      networkTitle:"Faɗaɗa Sadarwa",networkText:"Gabatar da dandalin da bayanansa ga masu sha'awa.",
+      shareTitle:"Raba Bayanai",shareText:"Taimaka wa mutane su fahimci ayyuka da sharudda.",
+      commissionTitle:"Bayanin Kwamishan",commissionText:"Duk kwamishan ya bi rubutattun sharudda da dokoki.",
+      communityTitle:"Gina Al'umma",communityText:"Ƙarfafa shiga cikin sani ba tare da alkawuran yaudara ba.",
+      refHowTitle:"Yadda Shirin Ke Aiki",refStep1:"Yi rajista idan ka cancanta.",
+      refStep2:"Samu hanyar tura mutane idan akwai wannan fasali.",
+      refStep3:"Raba sahihan bayanai.",
+      refStep4:"Bari kowa ya yanke shawara da kansa.",
+      refStep5:"Duba sharuddan kwamishan na hukuma.",
+      refWarning:"Ba a tabbatar da waɗannan kaso ba. Duba sharuddan hukuma da yadda ake lissafi.",
+      serviceTitle:"Alƙawarin Hidimar Abokan Ciniki",serviceSub:"An tsara shafin domin sauƙin amfani.",
+      service1:"Shiga Asusun Yanar Gizo",service1Text:"Ana shirin samar da wuri mai tsaro ga membobi.",
+      service2:"Bayanan Tsare-tsare",service2Text:"Duba bayanin tsare-tsare da sharudda.",
+      service3:"Taimakon Membobi",service3Text:"Nemo sahihan bayanan tuntuɓa da jagora.",
+      multiTitle:"Dandalin Al'umma ta Duniya",
+      multiText:"Zaɓi harshe daga jerin da ke saman shafi. Za a iya ƙara wasu fassarori.",
+      multiDetails:"Harsunan da ake shirin tallafawa sun haɗa da Turanci, Faransanci, Sifaniyanci, Fotigal, Larabci, Sinanci, Hindi, Urdu, Bengali, Rashanci, Jamusanci, Italiyanci, Jafananci, Koriya, Baturke, Swahili, Hausa, Yoruba da Igbo.",
+      faqTitle:"Tambayoyin da Aka Fi Yi",
+      faq1Q:"Menene Real Wealth Edge?",faq1A:"Ra'ayin dandali ne na yanar gizo game da kasuwannin kuɗi, fasaha da ayyukan membobi.",
+      faq2Q:"Yaya zan yi rajista?",faq2A:"Ana buƙatar shafin rajista da tsarin asusu mai tsaro.",
+      faq3Q:"Yaya zan duba tsare-tsare?",faq3A:"Ziyarci sashen tsare-tsare kuma duba sharudda da haɗari.",
+      faq4Q:"Yaya shirin tura membobi ke aiki?",faq4A:"Duba dokokin hukuma, cancanta da lissafin kwamishan.",
+      faq5Q:"Zan iya amfani da wani harshe?",faq5A:"Yi amfani da zaɓin harshe don sauya tsakanin harsunan da ke shafin.",
+      faq6Q:"Yaya zan tuntuɓi taimako?",faq6A:"Yi amfani da bayanan tuntuɓa na ma'aikacin da aka tabbatar.",
+      contactTitle:"Tuntuɓi Real Wealth Edge",
+      contactText:"Kana da tambaya game da rajista ko ayyuka? Tuntuɓi ƙungiyar ta hanyar da aka tabbatar.",
+      domainNote:"Tabbatar da mallakar domain kuma shirya imel ɗin taimako kafin ƙaddamarwa.",
+      tagline:"Ƙirƙira. Dama. Al'umma.",
+      footerText:"Haɗa mutane da bayanan kuɗi da damar zuba jari.",
+      footerRisk:"Ayyukan kuɗi suna da haɗari. Duba bayanai da sharudda."
+    },
+
+    yo: {
+      navHome:"Ilé",navAbout:"Nípa Wa",navPlans:"Àwọn Ètò",navReferrals:"Ìtọ́kasí",navFaq:"Ìbéèrè",navContact:"Kàn sí Wa",
+      eyebrow:"Ìṣẹ̀dá • Àǹfààní • Àwùjọ",
+      heroTitle:'Ṣíṣe Àǹfààní. <span>Fífi Ìdàgbàsókè Ọ̀rọ̀ Ajé Lẹ́sẹ̀.</span>',
+      heroText:"Ẹ káàbọ̀ sí Real Wealth Edge, pẹpẹ fún ìmọ̀ nípa cryptocurrency, blockchain àti ìdókòwò.",
+      heroText2:"Ṣàwárí pẹpẹ wa, àwọn ọjà owó àti iṣẹ́ fún àwọn ọmọ ẹgbẹ́.",
+      create:"ṢẸ̀DÁ ÀKỌỌ́LẸ́",explore:"ṢÀWÁRÍ ÀWỌN ÈTÒ",login:"WỌLẸ̀",
+      welcomeTitle:"Ẹ káàbọ̀ sí Real Wealth Edge",welcomeSub:"Pẹpẹ tó dá lórí ìmọ̀ ọ̀rọ̀ ajé àti ìṣẹ̀dá tuntun.",
+      welcomeP1:"A ń ṣe àtìlẹ́yìn fún ìṣẹ̀dá tuntun nínú ọ̀rọ̀ ajé nípasẹ̀ pẹpẹ tí àwọn ọmọ ẹgbẹ́ lè ti rí ìwífún, wọlé sí iṣẹ́ àkọọ́lẹ̀, kí wọ́n sì mọ̀ nípa ètò ìtọ́kasí wa.",
+      welcomeP2:"A fẹ́ kọ́ àjọṣepọ̀ tó pé pẹ́ nípasẹ̀ iṣẹ́ amọ̀jọ́ àti ìmúdára déédéé.",
+      riskNotice:"Àwọn ọjà owó ní ewu, ó sì ṣeé ṣe láti pàdánù owó. Kò sí èrè tí a ṣe ìdánilójú rẹ̀. Ṣàyẹ̀wò àwọn òfin àti ewu kí o tó ṣe ìdókòwò.",
+      aboutTitle:"Nípa Real Wealth Edge",aboutSub:"Ìmọ̀, ìṣẹ̀dá àti ṣíṣe ìpinnu pẹ̀lú ojúṣe.",
+      aboutP1:"Real Wealth Edge jẹ́ pẹpẹ lórí ayélujára tó dá lórí cryptocurrency, blockchain, forex àti ìwífún ìdókòwò.",
+      aboutP2:"A gbàgbọ́ pé ìṣẹ̀dá, ìmọ̀ àti àjọṣepọ̀ tó dára pẹ̀lú oníbàárà ṣe pàtàkì fún ìdàgbàsókè.",
+      visionTitle:"Ìran Wa",visionText:"Láti dàgbà nípasẹ̀ ìṣẹ̀dá, iṣẹ́ amọ̀jọ́ àti ìmúdára.",
+      missionTitle:"Iṣẹ́ Àyànfún Wa",missionText:"Láti fúnni ní ìwífún tó ṣe kedere, láti ran ọmọ ẹgbẹ́ lọ́wọ́ àti láti gbé ìmọ̀ ọ̀rọ̀ ajé lárugẹ.",
+      whyTitle:"Ìdí Tí Ìdókòwò Fi Ṣe Pàtàkì",whySub:"Lílóye ìpinnu owó lè ran ènìyàn lọ́wọ́ láti ṣètò ọjọ́ iwájú.",
+      why1Title:"Àfojúsùn Ọjọ́ Pípẹ́",why1Text:"Ètò owó lè ran lọ́wọ́ fún ẹ̀kọ́, iṣẹ́ ajé, ilé àti ìfẹ̀yìntì.",
+      why2Title:"Ètò Owó Olú",why2Text:"Ṣàwárí àǹfààní tó bá ipò rẹ mu àti bí o ṣe lè fara da ewu.",
+      why3Title:"Ìmọ̀ Ọjà",why3Text:"Kọ́ nípa ọjà owó àti ìmọ̀ ẹ̀rọ oní-nọ́ńbà.",
+      why4Title:"Ìmúrasílẹ̀ fún Ọjọ́ Iwájú",why4Text:"Ṣètò àwọn ohun tó ṣe pàtàkì nínú owó rẹ kí o sì ronú nípa ewu.",
+      areasTitle:"Àwọn Agbègbè Ìfẹ́ Wa",areasSub:"Ṣíṣàwárí ìdàgbàsókè nínú ọjà owó àti ìmọ̀ ẹ̀rọ.",
+      cryptoTitle:"Cryptocurrency",cryptoText:"Tẹ̀lé ìdàgbàsókè owó oní-nọ́ńbà.",
+      blockTitle:"Ìmọ̀ Ẹ̀rọ Blockchain",blockText:"Ṣàwárí bí blockchain ṣe ń ṣiṣẹ́ nínú ìṣòwò àti iṣẹ́ owó.",
+      forexTitle:"Ìṣòwò Forex",forexText:"Kọ́ nípa ọjà pàṣípààrọ̀ owó àti ohun tó ń nípa lórí iye owó.",
+      opportunitiesTitle:"Ìwífún Ìdókòwò",opportunitiesText:"Ṣàyẹ̀wò àlàyé, òfin àti ewu àwọn àǹfààní tó wà.",
+      plansTitle:"Ṣàwárí Àwọn Ètò Ìdókòwò Wa",plansSub:"Ṣàyẹ̀wò àlàyé tí a polówó àti ewu tó wà.",
+      daily:"ìwọ̀n ojoojúmọ́ tí a polówó",duration:"Àkókò:",minimum:"Ó kéré jù:",maximum:"Ó pọ̀ jù:",
+      notVerified:"A kò tíì jẹ́rìí sí àwọn nọ́ńbà wọ̀nyí, wọn kì í ṣe èrè tí a ṣe ìdánilójú rẹ̀.",details:"Béèrè Àlàyé",
+      planWarning:"Àwọn nọ́ńbà wọ̀nyí jẹ́ ìpolówó, kì í ṣe àbájáde tí a ti ṣàyẹ̀wò lọ́tọ̀. Jẹ́rìí sí àṣẹ, òfin àti ewu.",
+      startTitle:"Bí O Ṣe Lè Bẹ̀rẹ̀",startSub:"Àkótán ìrìnàjò ọmọ ẹgbẹ́ tí a fẹ́ ṣe.",
+      step1Title:"Forúkọsílẹ̀",step1Text:"Ṣẹ̀dá àkọọ́lẹ̀ nígbà tí iṣẹ́ ìforúkọsílẹ̀ bá wà.",
+      step2Title:"Ṣàwárí",step2Text:"Ka ìwífún, òfin àti ìkìlọ̀ nípa ewu.",
+      step3Title:"Ṣàyẹ̀wò Àwọn Ètò",step3Text:"Ṣàyẹ̀wò gbogbo ohun tó yẹ kí o tó pinnu.",
+      step4Title:"Ṣàkóso Àkọọ́lẹ̀",step4Text:"Lo pánẹ́lì ọmọ ẹgbẹ́ nígbà tí ètò tó ní ààbò bá ti wà.",
+      step5Title:"Kàn sí Ìrànlọ́wọ́",step5Text:"Lo ọ̀nà ìrànlọ́wọ́ tí a ti jẹ́rìí sí.",
+      refTitle:"Ètò Ìtọ́kasí Wa",refSub:"Kọ́ bí ètò ìtọ́kasí ṣe yẹ kí ó ṣiṣẹ́.",
+      networkTitle:"Fífẹ̀ Nẹ́tíwọ́ọ̀kì",networkText:"Fi pẹpẹ àti ìwífún rẹ̀ hàn fún àwọn tó nífẹ̀ẹ́ sí i.",
+      shareTitle:"Pín Ìwífún",shareText:"Ran àwọn ènìyàn lọ́wọ́ láti mọ iṣẹ́ àti òfin.",
+      commissionTitle:"Ìwífún Kọmíṣọ̀n",commissionText:"Kọmíṣọ̀n gbọ́dọ̀ tẹ̀lé òfin tí a kọ sílẹ̀ àti òfin orílẹ̀-èdè.",
+      communityTitle:"Kíkọ́ Àwùjọ",communityText:"Gbé ìkópa tó ní ìmọ̀ lárugẹ láìṣe ìlérí èrè tó ń tan ni jẹ.",
+      refHowTitle:"Bí Ètò Ṣe Ń Ṣiṣẹ́",refStep1:"Forúkọsílẹ̀ bí o bá yẹ.",
+      refStep2:"Gba ọ̀nà ìtọ́kasí tirẹ bí ó bá wà.",
+      refStep3:"Pín ìwífún tó péye.",
+      refStep4:"Jẹ́ kí ẹnìkọ̀ọ̀kan ṣe ìpinnu fúnra rẹ̀.",
+      refStep5:"Ṣàyẹ̀wò òfin kọmíṣọ̀n tó jẹ́ ti òfin.",
+      refWarning:"A kò tíì jẹ́rìí sí àwọn ìpín wọ̀nyí. Ṣàyẹ̀wò òfin àti bí a ṣe ń ṣe ìṣírò rẹ̀.",
+      serviceTitle:"Ìlérí Wa sí Iṣẹ́ Oníbàárà",serviceSub:"A ṣe é fún lílò tó rọrùn àti tó ṣe kedere.",
+      service1:"Wíwọlé sí Àkọọ́lẹ̀",service1Text:"A ń pèsè ààyè tó ní ààbò fún ọmọ ẹgbẹ́.",
+      service2:"Ìwífún Ètò",service2Text:"Wo àlàyé àti òfin àwọn ètò.",
+      service3:"Ìrànlọ́wọ́ Ọmọ Ẹgbẹ́",service3Text:"Wa ìwífún ìbánisọ̀rọ̀ tó jẹ́rìí àti ìtọ́sọ́nà.",
+      multiTitle:"Pẹpẹ fún Àwùjọ Àgbáyé",
+      multiText:"Yan èdè láti inú àkójọ tó wà lókè. A lè fi àwọn ìtumọ̀ míì kún un.",
+      multiDetails:"Àwọn èdè tí a fẹ́ ṣe àtìlẹ́yìn fún ni Gẹ̀ẹ́sì, Faransé, Sípáníìṣì, Pọ́túgà, Lárúbáwá, Ṣáínà, Hindi, Urdu, Bengali, Rọ́ṣíà, Jámánì, Ítálì, Jàpánì, Kòríà, Tọ́kì, Swahili, Hausa, Yorùbá àti Igbo.",
+      faqTitle:"Àwọn Ìbéèrè Tí A Máa Ń Béèrè",
+      faq1Q:"Kí ni Real Wealth Edge?",faq1A:"Ó jẹ́ èrò pẹpẹ lórí ayélujára tó dá lórí ọjà owó, ìmọ̀ ẹ̀rọ àti iṣẹ́ ọmọ ẹgbẹ́.",
+      faq2Q:"Báwo ni mo ṣe lè forúkọsílẹ̀?",faq2A:"Ó nílò ojú-ìwé ìforúkọsílẹ̀ tó ń ṣiṣẹ́ àti ètò àkọọ́lẹ̀ tó ní ààbò.",
+      faq3Q:"Báwo ni mo ṣe lè ṣàyẹ̀wò àwọn ètò?",faq3A:"Lọ sí apá ètò kí o sì ṣàyẹ̀wò òfin àti ewu.",
+      faq4Q:"Báwo ni ètò ìtọ́kasí ṣe ń ṣiṣẹ́?",faq4A:"Ṣàyẹ̀wò òfin, ìyẹ̀sí àti ìṣírò kọmíṣọ̀n.",
+      faq5Q:"Ṣé mo lè lo èdè míì?",faq5A:"Lo àṣàyàn èdè láti yí èdè tó wà lójú-ìwé padà.",
+      faq6Q:"Báwo ni mo ṣe lè kàn sí ìrànlọ́wọ́?",faq6A:"Lo àlàyé ìbánisọ̀rọ̀ tí olùṣiṣẹ́ tó jẹ́rìí sí pèsè.",
+      contactTitle:"Kàn sí Real Wealth Edge",
+      contactText:"Ṣé o ní ìbéèrè nípa ìforúkọsílẹ̀ tàbí iṣẹ́? Kàn sí ẹgbẹ́ nípasẹ̀ ọ̀nà tí a ti jẹ́rìí sí.",
+      domainNote:"Jẹ́rìí sí ẹni tó ni domain kí o sì ṣètò ímeèlì ìrànlọ́wọ́ tó wúlò kí o tó bẹ̀rẹ̀.",
+      tagline:"Ìṣẹ̀dá. Àǹfààní. Àwùjọ.",
+      footerText:"Ṣíṣe ìsopọ̀ ènìyàn pẹ̀lú ìwífún owó àti àǹfààní ìdókòwò.",
+      footerRisk:"Àwọn ọjà owó ní ewu. Ṣàyẹ̀wò ìkìlọ̀ àti òfin tó kan."
+    }
+  };
+
+  const languagePicker = document.getElementById("language");
+
+  languagePicker.addEventListener("change", function () {
+    const selected = translations[this.value] || translations.en;
+
+    document.querySelectorAll("[data-i18n]").forEach(function (element) {
+      const key = element.getAttribute("data-i18n");
+
+      if (selected[key]) {
+        element.innerHTML = selected[key];
+      } else if (translations.en[key]) {
+        element.innerHTML = translations.en[key];
+      }
+    });
+
+    document.documentElement.lang = this.value;
+    document.documentElement.dir = this.value === "ar" ? "rtl" : "ltr";
+  });
+</script>
 
 </body>
-  </html>
-  
+</html>
