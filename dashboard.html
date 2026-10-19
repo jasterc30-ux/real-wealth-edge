@@ -69,8 +69,9 @@ nav button.active{color:var(--navy);background:#eaf0f8}
 <main>
 <section id="home" class="page active">
   <p class="muted">MEMBER OVERVIEW</p>
-  <h1>Welcome back</h1>
+  <h1 id="welcomeHeading">Welcome back</h1>
   <p class="muted">Manage your account, explore plans and review your wallet.</p>
+
   <div class="card balance">
     <span class="muted">Available balance</span>
     <strong id="homeBalance">$0.00</strong>
@@ -80,17 +81,20 @@ nav button.active{color:var(--navy);background:#eaf0f8}
       <button class="secondary" onclick="walletMode('withdraw')">Withdraw</button>
     </div>
   </div>
+
   <div class="stats">
     <div class="stat"><span class="muted">Total deposited</span><strong id="totalDeposited">$0.00</strong></div>
     <div class="stat"><span class="muted">Active investments</span><strong id="activeInvestments">$0.00</strong></div>
     <div class="stat"><span class="muted">Pending requests</span><strong id="pendingRequests">0</strong></div>
     <div class="stat"><span class="muted">Account status</span><strong style="font-size:15px">Preview</strong></div>
   </div>
+
   <div class="card">
     <h2>Explore investment plans</h2>
     <p class="muted">Review the available plan details.</p>
     <button class="primary" style="width:100%" onclick="goTo('invest')">View Plans</button>
   </div>
+
   <div class="card">
     <h2>Recent activity</h2>
     <div id="homeActivity" class="empty">No activity recorded in this browser yet.</div>
@@ -100,7 +104,7 @@ nav button.active{color:var(--navy);background:#eaf0f8}
 <section id="invest" class="page">
   <p class="muted">INVESTMENT OPTIONS</p>
   <h1>Investment Plans</h1>
-  <p class="muted">The following are the plan terms entered for this website preview. Rates are not verified or guaranteed.</p>
+  <p class="muted">These are the plan terms entered for this website preview. Rates are not verified or guaranteed.</p>
   <div id="planList"></div>
   <div class="card">
     <h2>Before you continue</h2>
@@ -116,6 +120,7 @@ nav button.active{color:var(--navy);background:#eaf0f8}
     <strong id="walletBalance" style="display:block;font-size:27px;margin-top:9px">$0.00</strong>
     <p class="notice">Preview balance, not a record of verified funds.</p>
   </div>
+
   <div class="actions">
     <button id="depositTab" class="primary" onclick="walletMode('deposit')">Deposit</button>
     <button id="withdrawTab" class="secondary" onclick="walletMode('withdraw')">Withdraw</button>
@@ -181,8 +186,10 @@ nav button.active{color:var(--navy);background:#eaf0f8}
   <div class="card">
     <h2>Account overview</h2>
     <p class="muted">Platform: REAL WEALTH EDGE</p>
+    <p class="muted">Member name: <strong id="memberName">Loading…</strong></p>
+    <p class="muted">Registered email: <strong id="memberEmail">Loading…</strong></p>
     <p class="muted">Status: Website preview</p>
-    <p class="notice">Secure account information must be connected to authentication before launch.</p>
+    <div id="profileStatus" class="notice">Loading your account details…</div>
   </div>
 
   <div class="card" id="referralSection">
@@ -193,7 +200,7 @@ nav button.active{color:var(--navy);background:#eaf0f8}
       <span class="tag">10%–40%</span>
     </div>
     <div class="plan-rate">10%–40% Referral Commission</div>
-    <p class="muted">We offer referral commission opportunities ranging from 10% to 40% for qualifying referrals, subject to the applicable REAL WEALTH EDGE referral program terms.</p>
+    <p class="muted">Referral commission opportunities are subject to the applicable REAL WEALTH EDGE referral program terms. These figures are for preview purposes and are not verified earnings.</p>
 
     <label>Your referral link</label>
     <div id="referralLink" class="ref-link">Preparing preview link…</div>
@@ -207,13 +214,13 @@ nav button.active{color:var(--navy);background:#eaf0f8}
       <div class="stat"><span class="muted">Commission range</span><strong>10%–40%</strong></div>
     </div>
 
-    <p class="notice">Preview only: this link is generated for this browser, not your verified member account. Referral registrations and commission figures are not yet connected to the database. Commission rewards will require secure referral tracking, investment verification and server-side approval.</p>
+    <p class="notice">Preview only: this link is generated for this browser, not your verified member account. Referral registrations and commission figures are not yet connected to the database. Commission rewards require secure referral tracking, investment verification and server-side approval.</p>
   </div>
 
   <div class="card">
     <h2>Account actions</h2>
     <button class="secondary" style="width:100%" onclick="goTo('home')">Return to dashboard</button>
-    <button class="danger" style="width:100%;margin-top:10px" onclick="goToLogin()">Return to login page</button>
+    <button class="danger" style="width:100%;margin-top:10px" onclick="goToLogin()">Sign out and return to login</button>
   </div>
 </section>
 </main>
@@ -253,7 +260,7 @@ function money(n){
 function goTo(page){
   document.querySelectorAll("section.page").forEach(s=>s.classList.remove("active"));
   const target=document.getElementById(page);
-  if(target) target.classList.add("active");
+  if(target)target.classList.add("active");
   document.querySelectorAll("nav button").forEach(b=>{
     b.classList.toggle("active",b.dataset.page===page);
   });
@@ -368,6 +375,7 @@ function choosePlan(index){
 
 function renderPlans(){
   const list=document.getElementById("planList");
+  list.innerHTML="";
   plans.forEach((p,i)=>{
     const card=document.createElement("div");
     card.className="card";
@@ -396,7 +404,8 @@ function prepareReferralLink(){
   }catch(e){
     previewCode="RWE-PREVIEW";
   }
-  const link=window.location.origin+window.location.pathname.replace(/dashboard\.html$/,"index.html")+
+  const link=window.location.origin+
+    window.location.pathname.replace(/dashboard\.html$/,"index.html")+
     "?ref="+encodeURIComponent(previewCode);
   document.getElementById("referralLink").textContent=link;
 }
@@ -415,7 +424,10 @@ function goToLogin(){
 
 try{
   const saved=sessionStorage.getItem("rwePreviewActivity");
-  if(saved)activity=JSON.parse(saved);
+  if(saved){
+    const parsed=JSON.parse(saved);
+    if(Array.isArray(parsed))activity=parsed;
+  }
 }catch(e){}
 
 renderPlans();
@@ -424,7 +436,6 @@ renderActivity();
 prepareReferralLink();
 </script>
 
-<!-- Supabase authentication check. Existing dashboard layout and functions remain above. -->
 <script type="module">
 import { createClient } from
   "https://esm.sh/@supabase/supabase-js@2";
@@ -432,38 +443,27 @@ import { createClient } from
 const SUPABASE_URL =
   "https://ilbqpcqlqnwtukrzsqjq.supabase.co";
 
+/* Use the existing public anon key for this project.
+   Never put a service-role or secret key in website code. */
 const SUPABASE_KEY =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlsYnFwY3FscW53dHVrcnpzcWpxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI0MDAxOTUsImV4cCI6MjEwNzk3NjE5NX0.86g5_hBhM00fJurSIlZgMxHZYrtW3sAGknIZHJQmqWY";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmUiLCJyZWYiOiJpbGJxcGNxbHFud3R1a3J6c3FqcSIsInJvbGUiOiJhbm9uIiwiaWF0IjoxNzkyNDAwMTk1LCJleHAiOjIxMDc5NzYxOTV9.86g5_hBhM00fJurSIlZgMxHZYrtW3sAGknIZHJQmqWY";
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-async function protectDashboard(){
-  try{
-    const { data, error } = await supabase.auth.getSession();
-
-    if(error || !data.session){
-      window.location.replace("login.html");
-      return;
-    }
-
-    // Keep the existing dashboard visible once authentication is confirmed.
-    document.documentElement.classList.remove("auth-checking");
-
-    // The existing Account button now signs the member out first.
-    window.goToLogin = async function(){
-      try{
-        await supabase.auth.signOut();
-      }finally{
-        window.location.replace("login.html");
-      }
-    };
-  }catch(error){
-    window.location.replace("login.html");
-  }
+function setProfileMessage(message){
+  const el=document.getElementById("profileStatus");
+  if(el)el.textContent=message;
 }
 
-protectDashboard();
-</script>
-</body>
-  </html>
-  
+async function loadMemberProfile(user){
+  const nameElement=document.getElementById("memberName");
+  const emailElement=document.getElementById("memberEmail");
+  const welcomeElement=document.getElementById("welcomeHeading");
+
+  const email=user.email || "Email unavailable";
+  const metadataName=
+    user.user_metadata?.full_name ||
+    user.user_metadata?.name ||
+    "";
+
+  let displayName=metadataN
