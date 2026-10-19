@@ -4,28 +4,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#123b70">
-  <meta name="description" content="Secure member access to REAL WEALTH EDGE.">
-  <title>Member Access | REAL WEALTH EDGE</title>
+  <meta name="theme-color" content="#101b35">
+  <title>Member Login | REAL WEALTH EDGE</title>
+  <meta name="description" content="Sign in or create your REAL WEALTH EDGE member account.">
 
   <style>
     :root {
-      --navy: #123b70;
-      --blue: #1769d2;
-      --light-blue: #eaf3ff;
+      --navy: #101b35;
+      --navy-light: #1b2b4d;
+      --gold: #c9a44c;
       --white: #ffffff;
-      --text: #17263b;
-      --muted: #64748b;
-      --border: #d6e1ef;
+      --background: #f4f6fa;
+      --text: #243047;
+      --muted: #6b7485;
+      --border: #dce2ec;
+      --success: #18794e;
+      --error: #b42318;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
       min-height: 100vh;
       font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(180deg, #edf5ff, #fff 65%);
+      background: var(--background);
       color: var(--text);
       display: flex;
       flex-direction: column;
@@ -33,88 +38,139 @@
 
     header {
       background: var(--navy);
-      color: #fff;
-      padding: 24px 16px;
-      text-align: center;
+      color: var(--white);
+      padding: 20px 16px;
+      border-bottom: 3px solid var(--gold);
+    }
+
+    .header-inner {
+      max-width: 1050px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
     }
 
     .brand {
-      font-size: 23px;
+      color: var(--white);
+      text-decoration: none;
+      font-size: 21px;
       font-weight: 800;
-      letter-spacing: 1.4px;
+      letter-spacing: 1px;
     }
 
-    .tagline {
-      color: #d9e9ff;
-      font-size: 12px;
-      margin-top: 8px;
+    .brand span {
+      color: var(--gold);
+    }
+
+    .header-link {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 14px;
     }
 
     main {
       width: 100%;
-      max-width: 470px;
+      max-width: 1050px;
       margin: auto;
-      padding: 36px 18px;
-    }
-
-    .card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 30px 24px;
-      box-shadow: 0 14px 40px #123b7010;
-    }
-
-    .logo-mark {
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      background: var(--light-blue);
-      color: var(--blue);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 18px;
-      font-size: 26px;
-      font-weight: bold;
-    }
-
-    h1 {
-      font-size: 27px;
-      text-align: center;
-      margin: 0 0 10px;
-      color: var(--navy);
+      padding: 42px 16px;
+      flex: 1;
     }
 
     .intro {
+      text-align: center;
+      margin-bottom: 26px;
+    }
+
+    .intro h1 {
+      color: var(--navy);
+      font-size: clamp(27px, 5vw, 38px);
+      margin: 0 0 12px;
+    }
+
+    .intro p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 0 auto;
+      max-width: 560px;
+    }
+
+    .login-card {
+      background: var(--white);
+      max-width: 460px;
+      margin: auto;
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: 0 12px 35px rgba(16, 27, 53, 0.08);
+    }
+
+    .tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 24px;
+      padding: 5px;
+      background: #eef1f7;
+      border-radius: 9px;
+    }
+
+    .tab {
+      border: none;
+      padding: 12px 8px;
+      border-radius: 7px;
+      cursor: pointer;
+      background: transparent;
       color: var(--muted);
       font-size: 14px;
-      line-height: 1.65;
-      text-align: center;
-      margin: 0 0 25px;
+      font-weight: 700;
+    }
+
+    .tab.active {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .form-title {
+      color: var(--navy);
+      font-size: 22px;
+      margin: 0 0 8px;
+    }
+
+    .form-description {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+      margin: 0 0 22px;
+    }
+
+    .field {
+      margin-bottom: 17px;
     }
 
     label {
       display: block;
-      margin: 17px 0 8px;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 700;
+      margin-bottom: 8px;
     }
 
     input {
       width: 100%;
-      padding: 14px;
+      padding: 13px 12px;
       border: 1px solid var(--border);
       border-radius: 8px;
-      background: #fff;
+      background: var(--white);
       color: var(--text);
       font-size: 16px;
       outline: none;
     }
 
     input:focus {
-      border-color: var(--blue);
-      box-shadow: 0 0 0 3px #1769d218;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201, 164, 76, 0.16);
     }
 
     .password-wrap {
@@ -128,182 +184,276 @@
     }
 
     .show-password {
-      padding: 0 12px;
+      padding: 0 10px;
       border: 1px solid var(--border);
+      background: #f7f8fb;
       border-radius: 8px;
-      background: var(--light-blue);
-      color: var(--navy);
-      font-weight: 700;
       cursor: pointer;
+      color: var(--navy);
+      font-size: 12px;
+      font-weight: 700;
     }
 
-    .primary {
+    .primary-button {
       width: 100%;
-      padding: 15px;
-      margin-top: 24px;
-      background: var(--blue);
-      color: #fff;
-      border: 0;
+      border: none;
       border-radius: 8px;
+      padding: 14px;
+      background: var(--navy);
+      color: var(--white);
       font-size: 15px;
       font-weight: 700;
       cursor: pointer;
+      margin-top: 5px;
     }
 
-    .primary:hover { background: var(--navy); }
-    .primary:disabled { opacity: .65; cursor: wait; }
-
-    .switch {
-      margin-top: 22px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.8;
+    .primary-button:hover {
+      background: var(--navy-light);
     }
 
-    .link {
-      border: 0;
-      padding: 4px;
+    .primary-button:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+
+    .text-button {
+      display: block;
+      border: none;
       background: transparent;
-      color: var(--blue);
+      color: #294b83;
       font-size: 14px;
-      font-weight: 700;
       cursor: pointer;
+      margin: 16px auto 0;
+      padding: 5px;
     }
 
-    #message {
+    .message {
       display: none;
-      margin-top: 18px;
-      padding: 13px;
+      padding: 12px;
       border-radius: 8px;
-      font-size: 13px;
+      margin-bottom: 18px;
+      font-size: 14px;
       line-height: 1.6;
       overflow-wrap: anywhere;
     }
 
-    #message.info {
+    .message.success {
       display: block;
-      background: var(--light-blue);
-      color: var(--navy);
+      background: #eaf7ef;
+      color: var(--success);
+      border: 1px solid #b7e1c6;
     }
 
-    #message.success {
-      display: block;
-      background: #e9f8ef;
-      color: #167547;
-    }
-
-    #message.error {
+    .message.error {
       display: block;
       background: #fff0ef;
-      color: #b42318;
+      color: var(--error);
+      border: 1px solid #f2c1bd;
     }
 
-    .back {
-      display: block;
-      margin-top: 23px;
+    .security-note {
+      margin-top: 20px;
+      font-size: 12px;
+      line-height: 1.7;
       text-align: center;
-      color: var(--blue);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 700;
+      color: var(--muted);
     }
 
     footer {
-      background: #f5f8fc;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
+      background: var(--navy);
+      color: #dce3f0;
       text-align: center;
-      padding: 22px 14px;
+      padding: 22px 16px;
       font-size: 12px;
       line-height: 1.8;
     }
 
-    @media (max-width: 380px) {
-      .brand { font-size: 19px; }
-      .card { padding: 25px 17px; }
-      h1 { font-size: 24px; }
+    footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    @media (max-width: 480px) {
+      main {
+        padding: 30px 13px;
+      }
+
+      .login-card {
+        padding: 21px 17px;
+      }
+
+      .brand {
+        font-size: 18px;
+      }
     }
   </style>
 </head>
 
 <body>
   <header>
-    <div class="brand">REAL WEALTH EDGE</div>
-    <div class="tagline">
-      Building Opportunities. Empowering Financial Growth.
+    <div class="header-inner">
+      <a class="brand" href="index.html">
+        REAL WEALTH <span>EDGE</span>
+      </a>
+      <a class="header-link" href="index.html">Return to Homepage</a>
     </div>
   </header>
 
   <main>
-    <section class="card">
-      <div class="logo-mark" aria-hidden="true">R</div>
-
-      <h1 id="formTitle">Member Login</h1>
-
-      <p class="intro" id="formIntro">
-        Welcome back. Sign in to access your member account.
+    <div class="intro">
+      <h1>Welcome to REAL WEALTH EDGE</h1>
+      <p>
+        Access your member account or create an account to get started.
+        Your account gives you access to the platform's member features.
       </p>
+    </div>
 
-      <form id="authForm">
-        <label for="email">Email Address</label>
-        <input
-          id="email"
-          type="email"
-          name="email"
-          placeholder="Enter your email address"
-          autocomplete="email"
-          required
-        >
-
-        <label for="password">Password</label>
-
-        <div class="password-wrap">
-          <input
-            id="password"
-            type="password"
-            name="password"
-            placeholder="Enter your password"
-            autocomplete="current-password"
-            minlength="6"
-            required
-          >
-
-          <button
-            class="show-password"
-            type="button"
-            id="togglePassword"
-          >Show</button>
-        </div>
-
-        <button class="primary" id="submitButton" type="submit">
-          Login
+    <section class="login-card" aria-label="Member account access">
+      <div class="tabs">
+        <button type="button" class="tab active" id="loginTab">
+          Member Login
         </button>
-      </form>
-
-      <div id="message" role="status" aria-live="polite"></div>
-
-      <div class="switch">
-        <span id="switchText">New to REAL WEALTH EDGE?</span>
-        <button class="link" type="button" id="switchMode">
+        <button type="button" class="tab" id="registerTab">
           Create Account
         </button>
       </div>
 
-      <div class="switch" id="forgotWrap">
-        <button class="link" type="button" id="forgotPassword">
-          Forgot Password?
-        </button>
-      </div>
+      <div id="message" class="message" role="status" aria-live="polite"></div>
 
-      <a class="back" href="index.html">← Return to Homepage</a>
+      <form id="loginForm">
+        <h2 class="form-title">Sign in to your account</h2>
+        <p class="form-description">
+          Enter your registered email address and password to continue.
+        </p>
+
+        <div class="field">
+          <label for="loginEmail">Email Address</label>
+          <input
+            id="loginEmail"
+            type="email"
+            autocomplete="email"
+            placeholder="you@example.com"
+            required
+          >
+        </div>
+
+        <div class="field">
+          <label for="loginPassword">Password</label>
+          <div class="password-wrap">
+            <input
+              id="loginPassword"
+              type="password"
+              autocomplete="current-password"
+              placeholder="Enter your password"
+              required
+            >
+            <button
+              type="button"
+              class="show-password"
+              data-target="loginPassword"
+            >Show</button>
+          </div>
+        </div>
+
+        <button type="submit" class="primary-button" id="loginButton">
+          Sign In
+        </button>
+
+        <button type="button" class="text-button" id="forgotButton">
+          Forgot your password?
+        </button>
+      </form>
+
+      <form id="registerForm" hidden>
+        <h2 class="form-title">Create your account</h2>
+        <p class="form-description">
+          Enter your details below to register as a REAL WEALTH EDGE member.
+        </p>
+
+        <div class="field">
+          <label for="fullName">Full Name</label>
+          <input
+            id="fullName"
+            type="text"
+            autocomplete="name"
+            placeholder="Enter your full name"
+            minlength="2"
+            maxlength="100"
+            required
+          >
+        </div>
+
+        <div class="field">
+          <label for="registerEmail">Email Address</label>
+          <input
+            id="registerEmail"
+            type="email"
+            autocomplete="email"
+            placeholder="you@example.com"
+            required
+          >
+        </div>
+
+        <div class="field">
+          <label for="registerPassword">Create Password</label>
+          <div class="password-wrap">
+            <input
+              id="registerPassword"
+              type="password"
+              autocomplete="new-password"
+              minlength="8"
+              placeholder="At least 8 characters"
+              required
+            >
+            <button
+              type="button"
+              class="show-password"
+              data-target="registerPassword"
+            >Show</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="confirmPassword">Confirm Password</label>
+          <div class="password-wrap">
+            <input
+              id="confirmPassword"
+              type="password"
+              autocomplete="new-password"
+              minlength="8"
+              placeholder="Enter your password again"
+              required
+            >
+            <button
+              type="button"
+              class="show-password"
+              data-target="confirmPassword"
+            >Show</button>
+          </div>
+        </div>
+
+        <button type="submit" class="primary-button" id="registerButton">
+          Create Account
+        </button>
+      </form>
+
+      <p class="security-note">
+        Keep your password private. REAL WEALTH EDGE will never ask you to
+        share your password in a message.
+      </p>
     </section>
   </main>
 
   <footer>
-    &copy; <span id="year"></span> REAL WEALTH EDGE. All rights reserved.
-    <br>
-    Investment involves risk. Returns are not guaranteed.
+    <div>© <span id="year"></span> REAL WEALTH EDGE. All rights reserved.</div>
+    <div>
+      Secure account access ·
+      <a href="index.html">Homepage</a>
+    </div>
   </footer>
 
   <script type="module">
@@ -313,165 +463,218 @@
     const SUPABASE_URL =
       "https://ilbqpcqlqnwtukrzsqjq.supabase.co";
 
-    const SUPABASE_PUBLISHABLE_KEY =
+    // This is the existing public anon key from your login page.
+    // Replace it only if you choose to use your new sb_publishable_ key.
+    const SUPABASE_KEY =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlsYnFwY3FscW53dHVrcnpzcWpxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI0MDAxOTUsImV4cCI6MjEwNzk3NjE5NX0.86g5_hBhM00fJurSIlZgMxHZYrtW3sAGknIZHJQmqWY";
 
-    const supabase = createClient(
-      SUPABASE_URL,
-      SUPABASE_PUBLISHABLE_KEY
-    );
+    const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-    const form = document.getElementById("authForm");
-    const emailInput = document.getElementById("email");
-    const passwordInput = document.getElementById("password");
-    const submitButton = document.getElementById("submitButton");
     const message = document.getElementById("message");
-    const formTitle = document.getElementById("formTitle");
-    const formIntro = document.getElementById("formIntro");
-    const switchText = document.getElementById("switchText");
-    const switchMode = document.getElementById("switchMode");
-    const forgotWrap = document.getElementById("forgotWrap");
-
-    let isRegistering = false;
+    const loginForm = document.getElementById("loginForm");
+    const registerForm = document.getElementById("registerForm");
+    const loginTab = document.getElementById("loginTab");
+    const registerTab = document.getElementById("registerTab");
+    const loginButton = document.getElementById("loginButton");
+    const registerButton = document.getElementById("registerButton");
 
     document.getElementById("year").textContent =
       new Date().getFullYear();
 
-    function showMessage(text, type) {
+    function showMessage(text, type = "error") {
       message.textContent = text;
-      message.className = type;
+      message.className = "message " + type;
     }
 
     function clearMessage() {
       message.textContent = "";
-      message.className = "";
+      message.className = "message";
     }
 
-    document.getElementById("togglePassword").addEventListener(
-      "click", function () {
-        const showing = passwordInput.type === "text";
-        passwordInput.type = showing ? "password" : "text";
-        this.textContent = showing ? "Show" : "Hide";
+    function setBusy(button, busy, text) {
+      button.disabled = busy;
+      if (busy) {
+        button.dataset.originalText = button.textContent;
+        button.textContent = text;
+      } else {
+        button.textContent =
+          button.dataset.originalText || button.textContent;
       }
-    );
+    }
 
-    switchMode.addEventListener("click", function () {
-      isRegistering = !isRegistering;
+    function showLogin() {
       clearMessage();
+      loginForm.hidden = false;
+      registerForm.hidden = true;
+      loginTab.classList.add("active");
+      registerTab.classList.remove("active");
+    }
 
-      formTitle.textContent = isRegistering
-        ? "Create Your Account" : "Member Login";
+    function showRegister() {
+      clearMessage();
+      loginForm.hidden = true;
+      registerForm.hidden = false;
+      loginTab.classList.remove("active");
+      registerTab.classList.add("active");
+    }
 
-      formIntro.textContent = isRegistering
-        ? "Enter your email and create a password to register."
-        : "Welcome back. Sign in to access your member account.";
+    loginTab.addEventListener("click", showLogin);
+    registerTab.addEventListener("click", showRegister);
 
-      submitButton.textContent = isRegistering
-        ? "Create Account" : "Login";
-
-      switchText.textContent = isRegistering
-        ? "Already have an account?" : "New to REAL WEALTH EDGE?";
-
-      switchMode.textContent = isRegistering ? "Login" : "Create Account";
-
-      passwordInput.autocomplete = isRegistering
-        ? "new-password" : "current-password";
-
-      forgotWrap.style.display = isRegistering ? "none" : "block";
+    document.querySelectorAll(".show-password").forEach((button) => {
+      button.addEventListener("click", () => {
+        const field = document.getElementById(button.dataset.target);
+        const reveal = field.type === "password";
+        field.type = reveal ? "text" : "password";
+        button.textContent = reveal ? "Hide" : "Show";
+      });
     });
 
-    form.addEventListener("submit", async function (event) {
+    loginForm.addEventListener("submit", async (event) => {
       event.preventDefault();
       clearMessage();
 
-      const email = emailInput.value.trim();
-      const password = passwordInput.value;
+      const email =
+        document.getElementById("loginEmail").value.trim();
+      const password =
+        document.getElementById("loginPassword").value;
 
-      submitButton.disabled = true;
-      submitButton.textContent = isRegistering
-        ? "Creating Account..." : "Signing In...";
+      setBusy(loginButton, true, "Signing In...");
 
       try {
-        if (isRegistering) {
-          const { data, error } = await supabase.auth.signUp({
-            email: email,
-            password: password
+        const { data, error } =
+          await supabase.auth.signInWithPassword({
+            email,
+            password
           });
 
-          if (error) throw error;
+        if (error) throw error;
 
-          if (data.session) {
-            showMessage(
-              "Your account was created successfully. The member dashboard is not available yet.",
-              "success"
-            );
-          } else {
-            showMessage(
-              "Registration received. Check your email for a confirmation link before logging in.",
-              "success"
-            );
-          }
-        } else {
-          const { error } = await supabase.auth.signInWithPassword({
-            email: email,
-            password: password
-          });
-
-          if (error) throw error;
-
+        if (!data.session) {
           showMessage(
-            "Login successful. The member dashboard is still being developed.",
+            "Login could not be completed. Please try again."
+          );
+          return;
+        }
+
+        showMessage("Login successful. Opening your account...", "success");
+
+        window.location.replace("dashboard.html");
+      } catch (error) {
+        showMessage(error.message || "Unable to sign in. Please try again.");
+      } finally {
+        setBusy(loginButton, false);
+      }
+    });
+
+    registerForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      clearMessage();
+
+      const fullName =
+        document.getElementById("fullName").value.trim();
+      const email =
+        document.getElementById("registerEmail").value.trim();
+      const password =
+        document.getElementById("registerPassword").value;
+      const confirmPassword =
+        document.getElementById("confirmPassword").value;
+
+      if (password.length < 8) {
+        showMessage("Your password must contain at least 8 characters.");
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        showMessage("The passwords do not match. Please try again.");
+        return;
+      }
+
+      setBusy(registerButton, true, "Creating Account...");
+
+      try {
+        const { data, error } = await supabase.auth.signUp({
+          email,
+          password,
+          options: {
+            data: {
+              full_name: fullName
+            },
+            emailRedirectTo: window.location.origin +
+              window.location.pathname.replace(/[^/]*$/, "login.html")
+          }
+        });
+
+        if (error) throw error;
+
+        if (data.session) {
+          showMessage(
+            "Your account has been created. Opening your member area...",
+            "success"
+          );
+          window.location.replace("dashboard.html");
+        } else {
+          showMessage(
+            "Registration received. Check your email for the confirmation link before signing in.",
+            "success"
+          );
+          showLogin();
+          document.getElementById("loginEmail").value = email;
+          showMessage(
+            "Your account registration was received. Check your email for a confirmation link, then sign in.",
             "success"
           );
         }
       } catch (error) {
         showMessage(
-          error.message || "Something went wrong. Please try again.",
-          "error"
+          error.message || "Unable to create your account. Please try again."
         );
       } finally {
-        submitButton.disabled = false;
-        submitButton.textContent = isRegistering
-          ? "Create Account" : "Login";
+        setBusy(registerButton, false);
       }
     });
 
-    document.getElementById("forgotPassword").addEventListener(
-      "click", async function () {
-        clearMessage();
+    document.getElementById("forgotButton").addEventListener("click", async () => {
+      clearMessage();
 
-        const email = emailInput.value.trim();
+      const email =
+        document.getElementById("loginEmail").value.trim();
 
-        if (!email) {
-          showMessage(
-            "Enter your email address first, then tap Forgot Password again.",
-            "info"
-          );
-          emailInput.focus();
-          return;
-        }
-
-        try {
-          const { error } =
-            await supabase.auth.resetPasswordForEmail(email, {
-              redirectTo: window.location.origin +
-                window.location.pathname
-            });
-
-          if (error) throw error;
-
-          showMessage(
-            "If an account exists for that email, a password-reset email will be sent. Check your inbox.",
-            "success"
-          );
-        } catch (error) {
-          showMessage(
-            error.message || "Unable to request a password reset.",
-            "error"
-          );
-        }
+      if (!email) {
+        showMessage("Enter your email address first, then select Forgot your password.");
+        document.getElementById("loginEmail").focus();
+        return;
       }
-    );
+
+      try {
+        const { error } = await supabase.auth.resetPasswordForEmail(email, {
+          redirectTo: window.location.origin +
+            window.location.pathname.replace(/[^/]*$/, "login.html")
+        });
+
+        if (error) throw error;
+
+        showMessage(
+          "If password recovery is available for this address, you will receive an email with the next steps.",
+          "success"
+        );
+      } catch (error) {
+        showMessage(
+          error.message || "Unable to request a password reset. Please try again."
+        );
+      }
+    });
+
+    // If the member is already signed in, send them to the dashboard.
+    try {
+      const { data, error } = await supabase.auth.getSession();
+
+      if (!error && data.session) {
+        window.location.replace("dashboard.html");
+      }
+    } catch (error) {
+      console.error("Unable to check the current session.");
+    }
   </script>
 </body>
 </html>
