@@ -71,6 +71,11 @@
       font-size: 14px;
     }
 
+    .header-link:hover,
+    footer a:hover {
+      text-decoration: underline;
+    }
+
     main {
       width: 100%;
       max-width: 1050px;
@@ -332,30 +337,18 @@
 
         <div class="field">
           <label for="loginEmail">Email Address</label>
-          <input
-            id="loginEmail"
-            type="email"
-            autocomplete="email"
-            placeholder="you@example.com"
-            required
-          >
+          <input id="loginEmail" type="email"
+            autocomplete="email" placeholder="you@example.com" required>
         </div>
 
         <div class="field">
           <label for="loginPassword">Password</label>
           <div class="password-wrap">
-            <input
-              id="loginPassword"
-              type="password"
+            <input id="loginPassword" type="password"
               autocomplete="current-password"
-              placeholder="Enter your password"
-              required
-            >
-            <button
-              type="button"
-              class="show-password"
-              data-target="loginPassword"
-            >Show</button>
+              placeholder="Enter your password" required>
+            <button type="button" class="show-password"
+              data-target="loginPassword">Show</button>
           </div>
         </div>
 
@@ -376,63 +369,36 @@
 
         <div class="field">
           <label for="fullName">Full Name</label>
-          <input
-            id="fullName"
-            type="text"
-            autocomplete="name"
-            placeholder="Enter your full name"
-            minlength="2"
-            maxlength="100"
-            required
-          >
+          <input id="fullName" type="text" autocomplete="name"
+            placeholder="Enter your full name" minlength="2"
+            maxlength="100" required>
         </div>
 
         <div class="field">
           <label for="registerEmail">Email Address</label>
-          <input
-            id="registerEmail"
-            type="email"
-            autocomplete="email"
-            placeholder="you@example.com"
-            required
-          >
+          <input id="registerEmail" type="email"
+            autocomplete="email" placeholder="you@example.com" required>
         </div>
 
         <div class="field">
           <label for="registerPassword">Create Password</label>
           <div class="password-wrap">
-            <input
-              id="registerPassword"
-              type="password"
-              autocomplete="new-password"
-              minlength="8"
-              placeholder="At least 8 characters"
-              required
-            >
-            <button
-              type="button"
-              class="show-password"
-              data-target="registerPassword"
-            >Show</button>
+            <input id="registerPassword" type="password"
+              autocomplete="new-password" minlength="8"
+              placeholder="At least 8 characters" required>
+            <button type="button" class="show-password"
+              data-target="registerPassword">Show</button>
           </div>
         </div>
 
         <div class="field">
           <label for="confirmPassword">Confirm Password</label>
           <div class="password-wrap">
-            <input
-              id="confirmPassword"
-              type="password"
-              autocomplete="new-password"
-              minlength="8"
-              placeholder="Enter your password again"
-              required
-            >
-            <button
-              type="button"
-              class="show-password"
-              data-target="confirmPassword"
-            >Show</button>
+            <input id="confirmPassword" type="password"
+              autocomplete="new-password" minlength="8"
+              placeholder="Enter your password again" required>
+            <button type="button" class="show-password"
+              data-target="confirmPassword">Show</button>
           </div>
         </div>
 
@@ -463,8 +429,6 @@
     const SUPABASE_URL =
       "https://ilbqpcqlqnwtukrzsqjq.supabase.co";
 
-    // This is the existing public anon key from your login page.
-    // Replace it only if you choose to use your new sb_publishable_ key.
     const SUPABASE_KEY =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlsYnFwY3FscW53dHVrcnpzcWpxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI0MDAxOTUsImV4cCI6MjEwNzk3NjE5NX0.86g5_hBhM00fJurSIlZgMxHZYrtW3sAGknIZHJQmqWY";
 
@@ -493,6 +457,7 @@
 
     function setBusy(button, busy, text) {
       button.disabled = busy;
+
       if (busy) {
         button.dataset.originalText = button.textContent;
         button.textContent = text;
@@ -557,11 +522,15 @@
           return;
         }
 
-        showMessage("Login successful. Opening your account...", "success");
+        showMessage(
+          "Login successful. Opening your account...", "success"
+        );
 
         window.location.replace("dashboard.html");
       } catch (error) {
-        showMessage(error.message || "Unable to sign in. Please try again.");
+        showMessage(
+          error.message || "Unable to sign in. Please try again."
+        );
       } finally {
         setBusy(loginButton, false);
       }
@@ -597,9 +566,7 @@
           email,
           password,
           options: {
-            data: {
-              full_name: fullName
-            },
+            data: { full_name: fullName },
             emailRedirectTo: window.location.origin +
               window.location.pathname.replace(/[^/]*$/, "login.html")
           }
@@ -614,14 +581,10 @@
           );
           window.location.replace("dashboard.html");
         } else {
-          showMessage(
-            "Registration received. Check your email for the confirmation link before signing in.",
-            "success"
-          );
           showLogin();
           document.getElementById("loginEmail").value = email;
           showMessage(
-            "Your account registration was received. Check your email for a confirmation link, then sign in.",
+            "Your registration was received. Check your email for a confirmation link, then sign in.",
             "success"
           );
         }
@@ -634,47 +597,45 @@
       }
     });
 
-    document.getElementById("forgotButton").addEventListener("click", async () => {
-      clearMessage();
+    document.getElementById("forgotButton").addEventListener(
+      "click", async () => {
+        clearMessage();
 
-      const email =
-        document.getElementById("loginEmail").value.trim();
+        const email =
+          document.getElementById("loginEmail").value.trim();
 
-      if (!email) {
-        showMessage("Enter your email address first, then select Forgot your password.");
-        document.getElementById("loginEmail").focus();
-        return;
+        if (!email) {
+          showMessage(
+            "Enter your email address first, then select Forgot your password."
+          );
+          document.getElementById("loginEmail").focus();
+          return;
+        }
+
+        try {
+          const { error } =
+            await supabase.auth.resetPasswordForEmail(email, {
+              redirectTo: window.location.origin +
+                window.location.pathname.replace(/[^/]*$/, "login.html")
+            });
+
+          if (error) throw error;
+
+          showMessage(
+            "If password recovery is available for this address, you will receive an email with the next steps.",
+            "success"
+          );
+        } catch (error) {
+          showMessage(
+            error.message ||
+              "Unable to request a password reset. Please try again."
+          );
+        }
       }
+    );
 
-      try {
-        const { error } = await supabase.auth.resetPasswordForEmail(email, {
-          redirectTo: window.location.origin +
-            window.location.pathname.replace(/[^/]*$/, "login.html")
-        });
-
-        if (error) throw error;
-
-        showMessage(
-          "If password recovery is available for this address, you will receive an email with the next steps.",
-          "success"
-        );
-      } catch (error) {
-        showMessage(
-          error.message || "Unable to request a password reset. Please try again."
-        );
-      }
-    });
-
-    // If the member is already signed in, send them to the dashboard.
-    try {
-      const { data, error } = await supabase.auth.getSession();
-
-      if (!error && data.session) {
-        window.location.replace("dashboard.html");
-      }
-    } catch (error) {
-      console.error("Unable to check the current session.");
-    }
+    // Intentionally do not redirect existing sessions here.
+    // The login page should remain visible until the member signs in.
   </script>
 </body>
 </html>
