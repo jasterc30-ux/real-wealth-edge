@@ -8,12 +8,13 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to content</a>
 <header class="site-header">
   <a class="brand" href="#home" aria-label="Everstone home"><span class="brand-mark">E</span><span><strong>EVERSTONE</strong><small>WEALTH INVESTMENT</small></span></a>
   <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
-  <nav class="nav"><a href="#approach">Our approach</a><a href="#services">Services</a><a href="#principles">Principles</a><a href="#contact">Contact</a><a class="nav-cta" href="dashboard.html">Client area preview</a></nav>
+  <nav class="nav"><a href="#approach">Our approach</a><a href="#services">Services</a><a href="#principles">Principles</a><a href="#contact">Contact</a><a class="nav-cta" href="login.html">Client portal preview</a></nav>
 </header>
-<main id="home">
+<main id="main-content">
   <section class="hero">
     <div class="hero-copy">
       <p class="eyebrow">EVERSTONE WEALTH INVESTMENT</p>
@@ -32,8 +33,8 @@
     <article class="service-card"><span>03 / PLANNING</span><h3>Wealth planning information</h3><p>Educational resources to help frame goals, time horizons, diversification and risk tolerance.</p><a href="#contact">Enquire ↗</a></article>
   </div></section>
   <section class="principles" id="principles"><div class="principles-inner"><div><div class="section-label">OUR PRINCIPLES</div><h2>Trust is earned through <em>what we do.</em></h2></div><div class="principle-list"><div><b>01</b><span><strong>Honest communication</strong><small>We distinguish facts, assumptions and estimates.</small></span></div><div><b>02</b><span><strong>Respect for risk</strong><small>All investing involves risk, including possible loss of capital.</small></span></div><div><b>03</b><span><strong>Responsible growth</strong><small>We do not use pressure, fabricated results or guaranteed-return claims.</small></span></div></div></div></section>
-  <section class="section contact" id="contact"><div><div class="section-label">START A CONVERSATION</div><h2>Let’s begin with a <em>clear conversation.</em></h2><p>Contact details and business registration information will be published here once verified.</p></div><div class="contact-panel"><p class="contact-kicker">EVERSTONE WEALTH INVESTMENT</p><p>For general enquiries, please use the contact channel officially published by the company once available.</p><a class="button button-dark" href="mailto:hello@example.com?subject=Everstone%20general%20enquiry">Email placeholder — update before launch</a><small>Replace this placeholder with a verified company email before publishing.</small></div></section>
+  <section class="section contact" id="contact"><div><div class="section-label">START A CONVERSATION</div><h2>Let’s begin with a <em>clear conversation.</em></h2><p>Verified company contact details and registration information will be published here once confirmed.</p></div><div class="contact-panel"><p class="contact-kicker">EVERSTONE WEALTH INVESTMENT</p><p>For general enquiries, please use the contact channel officially published by the company once available.</p><p class="contact-hold">Official contact channel to be published after company details are verified.</p><a class="text-link-dark" href="login.html">Client portal preview ↗</a></div></section>
 </main>
-<footer class="footer"><a class="brand brand-footer" href="#home"><span class="brand-mark">E</span><span><strong>EVERSTONE</strong><small>WEALTH INVESTMENT</small></span></a><p>© <span id="year"></span> Everstone Wealth Investment. All rights reserved.</p><p class="footer-note">This is an initial website draft for demonstration and planning. It does not constitute an offer, solicitation, financial promotion or personalised financial advice. No licence, registration, regulatory approval, performance history or client relationship is represented by this draft. Investment values can fall as well as rise; you may lose some or all of your capital. Verify the entity, its authorisations and all service providers independently before engaging.</p></footer>
+<footer class="footer"><a class="brand brand-footer" href="#home"><span class="brand-mark">E</span><span><strong>EVERSTONE</strong><small>WEALTH INVESTMENT</small></span></a><p>© <span id="year"></span> Everstone Wealth Investment. Website concept.</p><p class="footer-note">This is an initial website draft for demonstration and planning. It does not constitute an offer, solicitation, financial promotion or personalised financial advice. No licence, registration, regulatory approval, performance history or client relationship is represented by this draft. Investment values can fall as well as rise; you may lose some or all of your capital. Verify the entity, its authorisations and all service providers independently before engaging.</p></footer>
 <script>document.getElementById('year').textContent=new Date().getFullYear();const t=document.querySelector('.menu-toggle'),n=document.querySelector('.nav');t.addEventListener('click',()=>{const open=n.classList.toggle('open');t.setAttribute('aria-expanded',String(open));});n.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{n.classList.remove('open');t.setAttribute('aria-expanded','false')}));</script>
 </body></html>
